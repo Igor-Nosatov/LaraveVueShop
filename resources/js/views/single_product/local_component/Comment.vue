@@ -84,6 +84,33 @@
 
 <script>
 export default{
-
+data() {
+    return {
+        review: {
+            name: '',
+            email: '',
+            phone: '',
+            message: ''
+        }
+    }
+},
+methods: {
+    addComment(review) {
+        axios.post('/api/product/review/add', {
+            name: review.name,
+            phone: review.phone,
+            email: review.email,
+            message: review.message
+        }).then(response => {
+            console.log(response)
+            this.name = ''
+            this.phone = ''
+            this.email = ''
+            this.messsage = ''
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+}
 }
 </script>

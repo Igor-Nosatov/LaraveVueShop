@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="primary-btn" @click="">Submit Now</button>
+                    <button type="submit" value="submit" class="primary-btn" @click="addReview(review)">Submit Now</button>
                 </div>
             </form>
         </div>
@@ -135,24 +135,24 @@ export default {
         }
     },
     methods: {
-    addReview(product) {
-        axios.post('/api/order/add', {
-            star: review.star,
-            name: review.name,
-            phone: review.phone,
-            email: review.email,
-            message: review.message
-        }).then(response => {
-            console.log(response)
-            this.name = ''
-            this.image = ''
-            this.price = ''
-            this.qty = ''
-            this.qty = ''
-        }).catch(error => {
-            console.log(error)
-        })
-    }
+        addReview(review) {
+            axios.post('/api/product/review/add', {
+                star: review.star,
+                name: review.name,
+                phone: review.phone,
+                email: review.email,
+                message: review.message
+            }).then(response => {
+                console.log(response)
+                this.star = ''
+                this.name = ''
+                this.phone = ''
+                this.email = ''
+                this.messsage = ''
+            }).catch(error => {
+                console.log(error)
+            })
+        }
     }
 }
 </script>
