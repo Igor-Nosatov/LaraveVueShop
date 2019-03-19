@@ -3988,7 +3988,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      comment: {
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      }
+    };
+  },
+  methods: {
+    addComment: function addComment(review) {
+      var _this = this;
+
+      axios.post('/api/product/review/add', {
+        name: review.name,
+        phone: review.phone,
+        email: review.email,
+        message: review.message
+      }).then(function (response) {
+        console.log(response);
+        _this.name = '';
+        _this.phone = '';
+        _this.email = '';
+        _this.messsage = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -4124,12 +4155,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      product: [],
+      review: {
+        star: '',
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      }
+    };
+  },
+  methods: {
+    addReview: function addReview(review) {
+      var _this = this;
+
+      axios.post('/api/product/review/add', {
+        star: review.star,
+        name: review.name,
+        phone: review.phone,
+        email: review.email,
+        message: review.message,
+        product_id: this.product.id
+      }).then(function (response) {
+        console.log(response);
+        _this.star = '';
+        _this.name = '';
+        _this.phone = '';
+        _this.email = '';
+        _this.messsage = '';
+        _this.product_id = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -43960,180 +44023,222 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "review_box" }, [
+        _c("h4", [_vm._v("Post a comment")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "row contact_form",
+            attrs: { novalidate: "novalidate" }
+          },
+          [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.comment.name,
+                      expression: "comment.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Your Full name" },
+                  domProps: { value: _vm.comment.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.comment, "name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.comment.email,
+                      expression: "comment.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "email", placeholder: "Email Address" },
+                  domProps: { value: _vm.comment.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.comment, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.comment.number,
+                      expression: "comment.number"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Phone Number" },
+                  domProps: { value: _vm.comment.number },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.comment, "number", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.comment.message,
+                      expression: "comment.message"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { rows: "1", placeholder: "Message" },
+                  domProps: { value: _vm.comment.message },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.comment, "message", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 text-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn primary-btn",
+                  attrs: { type: "submit", value: "submit" },
+                  on: {
+                    click: function($event) {
+                      _vm.addComment(_vm.review)
+                    }
+                  }
+                },
+                [_vm._v("Submit Now")]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "comment_list" }, [
-          _c("div", { staticClass: "review_item" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  attrs: { src: "img/product/review-1.png", alt: "" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c("h4", [_vm._v("Blake Ruiz")]),
-                _vm._v(" "),
-                _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
-                _vm._v(" "),
-                _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
-                  _vm._v("Reply")
-                ])
-              ])
+    return _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "comment_list" }, [
+        _c("div", { staticClass: "review_item" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("div", { staticClass: "d-flex" }, [
+              _c("img", { attrs: { src: "img/product/review-1.png", alt: "" } })
             ]),
             _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-              )
+            _c("div", { staticClass: "media-body" }, [
+              _c("h4", [_vm._v("Blake Ruiz")]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
+              _vm._v(" "),
+              _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
+                _vm._v("Reply")
+              ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "review_item reply" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  attrs: { src: "img/product/review-2.png", alt: "" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c("h4", [_vm._v("Blake Ruiz")]),
-                _vm._v(" "),
-                _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
-                _vm._v(" "),
-                _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
-                  _vm._v("Reply")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "review_item" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  attrs: { src: "img/product/review-3.png", alt: "" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c("h4", [_vm._v("Blake Ruiz")]),
-                _vm._v(" "),
-                _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
-                _vm._v(" "),
-                _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
-                  _vm._v("Reply")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-              )
-            ])
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
+            )
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "review_box" }, [
-          _c("h4", [_vm._v("Post a comment")]),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "row contact_form",
-              attrs: {
-                action: "contact_process.php",
-                method: "post",
-                id: "contactForm",
-                novalidate: "novalidate"
-              }
-            },
-            [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "name",
-                      name: "name",
-                      placeholder: "Your Full name"
-                    }
-                  })
-                ])
-              ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "review_item reply" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("div", { staticClass: "d-flex" }, [
+              _c("img", { attrs: { src: "img/product/review-2.png", alt: "" } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-body" }, [
+              _c("h4", [_vm._v("Blake Ruiz")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "email",
-                      name: "email",
-                      placeholder: "Email Address"
-                    }
-                  })
-                ])
-              ]),
+              _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "number",
-                      name: "number",
-                      placeholder: "Phone Number"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("textarea", {
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "message",
-                      id: "message",
-                      rows: "1",
-                      placeholder: "Message"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12 text-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn primary-btn",
-                    attrs: { type: "submit", value: "submit" }
-                  },
-                  [_vm._v("Submit Now")]
-                )
+              _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
+                _vm._v("Reply")
               ])
-            ]
-          )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "review_item" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("div", { staticClass: "d-flex" }, [
+              _c("img", { attrs: { src: "img/product/review-3.png", alt: "" } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-body" }, [
+              _c("h4", [_vm._v("Blake Ruiz")]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
+              _vm._v(" "),
+              _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
+                _vm._v("Reply")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
+            )
+          ])
         ])
       ])
     ])
@@ -44160,316 +44265,426 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "review_box" }, [
+        _c(
+          "form",
+          {
+            staticClass: "row contact_form",
+            attrs: { novalidate: "novalidate" }
+          },
+          [
+            _c("h4", [_vm._v("Add a Review")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.review.star,
+                    expression: "review.star"
+                  }
+                ],
+                attrs: { type: "radio", value: "1" },
+                domProps: { checked: _vm._q(_vm.review.star, "1") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.review, "star", "1")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.review.star,
+                    expression: "review.star"
+                  }
+                ],
+                attrs: { type: "radio", value: "2" },
+                domProps: { checked: _vm._q(_vm.review.star, "2") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.review, "star", "2")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.review.star,
+                    expression: "review.star"
+                  }
+                ],
+                attrs: { type: "radio", value: "3" },
+                domProps: { checked: _vm._q(_vm.review.star, "3") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.review, "star", "3")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.review.star,
+                    expression: "review.star"
+                  }
+                ],
+                attrs: { type: "radio", value: "4" },
+                domProps: { checked: _vm._q(_vm.review.star, "4") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.review, "star", "4")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.review.star,
+                    expression: "review.star"
+                  }
+                ],
+                attrs: { type: "radio", value: "5" },
+                domProps: { checked: _vm._q(_vm.review.star, "5") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.review, "star", "5")
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.review.name,
+                      expression: "review.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Your Full name",
+                    onfocus: "this.placeholder = ''",
+                    onblur: "this.placeholder = 'Your Full name'"
+                  },
+                  domProps: { value: _vm.review.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.review, "name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.review.email,
+                      expression: "review.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    placeholder: "Email Address",
+                    onfocus: "this.placeholder = ''",
+                    onblur: "this.placeholder = 'Email Address'"
+                  },
+                  domProps: { value: _vm.review.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.review, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.review.phone,
+                      expression: "review.phone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Phone Number",
+                    onfocus: "this.placeholder = ''",
+                    onblur: "this.placeholder = 'Phone Number'"
+                  },
+                  domProps: { value: _vm.review.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.review, "phone", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.review.message,
+                      expression: "review.message"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    rows: "1",
+                    placeholder: "Review",
+                    onfocus: "this.placeholder = ''",
+                    onblur: "this.placeholder = 'Review'"
+                  },
+                  domProps: { value: _vm.review.message },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.review, "message", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 text-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "primary-btn",
+                  attrs: { type: "submit", value: "submit" },
+                  on: {
+                    click: function($event) {
+                      _vm.addReview(_vm.review)
+                    }
+                  }
+                },
+                [_vm._v("Submit Now")]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "row total_rate" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", { staticClass: "box_total" }, [
-              _c("h5", [_vm._v("Overall")]),
-              _vm._v(" "),
-              _c("h4", [_vm._v("4.0")]),
-              _vm._v(" "),
-              _c("h6", [_vm._v("(03 Reviews)")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", { staticClass: "rating_list" }, [
-              _c("h3", [_vm._v("Based on 3 Reviews")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "list" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("5 Star "),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _vm._v(" 01")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("4 Star "),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _vm._v(" 01")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("3 Star "),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _vm._v(" 01")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("2 Star "),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _vm._v(" 01")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("1 Star "),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _c("i", { staticClass: "fa fa-star" }),
-                    _vm._v(" 01")
-                  ])
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "row total_rate" }, [
+        _c("div", { staticClass: "col-6" }, [
+          _c("div", { staticClass: "box_total" }, [
+            _c("h5", [_vm._v("Overall")]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("4.0")]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("(03 Reviews)")])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "review_list" }, [
-          _c("div", { staticClass: "review_item" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  attrs: { src: "img/product/review-1.png", alt: "" }
-                })
+        _c("div", { staticClass: "col-6" }, [
+          _c("div", { staticClass: "rating_list" }, [
+            _c("h3", [_vm._v("Based on 3 Reviews")]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "list" }, [
+              _c("li", [
+                _c("a", [
+                  _vm._v("5 Star "),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _vm._v(" 01")
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c("h4", [_vm._v("Blake Ruiz")]),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "review_item" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  attrs: { src: "img/product/review-2.png", alt: "" }
-                })
+              _c("li", [
+                _c("a", [
+                  _vm._v("4 Star "),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _vm._v(" 01")
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c("h4", [_vm._v("Blake Ruiz")]),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "review_item" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  attrs: { src: "img/product/review-3.png", alt: "" }
-                })
+              _c("li", [
+                _c("a", [
+                  _vm._v("3 Star "),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _vm._v(" 01")
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c("h4", [_vm._v("Blake Ruiz")]),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-star" })
+              _c("li", [
+                _c("a", [
+                  _vm._v("2 Star "),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _vm._v(" 01")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", [
+                  _vm._v("1 Star "),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _c("i", { staticClass: "fa fa-star" }),
+                  _vm._v(" 01")
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-              )
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "review_box" }, [
-          _c("h4", [_vm._v("Add a Review")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Your Rating:")]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fa fa-star" })
-              ])
+      _c("div", { staticClass: "review_list" }, [
+        _c("div", { staticClass: "review_item" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("div", { staticClass: "d-flex" }, [
+              _c("img", { attrs: { src: "img/product/review-1.png", alt: "" } })
             ]),
             _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fa fa-star" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fa fa-star" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fa fa-star" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fa fa-star" })
-              ])
+            _c("div", { staticClass: "media-body" }, [
+              _c("h4", [_vm._v("Blake Ruiz")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" })
             ])
           ]),
           _vm._v(" "),
-          _c("p", [_vm._v("Outstanding")]),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "review_item" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("div", { staticClass: "d-flex" }, [
+              _c("img", { attrs: { src: "img/product/review-2.png", alt: "" } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-body" }, [
+              _c("h4", [_vm._v("Blake Ruiz")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" })
+            ])
+          ]),
           _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "row contact_form",
-              attrs: {
-                action: "contact_process.php",
-                method: "post",
-                id: "contactForm",
-                novalidate: "novalidate"
-              }
-            },
-            [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "name",
-                      name: "name",
-                      placeholder: "Your Full name",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Your Full name'"
-                    }
-                  })
-                ])
-              ]),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "review_item" }, [
+          _c("div", { staticClass: "media" }, [
+            _c("div", { staticClass: "d-flex" }, [
+              _c("img", { attrs: { src: "img/product/review-3.png", alt: "" } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-body" }, [
+              _c("h4", [_vm._v("Blake Ruiz")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "email",
-                      name: "email",
-                      placeholder: "Email Address",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Email Address'"
-                    }
-                  })
-                ])
-              ]),
+              _c("i", { staticClass: "fa fa-star" }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "number",
-                      name: "number",
-                      placeholder: "Phone Number",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Phone Number'"
-                    }
-                  })
-                ])
-              ]),
+              _c("i", { staticClass: "fa fa-star" }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("textarea", {
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "message",
-                      id: "message",
-                      rows: "1",
-                      placeholder: "Review",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Review'"
-                    }
-                  })
-                ])
-              ]),
+              _c("i", { staticClass: "fa fa-star" }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12 text-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "primary-btn",
-                    attrs: { type: "submit", value: "submit" }
-                  },
-                  [_vm._v("Submit Now")]
-                )
-              ])
-            ]
-          )
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-star" })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo"
+            )
+          ])
         ])
       ])
     ])

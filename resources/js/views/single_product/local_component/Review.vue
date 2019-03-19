@@ -13,11 +13,11 @@
                 <div class="rating_list">
                     <h3>Based on 3 Reviews</h3>
                     <ul class="list">
-                        <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a >5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a >4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a >3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a >2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a >1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,17 +81,17 @@
     </div>
     <div class="col-lg-6">
         <div class="review_box">
-            <h4>Add a Review</h4>
-            <p>Your Rating:</p>
-            <ul class="list">
-                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                <li><a href="#"><i class="fa fa-star"></i></a></li>
-            </ul>
-            <p>Outstanding</p>
-            <form class="row contact_form"  novalidate="novalidate">
+            <form class="row contact_form" novalidate="novalidate">
+                <h4>Add a Review</h4>
+                <div class="col-md-12">
+
+                            <input type="radio"  v-model="review.star"  value="1"/>
+                            <input type="radio"  v-model="review.star"  value="2"/>
+                            <input type="radio"  v-model="review.star"  value="3"/>
+                            <input type="radio"  v-model="review.star"  value="4"/>
+                            <input type="radio"  v-model="review.star"  value="5"/>
+
+                </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <input type="text" class="form-control" v-model="review.name" placeholder="Your Full name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
@@ -125,6 +125,7 @@
 export default {
     data() {
         return {
+            props: ['product'],
             review: {
                 star: '',
                 name: '',
@@ -141,7 +142,8 @@ export default {
                 name: review.name,
                 phone: review.phone,
                 email: review.email,
-                message: review.message
+                message: review.message,
+                product_id: this.product.id
             }).then(response => {
                 console.log(response)
                 this.star = ''
@@ -149,6 +151,7 @@ export default {
                 this.phone = ''
                 this.email = ''
                 this.messsage = ''
+                this.product_id = ''
             }).catch(error => {
                 console.log(error)
             })
