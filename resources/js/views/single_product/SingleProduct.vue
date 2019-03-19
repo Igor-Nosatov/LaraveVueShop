@@ -28,22 +28,18 @@
                         <h2>${{product.price}}</h2>
                         <ul class="list">
                             <li><a class="active" href="#"><span>Category</span> : {{product.category.name}}</a></li>
-                            <li><a href="#"><span>Availibility</span> : In Stock</a></li>
                         </ul>
                         <p>{{product.description}}</p>
-                        <form @submit.prevent="addProduct">
-                            <input type="hidden" value="product.name" v-model="product.name">
-                            <input type="hidden" value="product.image" v-model="product.image">
-                            <div class="product_count">
-                                <label for="qty">Quantity:</label>
-                                <input type="number" v-model="product.qty" class="input-text qty">
-                            </div>
-                            <div class="card_area d-flex align-items-center">
-                                <router-link :to="{ path: '/order?pid='+product.id }" class="col-md-4 btn btn-sm btn-primary float-right">Buy Now</router-link>
-                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-                            </div>
-                        </form>
+                        <input type="hidden" value="product.name" v-model="product.name">
+                        <input type="hidden" value="product.image" v-model="product.image">
+                        <div class="product_count">
+                            <label for="qty">Quantity:</label>
+                            <input type="number" name="qty" maxlength="12"  title="Quantity:" class="input-text qty" v-model="product.qty" value="1">
+                        </div>
+                        <div class="card_area d-flex align-items-center">
+                            <a class="primary-btn" @click="add(product)">Add to Cart</a>
+                            <a class="icon_btn" @click="wishlist(product)">Wishlist</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,6 +101,46 @@
         beforeMount(){
             let url = `/api/product/${this.$route.params.id}`
             axios.get(url).then(response => this.product = response.data.product)
-        }
+        },
+        methods: {
+        add(product) {
+            axios.post('/api/order/add', {
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                qty: product.qty
+            }).then(response => {
+                console.log(response)
+                this.name = ''
+                this.image = ''
+                this.price = ''
+                this.qty = ''
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        wishlist(product) {
+            axios.post('/api/wishlist/add', {
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                qty: product.qty
+            }).then(response => {
+                console.log(response)
+                this.name = ''
+                this.image = ''
+                this.price = ''
+                this.qty = ''
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        checkForm:function(e) {
+          if(this.qty) return true;
+          this.errors = [];
+          if(!this.qty) this.errors.push("Choose number");
+          e.preventDefault();
+    }
+      }
     }
     </script>
