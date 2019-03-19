@@ -3523,6 +3523,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     this.fetchProducts();
@@ -3583,29 +3584,15 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-    addToOrder: function addToOrder(product) {
-      var _this2 = this;
-
-      console.log("Hey!@");
-      axios.post('api/order/add', {
-        id: product.id,
-=======
     addProduct: function addProduct(product) {
       var _this2 = this;
 
       axios.post('/api/order/add', {
->>>>>>> make add and wish button
         name: product.name,
         image: product.image,
         price: product.price,
         qty: this.qty
       }).then(function (response) {
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-        return _this2.products.push(product);
-      }).catch(function (error) {
-        return console.log(error);
-=======
         console.log(response);
         _this2.name = '';
         _this2.image = '';
@@ -3613,16 +3600,33 @@ __webpack_require__.r(__webpack_exports__);
         _this2.qty = '';
       }).catch(function (error) {
         console.log(error);
->>>>>>> make add and wish button
+      });
+    },
+    addWishlist: function addWishlist(product) {
+      var _this3 = this;
+
+      axios.post('/api/wislist/add', {
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        qty: this.qty
+      }).then(function (response) {
+        console.log(response);
+        _this3.name = '';
+        _this3.image = '';
+        _this3.price = '';
+        _this3.qty = '';
+      }).catch(function (error) {
+        console.log(error);
       });
     }
   },
   computed: {
     searchProducts: function searchProducts() {
-      var _this3 = this;
+      var _this4 = this;
 
       return this.products.filter(function (product) {
-        return product.name.toLowerCase().includes(_this3.search.toLowerCase());
+        return product.name.toLowerCase().includes(_this4.search.toLowerCase());
       });
     },
     filterProducts: function filterProducts() {
@@ -43165,26 +43169,6 @@ var render = function() {
                               "div",
                               { staticClass: "prd-bottom" },
                               [
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "social-info",
-                                    on: {
-                                      click: function($event) {
-                                        _vm.addToOrder(product)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c("span", { staticClass: "ti-bag" }),
-                                    _vm._v(" "),
-                                    _c("p", { staticClass: "hover-text" }, [
-                                      _vm._v("add to bag")
-                                    ])
-                                  ]
-                                ),
-=======
                                 _c("a", { staticClass: "social-info" }, [
                                   _c("span", { staticClass: "ti-bag" }),
                                   _vm._v(" "),
@@ -43202,9 +43186,25 @@ var render = function() {
                                     )
                                   ])
                                 ]),
->>>>>>> make add and wish button
                                 _vm._v(" "),
-                                _vm._m(1, true),
+                                _c("a", { staticClass: "social-info" }, [
+                                  _c("span", { staticClass: "lnr lnr-heart" }),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "hover-text" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        on: {
+                                          click: function($event) {
+                                            _vm.addWishlist(product)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Wishlist")]
+                                    ),
+                                    _vm._v("Wishlist")
+                                  ])
+                                ]),
                                 _vm._v(" "),
                                 _c(
                                   "router-link",
@@ -43424,16 +43424,6 @@ var staticRenderFns = [
           ]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "social-info" }, [
-      _c("span", { staticClass: "lnr lnr-heart" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "hover-text" }, [_vm._v("Wishlist")])
     ])
   }
 ]
@@ -60212,13 +60202,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-__webpack_require__(/*! /home/acer/web/VueLaravelShop-master/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/acer/web/VueLaravelShop-master/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
 __webpack_require__(/*! /home/acer/Web/VueLaravelShop-master/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/acer/Web/VueLaravelShop-master/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> make add and wish button
 
 
 /***/ })

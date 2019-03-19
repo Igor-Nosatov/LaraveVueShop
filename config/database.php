@@ -46,11 +46,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'vueshop'),
             'username' => env('DB_USERNAME', 'root'),
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-            'password' => env('DB_PASSWORD', 'qwerty'),
-=======
             'password' => env('DB_PASSWORD', 'йцукен'),
->>>>>>> make add and wish button
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

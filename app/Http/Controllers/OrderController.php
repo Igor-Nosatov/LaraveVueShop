@@ -14,16 +14,9 @@ class OrderController extends Controller
     return response()->json($orders,200);
   }
 
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-  public function store(Request $request, $id)
-   {
-        
-
-   }
-=======
   public function store(Request $request)
     {
-      $order = new Order([
+       $order = new Order([
         'name' => $request->get('name'),
         'image' => $request->get('image'),
         'price' => $request->get('price'),
@@ -34,5 +27,5 @@ class OrderController extends Controller
 
       return response()->json('success');
     }
->>>>>>> make add and wish button
+
 }

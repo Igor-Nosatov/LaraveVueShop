@@ -12,15 +12,9 @@ class CreateTableProduct extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-            $table->float('price');
-            $table->text('description');
-            $table->float('old_price');
-=======
             $table->integer('price');
             $table->text('description');
             $table->integer('old_price');
->>>>>>> make add and wish button
             $table->string('image');
             $table->timestamps();
             $table->unsignedInteger('category_id')->nullable();

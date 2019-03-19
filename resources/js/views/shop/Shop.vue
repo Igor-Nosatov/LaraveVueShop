@@ -113,19 +113,14 @@
                                     </div>
                                     <div class="prd-bottom">
 
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-                                        <a class="social-info" @click="addToOrder()">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">add to bag</p>
-=======
+
                                         <a class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text"> <button @click="addProduct(product)">Add to cart</button></p>
->>>>>>> make add and wish button
                                         </a>
                                         <a class="social-info">
                                             <span class="lnr lnr-heart"></span>
-                                            <p class="hover-text">Wishlist</p>
+                                            <p class="hover-text"><button @click="addWishlist(product)">Wishlist</button>Wishlist</p>
                                         </a>
 
                                         <router-link :to="{ path: '/products/'+product.id}" class="social-info">
@@ -191,11 +186,7 @@ export default {
             minPrice: 0,
             maxPrice: 300,
             search: '',
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-            qty:1
-=======
             qty: 1
->>>>>>> make add and wish button
         }
     },
     methods: {
@@ -227,9 +218,6 @@ export default {
             } else {
                 this.products.sort((a, b) => a[key] < b[key] ? 1 : -1)
             }
-<<<<<<< 83179ce5584507dc6f7ebeecf2dbf8727a1e4026
-        }
-=======
         },
         addProduct(product) {
             axios.post('/api/order/add', {
@@ -247,8 +235,7 @@ export default {
                 console.log(error)
             })
         },
-
-        addToWishlist(product) {
+        addWishlist(product) {
             axios.post('/api/wislist/add', {
                 name: product.name,
                 image: product.image,
@@ -263,10 +250,7 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
-        },
-
-
->>>>>>> make add and wish button
+        }
     },
     computed: {
         searchProducts() {

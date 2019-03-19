@@ -13,17 +13,18 @@ class WishlistController extends Controller
 		$wishlist = Wishlist::query()->get();
 		return response()->json($wishlist,200);
 	}
-  
-	public function store(Request $request)
-	{
-		$order = new Order([
-			'name' => $request->get('name'),
-			'image' => $request->get('image'),
-			'price' => $request->get('price'),
-			'qty' => $request ->get('qty')
-		]);
 
-		$order->save();
-		return response()->json('successfully added product to wishlist');
-	}
+	public function store(Request $request)
+		{
+			 $wishlist = new Wishlist([
+				'name' => $request->get('name'),
+				'image' => $request->get('image'),
+				'price' => $request->get('price'),
+				'qty' => $request->get('qty')
+			]);
+
+			$wishlist->save();
+
+			return response()->json('success');
+		}
 }
