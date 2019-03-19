@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="primary-btn" @click="addReview(review)">Submit Now</button>
+                    <button  class="primary-btn" @click="addReview(review)">Submit Now</button>
                 </div>
             </form>
         </div>
@@ -123,9 +123,9 @@
 
 <script>
 export default {
+    props: ['text'],
     data() {
         return {
-            props: ['product'],
             review: {
                 star: '',
                 name: '',
@@ -143,7 +143,8 @@ export default {
                 phone: review.phone,
                 email: review.email,
                 message: review.message,
-                product_id: this.product.id
+                product_id: this.text.id
+
             }).then(response => {
                 console.log(response)
                 this.star = ''
@@ -152,6 +153,7 @@ export default {
                 this.email = ''
                 this.messsage = ''
                 this.product_id = ''
+
             }).catch(error => {
                 console.log(error)
             })

@@ -72,7 +72,7 @@
                     <comment></comment>
                 </div>
                 <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-                    <review></review>
+                    <review :text="product"></review>
                 </div>
             </div>
         </div>

@@ -14,7 +14,8 @@ class ReviewController extends Controller
         'name' => $request->get('name'),
         'email' => $request->get('email'),
         'phone' => $request->get('phone'),
-        'message' => $request->get('message')
+        'message' => $request->get('message'),
+        'product_id' => $request->get('product_id')
       ]);
 
       $review->save();

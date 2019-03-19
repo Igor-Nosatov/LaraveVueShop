@@ -4156,9 +4156,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['text'],
   data: function data() {
     return {
-      product: [],
       review: {
         star: '',
         name: '',
@@ -4178,7 +4178,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: review.phone,
         email: review.email,
         message: review.message,
-        product_id: this.product.id
+        product_id: this.text.id
       }).then(function (response) {
         console.log(response);
         _this.star = '';
@@ -43827,7 +43827,7 @@ var render = function() {
                   "aria-labelledby": "review-tab"
                 }
               },
-              [_c("review")],
+              [_c("review", { attrs: { text: _vm.product } })],
               1
             )
           ]
@@ -44500,7 +44500,6 @@ var render = function() {
                 "button",
                 {
                   staticClass: "primary-btn",
-                  attrs: { type: "submit", value: "submit" },
                   on: {
                     click: function($event) {
                       _vm.addReview(_vm.review)

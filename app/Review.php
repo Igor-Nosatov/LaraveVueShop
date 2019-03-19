@@ -9,8 +9,6 @@ class Review extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'reviews';
-
     protected $fillable = ['star', 'name',
        'email', 'phone', 'message', 'product_id'];
 
