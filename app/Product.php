@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -27,9 +26,14 @@ class Product extends Model
     return $this->belongsTo('App\Color', 'color_id');
   }
 
-  public function orders()
+  public function review()
   {
-    return $this->hasMany('App\Order');
+    return $this->hasMany('App\Review');
+  }
+
+  public function comment()
+  {
+    return $this->hasMany('App\Comment');
   }
 
 }

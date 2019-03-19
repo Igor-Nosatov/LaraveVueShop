@@ -43687,7 +43687,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "icon_btn",
+                      staticClass: "primary-btn",
                       on: {
                         click: function($event) {
                           _vm.wishlist(_vm.product)

@@ -38,7 +38,7 @@
                         </div>
                         <div class="card_area d-flex align-items-center">
                             <a class="primary-btn" @click="add(product)">Add to Cart</a>
-                            <a class="icon_btn" @click="wishlist(product)">Wishlist</a>
+                            <a class="primary-btn" @click="wishlist(product)">Wishlist</a>
                         </div>
                     </div>
                 </div>
