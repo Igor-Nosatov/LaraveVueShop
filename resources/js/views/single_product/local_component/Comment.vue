@@ -52,29 +52,29 @@
       <div class="col-lg-6">
         <div class="review_box">
           <h4>Post a comment</h4>
-          <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+          <form class="row contact_form"  novalidate="novalidate">
             <div class="col-md-12">
               <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
+                <input type="text" class="form-control" v-model="comment.name" placeholder="Your Full name">
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                <input type="email" class="form-control" v-model="comment.email" placeholder="Email Address">
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
+                <input type="text" class="form-control" v-model="comment.number" placeholder="Phone Number">
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
+                <textarea class="form-control" v-model="comment.message" rows="1" placeholder="Message"></textarea>
               </div>
             </div>
             <div class="col-md-12 text-right">
-              <button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
+              <button type="submit" value="submit" class="btn primary-btn"  @click="addComment(review)">Submit Now</button>
             </div>
           </form>
         </div>
@@ -86,7 +86,7 @@
 export default{
 data() {
     return {
-        review: {
+        comment: {
             name: '',
             email: '',
             phone: '',

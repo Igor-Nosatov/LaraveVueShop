@@ -91,7 +91,7 @@
                 <li><a href="#"><i class="fa fa-star"></i></a></li>
             </ul>
             <p>Outstanding</p>
-            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+            <form class="row contact_form"  novalidate="novalidate">
                 <div class="col-md-12">
                     <div class="form-group">
                         <input type="text" class="form-control" v-model="review.name" placeholder="Your Full name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
