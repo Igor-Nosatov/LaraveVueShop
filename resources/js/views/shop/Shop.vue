@@ -116,11 +116,11 @@
 
                                         <a class="social-info">
                                             <span class="ti-bag"></span>
-                                            <p class="hover-text"> <button @click="addProduct(product)">Add to cart</button></p>
+                                            <p class="hover-text"> <button class="add-btn" @click="addProduct(product)">Orders</button></p>
                                         </a>
                                         <a class="social-info">
                                             <span class="lnr lnr-heart"></span>
-                                            <p class="hover-text"><button @click="addWishlist(product)">Wishlist</button>Wishlist</p>
+                                            <p class="hover-text"><button class="add-btn" @click="addWishlist(product)">Wishlist</button>Wishlist</p>
                                         </a>
 
                                         <router-link :to="{ path: '/products/'+product.id}" class="social-info">

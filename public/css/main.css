@@ -5833,5 +5833,8 @@ label {
     .main-block{
       margin-bottom: 150px;
     }
+    .add-btn{
+      border:none;
+    }
 
 /*# sourceMappingURL=main.css.map */

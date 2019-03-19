@@ -1,5 +1,5 @@
 <template>
-<div  class="main-block">
+<div class="main-block">
     <section class="banner-area organic-breadcrumb">
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -109,43 +109,45 @@
                                             <h6 class="l-through">${{ product.old_price }}</h6>
                                         </div>
                                         <div class="prd-bottom">
-                                            <a href="" class="social-info">
+                                            <a class="social-info">
                                                 <span class="ti-bag"></span>
-                                                <p class="hover-text">add to bag</p>
+                                                <p class="hover-text"> <button class="add-btn" @click="addProduct(product)">Orders</button></p>
                                             </a>
-                                            <a href="" class="social-info">
+                                            <a class="social-info">
                                                 <span class="lnr lnr-heart"></span>
-                                                <p class="hover-text">Wishlist</p>
+                                                <p class="hover-text"><button class="add-btn" @click="addWishlist(product)">Wishlist</button>Wishlist</p>
                                             </a>
+                                            <router-link :to="{ path: '/products/'+product.id}" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">view more</p>
+                                            </router-link>
                                         </div>
                                     </div>
                                 </router-link>
                             </div>
                         </div>
-
                     </div>
                 </section>
-
                 <div class="filter-bar d-flex flex-wrap align-items-center">
-                <div class="sortAndsearch">
-                    <div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sort By
-                            </button>
+                    <div class="sortAndsearch">
+                        <div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sort By
+                                </button>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" @click="sortProducts('price', 'asc')" type="button">low to high price</button>
-                                <button class="dropdown-item" @click="sortProducts('price', 'desc')" type="button">high to low price</button>
-                                <button class="dropdown-item" @click="sortProducts('name', 'asc')" type="button">sort by asc</button>
-                                <button class="dropdown-item" @click="sortProducts('name', 'desc')" type="button">sort by desc</button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" @click="sortProducts('price', 'asc')" type="button">low to high price</button>
+                                    <button class="dropdown-item" @click="sortProducts('price', 'desc')" type="button">high to low price</button>
+                                    <button class="dropdown-item" @click="sortProducts('name', 'asc')" type="button">sort by asc</button>
+                                    <button class="dropdown-item" @click="sortProducts('name', 'desc')" type="button">sort by desc</button>
+                                </div>
                             </div>
                         </div>
+                        <form class="d-flex justify-content-between">
+                            <input type="text" class="search" v-model="search" placeholder="search" />
+                        </form>
                     </div>
-                    <form class="d-flex justify-content-between">
-                        <input type="text" class="search" v-model="search" placeholder="search" />
-                    </form>
-                </div>
                     <div class="pagination ml-auto">
                         <div v-for="pageNumber in totalPages" v-if="Math.abs(pageNumber - currentPage) < 3 || pageNumber == totalPages || pageNumber == 1">
                             <a v-bind:key="pageNumber" @click="setPage(pageNumber)" :class="{'current': currentPage === pageNumber }">{{ pageNumber }}</a>
@@ -177,7 +179,8 @@ export default {
             sort: '',
             minPrice: 0,
             maxPrice: 300,
-            search: ''
+            search: '',
+            qty: 1
         }
     },
     methods: {
@@ -209,6 +212,38 @@ export default {
             } else {
                 this.products.sort((a, b) => a[key] < b[key] ? 1 : -1)
             }
+        },
+        addProduct(product) {
+            axios.post('/api/order/add', {
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                qty: this.qty
+            }).then(response => {
+                console.log(response)
+                this.name = ''
+                this.image = ''
+                this.price = ''
+                this.qty = ''
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        addWishlist(product) {
+            axios.post('/api/wishlist/add', {
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                qty: this.qty
+            }).then(response => {
+                console.log(response)
+                this.name = ''
+                this.image = ''
+                this.price = ''
+                this.qty = ''
+            }).catch(error => {
+                console.log(error)
+            })
         }
     },
     computed: {
