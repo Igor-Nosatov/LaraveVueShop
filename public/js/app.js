@@ -3605,7 +3605,7 @@ __webpack_require__.r(__webpack_exports__);
     addWishlist: function addWishlist(product) {
       var _this3 = this;
 
-      axios.post('/api/wislist/add', {
+      axios.post('/api/wishlist/add', {
         name: product.name,
         image: product.image,
         price: product.price,

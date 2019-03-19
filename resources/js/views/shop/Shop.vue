@@ -236,7 +236,7 @@ export default {
             })
         },
         addWishlist(product) {
-            axios.post('/api/wislist/add', {
+            axios.post('/api/wishlist/add', {
                 name: product.name,
                 image: product.image,
                 price: product.price,
