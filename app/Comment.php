@@ -9,8 +9,6 @@ class Comment extends Model
 {
   use SoftDeletes;
 
-  protected $table = 'comments';
-
   protected $fillable = ['name', 'email', 'phone', 'message', 'product_id'];
 
   public function product()

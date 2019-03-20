@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <input type="text" class="form-control" v-model="comment.number" placeholder="Phone Number">
+                <input type="text" class="form-control" v-model="comment.phone" placeholder="Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'">
               </div>
             </div>
             <div class="col-md-12">
@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class="col-md-12 text-right">
-              <button type="submit" value="submit" class="btn primary-btn"  @click="addComment(review)">Submit Now</button>
+              <button class="btn primary-btn"  @click="addComment(comment)">Submit Now</button>
             </div>
           </form>
         </div>
@@ -84,6 +84,7 @@
 
 <script>
 export default{
+props: ['text'],
 data() {
     return {
         comment: {
@@ -95,18 +96,20 @@ data() {
     }
 },
 methods: {
-    addComment(review) {
-        axios.post('/api/product/review/add', {
-            name: review.name,
-            phone: review.phone,
-            email: review.email,
-            message: review.message
+    addComment(comment) {
+        axios.post('/api/product/comment/add', {
+            name: comment.name,
+            email: comment.email,
+            phone: comment.phone,
+            message: comment.message,
+            product_id: this.text.id
         }).then(response => {
             console.log(response)
-            this.name = ''
-            this.phone = ''
-            this.email = ''
-            this.messsage = ''
+            this.name = '',
+            this.phone = '',
+            this.email = '',
+            this.messsage = '',
+            this.product_id = ''
         }).catch(error => {
             console.log(error)
         })

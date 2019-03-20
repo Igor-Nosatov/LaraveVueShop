@@ -68,11 +68,12 @@
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <spec></spec>
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <comment></comment>
-                </div>
+
                 <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-                    <review :text="product"></review>
+                    <review :review_product="product"></review>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <comment :text="product"></comment>
                 </div>
             </div>
         </div>
@@ -134,13 +135,7 @@
             }).catch(error => {
                 console.log(error)
             })
-        },
-        checkForm:function(e) {
-          if(this.qty) return true;
-          this.errors = [];
-          if(!this.qty) this.errors.push("Choose number");
-          e.preventDefault();
-    }
+        }
       }
     }
     </script>

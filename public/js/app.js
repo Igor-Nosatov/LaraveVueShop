@@ -3788,6 +3788,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3848,12 +3849,6 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
-    },
-    checkForm: function checkForm(e) {
-      if (this.qty) return true;
-      this.errors = [];
-      if (!this.qty) this.errors.push("Choose number");
-      e.preventDefault();
     }
   }
 });
@@ -3989,6 +3984,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['text'],
   data: function data() {
     return {
       comment: {
@@ -4000,20 +3996,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    addComment: function addComment(review) {
+    addComment: function addComment(comment) {
       var _this = this;
 
-      axios.post('/api/product/review/add', {
-        name: review.name,
-        phone: review.phone,
-        email: review.email,
-        message: review.message
+      axios.post('/api/product/comment/add', {
+        name: comment.name,
+        email: comment.email,
+        phone: comment.phone,
+        message: comment.message,
+        product_id: this.text.id
       }).then(function (response) {
         console.log(response);
-        _this.name = '';
-        _this.phone = '';
-        _this.email = '';
-        _this.messsage = '';
+        _this.name = '', _this.phone = '', _this.email = '', _this.messsage = '', _this.product_id = '';
       }).catch(function (error) {
         console.log(error);
       });
@@ -4156,7 +4150,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['text'],
+  props: ['review_product'],
   data: function data() {
     return {
       review: {
@@ -4178,7 +4172,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: review.phone,
         email: review.email,
         message: review.message,
-        product_id: this.text.id
+        product_id: this.review_product.id
       }).then(function (response) {
         console.log(response);
         _this.star = '';
@@ -43806,20 +43800,6 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "tab-pane fade",
-                attrs: {
-                  id: "contact",
-                  role: "tabpanel",
-                  "aria-labelledby": "contact-tab"
-                }
-              },
-              [_c("comment")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
                 staticClass: "tab-pane fade show active",
                 attrs: {
                   id: "review",
@@ -43827,7 +43807,21 @@ var render = function() {
                   "aria-labelledby": "review-tab"
                 }
               },
-              [_c("review", { attrs: { text: _vm.product } })],
+              [_c("review", { attrs: { review_product: _vm.product } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade",
+                attrs: {
+                  id: "contact",
+                  role: "tabpanel",
+                  "aria-labelledby": "contact-tab"
+                }
+              },
+              [_c("comment", { attrs: { text: _vm.product } })],
               1
             )
           ]
@@ -44096,19 +44090,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.comment.number,
-                      expression: "comment.number"
+                      value: _vm.comment.phone,
+                      expression: "comment.phone"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Phone Number" },
-                  domProps: { value: _vm.comment.number },
+                  attrs: {
+                    type: "text",
+                    placeholder: "Phone Number",
+                    onfocus: "this.placeholder = ''",
+                    onblur: "this.placeholder = 'Phone Number'"
+                  },
+                  domProps: { value: _vm.comment.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.comment, "number", $event.target.value)
+                      _vm.$set(_vm.comment, "phone", $event.target.value)
                     }
                   }
                 })
@@ -44146,10 +44145,9 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn primary-btn",
-                  attrs: { type: "submit", value: "submit" },
                   on: {
                     click: function($event) {
-                      _vm.addComment(_vm.review)
+                      _vm.addComment(_vm.comment)
                     }
                   }
                 },

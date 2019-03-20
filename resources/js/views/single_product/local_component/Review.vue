@@ -123,7 +123,7 @@
 
 <script>
 export default {
-    props: ['text'],
+    props: ['review_product'],
     data() {
         return {
             review: {
@@ -143,7 +143,7 @@ export default {
                 phone: review.phone,
                 email: review.email,
                 message: review.message,
-                product_id: this.text.id
+                product_id: this.review_product.id
 
             }).then(response => {
                 console.log(response)
