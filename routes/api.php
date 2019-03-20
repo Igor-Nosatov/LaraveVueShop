@@ -11,12 +11,13 @@ Route::get('/category/{shop}', 'ShopController@category');
 Route::get('/products', 'ProductController@index');
 Route::get('/product/{product}', 'ProductController@show');
 
+
 Route::post('/order/add','OrderController@store');
 Route::post('/wishlist/add','WishlistController@store');
 Route::get('/order','OrderController@index');
 Route::get('/wishlist','WishlistController@index');
 
-Route::get('/product/review','ReviewController@index');
-Route::get('/product/comment','CommentController@index');
-Route::post('/product/review/add','ReviewController@store');
-Route::post('/product/comment/add','CommentController@store');
+Route::get('/product/{product}/review','ReviewController@index');
+Route::get('/product/{product}/comment','CommentController@index');
+Route::post('/product/{product}/review/add','ReviewController@store');
+Route::post('/product//{product}/comment/add','CommentController@store');

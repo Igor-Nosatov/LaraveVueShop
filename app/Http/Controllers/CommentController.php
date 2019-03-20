@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-
+  public function index()
+ {
+   $comment = Comment::query()->all()->get();
+   return response()->json($comment,200);
+ }
     public function store(Request $request)
     {
       $comment = new Comment([
        'name' => $request->get('name'),
        'email' => $request->get('email'),
        'phone' => $request->get('phone'),
-       'message' => $request->get('message')
+       'message' => $request->get('message'),
+       'product_id' => $request->get('product_id')
      ]);
 
      $comment->save();
@@ -22,5 +27,5 @@ class CommentController extends Controller
      return response()->json('success');
     }
 
-  
+
 }

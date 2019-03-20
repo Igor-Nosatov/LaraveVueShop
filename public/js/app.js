@@ -3953,36 +3953,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['text'],
   data: function data() {
@@ -3999,7 +3969,8 @@ __webpack_require__.r(__webpack_exports__);
     addComment: function addComment(comment) {
       var _this = this;
 
-      axios.post('/api/product/comment/add', {
+      var url = "/api/product/".concat(this.$route.params.id, "/comment/add");
+      axios.post(url, {
         name: comment.name,
         email: comment.email,
         phone: comment.phone,
@@ -4008,6 +3979,19 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response);
         _this.name = '', _this.phone = '', _this.email = '', _this.messsage = '', _this.product_id = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    fetchComment: function fetchComment() {
+      var _this2 = this;
+
+      var url = "/api/product/comment";
+      axios.get(url).then(function (response) {
+        _this2.name = response.data.name;
+        _this2.phone = response.data.categories;
+        _this2.email = response.data.colors;
+        _this2.messsage = response.data.brands;
       }).catch(function (error) {
         console.log(error);
       });
@@ -4166,7 +4150,8 @@ __webpack_require__.r(__webpack_exports__);
     addReview: function addReview(review) {
       var _this = this;
 
-      axios.post('/api/product/review/add', {
+      var url = "/api/product/".concat(this.$route.params.id, "/review/add");
+      axios.post(url, {
         star: review.star,
         name: review.name,
         phone: review.phone,
@@ -4181,6 +4166,19 @@ __webpack_require__.r(__webpack_exports__);
         _this.email = '';
         _this.messsage = '';
         _this.product_id = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    fetchReview: function fetchReview() {
+      var _this2 = this;
+
+      var url = "/api/product/review";
+      axios.get(url).then(function (response) {
+        _this2.products = response.data.products;
+        _this2.categories = response.data.categories;
+        _this2.colors = response.data.colors;
+        _this2.brands = response.data.brands;
       }).catch(function (error) {
         console.log(error);
       });
@@ -44018,7 +44016,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "col-lg-6" }, [
+      _c(
+        "div",
+        { staticClass: "comment_list" },
+        _vm._l(_vm.categories, function(category) {
+          return _c("div", { staticClass: "review_item" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("p", [_vm._v("{{}}")])
+          ])
+        }),
+        0
+      )
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-6" }, [
       _c("div", { staticClass: "review_box" }, [
@@ -44165,80 +44176,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
-      _c("div", { staticClass: "comment_list" }, [
-        _c("div", { staticClass: "review_item" }, [
-          _c("div", { staticClass: "media" }, [
-            _c("div", { staticClass: "d-flex" }, [
-              _c("img", { attrs: { src: "img/product/review-1.png", alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "media-body" }, [
-              _c("h4", [_vm._v("Blake Ruiz")]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
-              _vm._v(" "),
-              _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
-                _vm._v("Reply")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "review_item reply" }, [
-          _c("div", { staticClass: "media" }, [
-            _c("div", { staticClass: "d-flex" }, [
-              _c("img", { attrs: { src: "img/product/review-2.png", alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "media-body" }, [
-              _c("h4", [_vm._v("Blake Ruiz")]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
-              _vm._v(" "),
-              _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
-                _vm._v("Reply")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "review_item" }, [
-          _c("div", { staticClass: "media" }, [
-            _c("div", { staticClass: "d-flex" }, [
-              _c("img", { attrs: { src: "img/product/review-3.png", alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "media-body" }, [
-              _c("h4", [_vm._v("Blake Ruiz")]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("12th Feb, 2018 at 05:56 pm")]),
-              _vm._v(" "),
-              _c("a", { staticClass: "reply_btn", attrs: { href: "#" } }, [
-                _vm._v("Reply")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n          commodo"
-            )
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "media" }, [
+      _c("div", { staticClass: "media-body" }, [_c("h4")])
     ])
   }
 ]

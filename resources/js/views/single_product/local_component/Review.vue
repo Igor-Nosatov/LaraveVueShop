@@ -137,7 +137,8 @@ export default {
     },
     methods: {
         addReview(review) {
-            axios.post('/api/product/review/add', {
+            let url = `/api/product/${this.$route.params.id}/review/add`
+            axios.post(url, {
                 star: review.star,
                 name: review.name,
                 phone: review.phone,
@@ -157,6 +158,17 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+        fetchReview() {
+            let url = `/api/product/review`
+            axios.get(url).then(response => {
+                this.products = response.data.products;
+                this.categories = response.data.categories;
+                this.colors = response.data.colors;
+                this.brands = response.data.brands;
+            }).catch(error => {
+                console.log(error)
+            });
         }
     }
 }
