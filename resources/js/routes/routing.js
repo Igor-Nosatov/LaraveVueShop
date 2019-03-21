@@ -7,6 +7,7 @@ import SingleProduct from '../views/single_product/SingleProduct'
 import Checkout from '../views/Checkout'
 import Confirmation from '../views/Confirmation'
 import Order from '../views/Order'
+import Wishlist from '../views/Wishlist'
 
 const routes = [{
         name: 'home',
@@ -47,6 +48,12 @@ const routes = [{
         path: '/order',
         name: 'order',
         component: Order,
+
+    },
+    {
+        path: '/wishlist',
+        name: 'wishlist',
+        component: Wishlist,
 
     },
     {
