@@ -10,8 +10,8 @@ class WishlistController extends Controller
 
 	public function index()
   {
-		$wishlist = Wishlist::query()->get();
-		return response()->json($wishlist,200);
+		$data['wishlist'] = Wishlist::query()->get();
+		return response()->json($data,200);
 	}
 
 	public function store(Request $request)

@@ -2445,6 +2445,189 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Order.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Order.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    this.fetchOrderProduct();
+  },
+  data: function data() {
+    orders: [];
+  },
+  methods: {
+    fetchOrderProduct: function fetchOrderProduct() {
+      var _this = this;
+
+      var url = "/api/order";
+      axios.get(url).then(function (response) {
+        _this.orders = response.data.order;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Register.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Register.vue?vue&type=script&lang=js& ***!
@@ -2565,6 +2748,131 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Wishlist.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Wishlist.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      wishlist: []
+    };
+  },
+  methods: {
+    fetchWishListProduct: function fetchWishListProduct() {
+      var _this = this;
+
+      var url = "/api/wishlist";
+      axios.get(url).then(function (response) {
+        _this.wishlist = response.data.wishlist;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    addWishToOrder: function addWishToOrder(wish) {
+      var _this2 = this;
+
+      axios.post('/api/order/add', {
+        name: wish.name,
+        image: wish.image,
+        price: wish.price,
+        qty: wish.qty
+      }).then(function (response) {
+        console.log(response);
+        _this2.name = '';
+        _this2.image = '';
+        _this2.price = '';
+        _this2.qty = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.fetchWishListProduct();
   }
 });
 
@@ -40704,130 +41012,6 @@ var staticRenderFns = [
                   _c("td", [_c("h5", [_vm._v("$720.00")])])
                 ]),
                 _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "media" }, [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body" }, [
-                        _c("p", [
-                          _vm._v("Minimalistic shop for multipurpose use")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "product_count" }, [
-                      _c("input", {
-                        staticClass: "input-text qty",
-                        attrs: {
-                          type: "text",
-                          name: "qty",
-                          id: "sst",
-                          maxlength: "12",
-                          value: "1",
-                          title: "Quantity:"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "increase items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "reduced items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$720.00")])])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "media" }, [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body" }, [
-                        _c("p", [
-                          _vm._v("Minimalistic shop for multipurpose use")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "product_count" }, [
-                      _c("input", {
-                        staticClass: "input-text qty",
-                        attrs: {
-                          type: "text",
-                          name: "qty",
-                          id: "sst",
-                          maxlength: "12",
-                          value: "1",
-                          title: "Quantity:"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "increase items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "reduced items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$720.00")])])
-                ]),
-                _vm._v(" "),
                 _c("tr", { staticClass: "bottom_button" }, [
                   _c("td", [
                     _c(
@@ -41323,7 +41507,88 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c("section", { staticClass: "cart_area" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "cart_inner" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.wishlist, function(wish) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("div", { staticClass: "media" }, [
+                        _c("div", { staticClass: "d-flex" }, [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            attrs: { src: wish.image, alt: wish.name }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "media-body" }, [
+                          _c("p", [_vm._v(_vm._s(wish.name))])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_c("h5", [_vm._v("$" + _vm._s(wish.price))])]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "product_count" }, [
+                        _c("input", {
+                          staticClass: "input-text qty",
+                          attrs: {
+                            type: "number",
+                            name: "qty",
+                            id: "sst",
+                            maxlength: "12",
+                            title: "Quantity:"
+                          },
+                          domProps: { value: wish.qty }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("h5", [_vm._v("$" + _vm._s(wish.qty * wish.price))])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "checkout_btn_inner d-flex align-items-center"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "primary-btn",
+                              on: {
+                                click: function($event) {
+                                  _vm.addWishToOrder(wish)
+                                }
+                              }
+                            },
+                            [_vm._v("Add to Order")]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -41331,377 +41596,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "cart_area" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "cart_inner" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "media" }, [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body" }, [
-                        _c("p", [
-                          _vm._v("Minimalistic shop for multipurpose use")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "product_count" }, [
-                      _c("input", {
-                        staticClass: "input-text qty",
-                        attrs: {
-                          type: "text",
-                          name: "qty",
-                          id: "sst",
-                          maxlength: "12",
-                          value: "1",
-                          title: "Quantity:"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "increase items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "reduced items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$720.00")])])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "media" }, [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body" }, [
-                        _c("p", [
-                          _vm._v("Minimalistic shop for multipurpose use")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "product_count" }, [
-                      _c("input", {
-                        staticClass: "input-text qty",
-                        attrs: {
-                          type: "text",
-                          name: "qty",
-                          id: "sst",
-                          maxlength: "12",
-                          value: "1",
-                          title: "Quantity:"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "increase items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "reduced items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$720.00")])])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "media" }, [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body" }, [
-                        _c("p", [
-                          _vm._v("Minimalistic shop for multipurpose use")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "product_count" }, [
-                      _c("input", {
-                        staticClass: "input-text qty",
-                        attrs: {
-                          type: "text",
-                          name: "qty",
-                          id: "sst",
-                          maxlength: "12",
-                          value: "1",
-                          title: "Quantity:"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "increase items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "reduced items-count",
-                          attrs: {
-                            onclick:
-                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                            type: "button"
-                          }
-                        },
-                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$720.00")])])
-                ]),
-                _vm._v(" "),
-                _c("tr", { staticClass: "bottom_button" }, [
-                  _c("td", [
-                    _c(
-                      "a",
-                      { staticClass: "primary-btn", attrs: { href: "#" } },
-                      [_vm._v("Update Cart")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "div",
-                      { staticClass: "cupon_text d-flex align-items-center" },
-                      [
-                        _c("input", {
-                          attrs: { type: "text", placeholder: "Coupon Code" }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          { staticClass: "primary-btn", attrs: { href: "#" } },
-                          [_vm._v("Apply")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          { staticClass: "primary-btn", attrs: { href: "#" } },
-                          [_vm._v("Close Coupon")]
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("Subtotal")])]),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("$2160.00")])])
-                ]),
-                _vm._v(" "),
-                _c("tr", { staticClass: "shipping_area" }, [
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_c("h5", [_vm._v("Shipping")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "shipping_box" }, [
-                      _c("ul", { staticClass: "list" }, [
-                        _c("li", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("Flat Rate: $5.00")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("Free Shipping")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("Flat Rate: $10.00")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", { staticClass: "active" }, [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("Local Delivery: $2.00")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("h6", [
-                        _vm._v("Calculate Shipping "),
-                        _c("i", {
-                          staticClass: "fa fa-caret-down",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("select", { staticClass: "shipping_select" }, [
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("Bangladesh")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("India")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
-                          _vm._v("Pakistan")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("select", { staticClass: "shipping_select" }, [
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("Select a State")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("Select a State")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
-                          _vm._v("Select a State")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        attrs: { type: "text", placeholder: "Postcode/Zipcode" }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "primary-btn", attrs: { href: "#" } },
-                        [_vm._v("Update Details")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", { staticClass: "out_button_area" }, [
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "checkout_btn_inner d-flex align-items-center"
-                      },
-                      [
-                        _c(
-                          "a",
-                          { staticClass: "primary-btn", attrs: { href: "#" } },
-                          [_vm._v("Continue Shopping")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          { staticClass: "primary-btn", attrs: { href: "#" } },
-                          [_vm._v("Proceed to checkout")]
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Add to Order")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete Products")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "checkout_btn_inner d-flex align-items-center" },
+        [
+          _c("a", { staticClass: "primary-btn" }, [
+            _vm._v("Delete Wish Product")
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -59638,15 +59562,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Order_vue_vue_type_template_id_621856bf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Order.vue?vue&type=template&id=621856bf& */ "./resources/js/views/Order.vue?vue&type=template&id=621856bf&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Order.vue?vue&type=script&lang=js& */ "./resources/js/views/Order.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Order_vue_vue_type_template_id_621856bf___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Order_vue_vue_type_template_id_621856bf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -59660,6 +59586,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/views/Order.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Order.vue?vue&type=script&lang=js&":
+/*!***************************************************************!*\
+  !*** ./resources/js/views/Order.vue?vue&type=script&lang=js& ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Order.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Order.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -59760,15 +59700,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Wishlist.vue?vue&type=template&id=39794f64& */ "./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Wishlist_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Wishlist.vue?vue&type=script&lang=js& */ "./resources/js/views/Wishlist.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Wishlist_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -59782,6 +59724,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/views/Wishlist.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Wishlist.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/views/Wishlist.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Wishlist_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Wishlist.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Wishlist.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Wishlist_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
