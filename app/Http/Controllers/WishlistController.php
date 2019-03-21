@@ -27,4 +27,13 @@ class WishlistController extends Controller
 
 			return response()->json('success');
 		}
+
+		public function delete($id)
+    {
+      $wishlist = Wishlist::find($id);
+
+      $wishlist->delete();
+
+      return response()->json('successfully deleted');
+    }
 }

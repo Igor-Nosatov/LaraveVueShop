@@ -58,7 +58,7 @@
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="primary-btn">Delete Wish Product</a>
+                                        <a class="primary-btn" @click.prevent="deleteWish(wish.id)">Delete Wish Product</a>
                                     </div>
                                 </td>
                             </tr>
@@ -103,6 +103,13 @@ export default {
                 console.log(error)
             })
         },
+        deleteWish(id) {
+            let url = `/api/wishlist/delete/${id}`;
+            this.axios.delete(url).then(response => {
+                this.wishlist.splice(this.wishlist.indexOf(id), 1);
+            });
+        }
+
     },
     mounted() {
         this.fetchWishListProduct();

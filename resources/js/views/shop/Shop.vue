@@ -111,8 +111,6 @@
                                         <h6 class="l-through">${{ product.old_price }}</h6>
                                     </div>
                                     <div class="prd-bottom">
-
-
                                         <a class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text"> <button class="add-btn" @click="addProduct(product)">Orders</button></p>

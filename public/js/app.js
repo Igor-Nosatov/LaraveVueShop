@@ -2869,6 +2869,14 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
+    },
+    deleteWish: function deleteWish(id) {
+      var _this3 = this;
+
+      var url = "/api/wishlist/delete/".concat(id);
+      this.axios.delete(url).then(function (response) {
+        _this3.wishlist.splice(_this3.wishlist.indexOf(id), 1);
+      });
     }
   },
   mounted: function mounted() {
@@ -3668,8 +3676,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -41579,7 +41585,30 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(1, true)
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "checkout_btn_inner d-flex align-items-center"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "primary-btn",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  _vm.deleteWish(wish.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delete Wish Product")]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 }),
                 0
@@ -41610,22 +41639,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete Products")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "div",
-        { staticClass: "checkout_btn_inner d-flex align-items-center" },
-        [
-          _c("a", { staticClass: "primary-btn" }, [
-            _vm._v("Delete Wish Product")
-          ])
-        ]
-      )
     ])
   }
 ]
