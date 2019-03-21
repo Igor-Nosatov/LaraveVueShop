@@ -3,4 +3,4 @@
 
 Route::get('/{any}', function () {  return view('app'); })->where('any', '.*');
 
-//Route::get('/shop', 'ShopController@index');
+//Route::get('/product/{product}', 'ProductController@show');

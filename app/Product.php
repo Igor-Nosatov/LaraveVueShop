@@ -3,11 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-  use SoftDeletes;
 
   protected $fillable = ['name', 'new_price',
      'old_price', 'description', 'image',
@@ -15,7 +13,7 @@ class Product extends Model
 
   public function category()
   {
-    return $this->belongsTo('App\Category', 'category_id');
+    return $this->belongsTo('App\Category');
   }
   public function brand()
   {
@@ -28,7 +26,7 @@ class Product extends Model
 
   public function review()
   {
-    return $this->hasMany('App\Review');
+    return $this->hasMany('App\Review', 'review_id');
   }
 
   public function comment()

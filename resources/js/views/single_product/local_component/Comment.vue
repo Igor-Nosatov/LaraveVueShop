@@ -2,21 +2,14 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="comment_list">
-
-
-
-
-
-            <div class="review_item" v-for="category in categories">
+            <div class="review_item" v-for="feedback in comments">
                 <div class="media">
                     <div class="media-body">
-                        <h4></h4>
+                        <h4>{{feedback.name}}</h4>
                     </div>
                 </div>
-                <p>{{}}</p>
+                <p>{{feedback.message}}</p>
             </div>
-
-
         </div>
     </div>
     <div class="col-lg-6">
@@ -62,7 +55,9 @@ export default {
                 email: '',
                 phone: '',
                 message: ''
-            }
+            },
+            comments:[]
+
         }
     },
     methods: {
@@ -84,18 +79,15 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
-        },
-        fetchComment() {
-            let url = `/api/product/comment`
-            axios.get(url).then(response => {
-                this.name = response.data.name;
-                this.phone = response.data.categories;
-                this.email = response.data.colors;
-                this.messsage = response.data.brands;
-            }).catch(error => {
-                console.log(error)
-            });
-        },
+        }
+    },
+    mounted(){
+        let url = `/api/product/${this.$route.params.id}`
+        axios.get(url).then(response => {
+            this.comments = response.data.comment;
+        }).catch(error => {
+            console.log(error)
+        });
     }
 }
 </script>

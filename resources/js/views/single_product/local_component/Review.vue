@@ -137,7 +137,7 @@ export default {
     },
     methods: {
         addReview(review) {
-            let url = `/api/product/${this.$route.params.id}/review/add`
+            let url = `/api/product/review/add`
             axios.post(url, {
                 star: review.star,
                 name: review.name,

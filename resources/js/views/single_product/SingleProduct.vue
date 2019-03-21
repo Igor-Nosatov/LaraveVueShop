@@ -27,14 +27,14 @@
                         <h3>{{product.name}}</h3>
                         <h2>${{product.price}}</h2>
                         <ul class="list">
-                            <li><a class="active" href="#"><span>Category</span> : {{product.category.name}}</a></li>
+                            <li><a class="active" href="#"><span>Category</span> : {{category.name}}</a></li>
                         </ul>
                         <p>{{product.description}}</p>
                         <input type="hidden" value="product.name" v-model="product.name">
                         <input type="hidden" value="product.image" v-model="product.image">
                         <div class="product_count">
                             <label for="qty">Quantity:</label>
-                            <input type="number" name="qty" maxlength="12"  title="Quantity:" class="input-text qty" v-model="product.qty" value="1">
+                            <input type="number" name="qty" maxlength="12" title="Quantity:" class="input-text qty" v-model="product.qty" value="1">
                         </div>
                         <div class="card_area d-flex align-items-center">
                             <a class="primary-btn" @click="add(product)">Add to Cart</a>
@@ -96,12 +96,18 @@
       },
         data(){
             return {
-                product : []
+                product : [],
+                category: []
             }
         },
         beforeMount(){
             let url = `/api/product/${this.$route.params.id}`
-            axios.get(url).then(response => this.product = response.data.product)
+            axios.get(url).then(response => {
+                this.product = response.data.product;
+                this.category = response.data.product.category;
+            }).catch(error => {
+                console.log(error)
+            });
         },
         methods: {
         add(product) {

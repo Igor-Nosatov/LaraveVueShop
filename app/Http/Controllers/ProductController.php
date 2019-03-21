@@ -3,6 +3,8 @@
     namespace App\Http\Controllers;
 
     use App\Product;
+    use App\Comment;
+
     use Illuminate\Http\Request;
 
     class ProductController extends Controller
@@ -14,7 +16,9 @@
 
         public function show($id)
         {
-            $data['product'] = Product::with('category')->find($id);
+            $data['product'] = Product::query()->with('category')->find($id);
+            $data['comment'] = Comment::query()->where('product_id', '=', $id)->limit(5)->get();
+
             return response()->json($data,200);
         }
     }

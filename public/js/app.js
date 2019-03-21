@@ -3802,7 +3802,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      product: []
+      product: [],
+      category: []
     };
   },
   beforeMount: function beforeMount() {
@@ -3810,7 +3811,10 @@ __webpack_require__.r(__webpack_exports__);
 
     var url = "/api/product/".concat(this.$route.params.id);
     axios.get(url).then(function (response) {
-      return _this.product = response.data.product;
+      _this.product = response.data.product;
+      _this.category = response.data.product.category;
+    }).catch(function (error) {
+      console.log(error);
     });
   },
   methods: {
@@ -3946,13 +3950,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['text'],
   data: function data() {
@@ -3962,14 +3959,15 @@ __webpack_require__.r(__webpack_exports__);
         email: '',
         phone: '',
         message: ''
-      }
+      },
+      comments: []
     };
   },
   methods: {
     addComment: function addComment(comment) {
       var _this = this;
 
-      var url = "/api/product/".concat(this.$route.params.id, "/comment/add");
+      var url = "/api/product/comment/add";
       axios.post(url, {
         name: comment.name,
         email: comment.email,
@@ -3982,20 +3980,17 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
-    },
-    fetchComment: function fetchComment() {
-      var _this2 = this;
-
-      var url = "/api/product/comment";
-      axios.get(url).then(function (response) {
-        _this2.name = response.data.name;
-        _this2.phone = response.data.categories;
-        _this2.email = response.data.colors;
-        _this2.messsage = response.data.brands;
-      }).catch(function (error) {
-        console.log(error);
-      });
     }
+  },
+  beforeMount: function beforeMount() {
+    var _this2 = this;
+
+    var url = "/api/product/".concat(this.$route.params.id);
+    axios.get(url).then(function (response) {
+      _this2.comments = response.data.comment;
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -4150,7 +4145,7 @@ __webpack_require__.r(__webpack_exports__);
     addReview: function addReview(review) {
       var _this = this;
 
-      var url = "/api/product/".concat(this.$route.params.id, "/review/add");
+      var url = "/api/product/review/add";
       axios.post(url, {
         star: review.star,
         name: review.name,
@@ -43641,7 +43636,7 @@ var render = function() {
                 _c("li", [
                   _c("a", { staticClass: "active", attrs: { href: "#" } }, [
                     _c("span", [_vm._v("Category")]),
-                    _vm._v(" : " + _vm._s(_vm.product.category.name))
+                    _vm._v(" : " + _vm._s(_vm.category.name))
                   ])
                 ])
               ]),
@@ -44020,11 +44015,15 @@ var render = function() {
       _c(
         "div",
         { staticClass: "comment_list" },
-        _vm._l(_vm.categories, function(category) {
+        _vm._l(_vm.comments, function(feedback) {
           return _c("div", { staticClass: "review_item" }, [
-            _vm._m(0, true),
+            _c("div", { staticClass: "media" }, [
+              _c("div", { staticClass: "media-body" }, [
+                _c("h4", [_vm._v(_vm._s(feedback.name))])
+              ])
+            ]),
             _vm._v(" "),
-            _c("p", [_vm._v("{{}}")])
+            _c("p", [_vm._v(_vm._s(feedback.message))])
           ])
         }),
         0
@@ -44171,16 +44170,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media" }, [
-      _c("div", { staticClass: "media-body" }, [_c("h4")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
