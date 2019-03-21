@@ -100,7 +100,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6" v-for="product in displayProducts">
                             <div class="single-product">
-                                <router-link :to="{ path: '/products/'+product.id}">
+                                <router-link :to="{ path: '/product/'+product.id}">
                                     <img :src="product.image" :alt="product.name" class="img-fluid">
                                     <div class="product-details">
                                         <h6>{{ product.name }}</h6>
@@ -117,7 +117,7 @@
                                                 <span class="lnr lnr-heart"></span>
                                                 <p class="hover-text"><button class="add-btn" @click="addWishlist(product)">Wishlist</button>Wishlist</p>
                                             </a>
-                                            <router-link :to="{ path: '/products/'+product.id}" class="social-info">
+                                            <router-link :to="{ path: '/product/'+product.id}" class="social-info">
                                                 <span class="lnr lnr-move"></span>
                                                 <p class="hover-text">view more</p>
                                             </router-link>

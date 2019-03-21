@@ -42525,9 +42525,7 @@ var render = function() {
                       [
                         _c(
                           "router-link",
-                          {
-                            attrs: { to: { path: "/products/" + product.id } }
-                          },
+                          { attrs: { to: { path: "/product/" + product.id } } },
                           [
                             _c("img", {
                               staticClass: "img-fluid",
@@ -42595,7 +42593,7 @@ var render = function() {
                                     {
                                       staticClass: "social-info",
                                       attrs: {
-                                        to: { path: "/products/" + product.id }
+                                        to: { path: "/product/" + product.id }
                                       }
                                     },
                                     [
@@ -43209,7 +43207,7 @@ var render = function() {
                           _c(
                             "router-link",
                             {
-                              attrs: { to: { path: "/products/" + product.id } }
+                              attrs: { to: { path: "/product/" + product.id } }
                             },
                             [
                               _c("img", {
@@ -43278,7 +43276,7 @@ var render = function() {
                                   {
                                     staticClass: "social-info",
                                     attrs: {
-                                      to: { path: "/products/" + product.id }
+                                      to: { path: "/product/" + product.id }
                                     }
                                   },
                                   [
