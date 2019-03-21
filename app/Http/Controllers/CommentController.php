@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-  public function index()
- {
-   $comment = Comment::query()->all()->get();
-   return response()->json($comment,200);
- }
+
     public function store(Request $request)
     {
       $comment = new Comment([

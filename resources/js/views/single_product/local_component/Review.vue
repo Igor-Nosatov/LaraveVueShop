@@ -13,11 +13,11 @@
                 <div class="rating_list">
                     <h3>Based on 3 Reviews</h3>
                     <ul class="list">
-                        <li><a >5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a >4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a >3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a >2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                        <li><a >1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a>5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a>4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a>3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a>2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                        <li><a>1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,11 +35,12 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo</p>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo</p>
+
             </div>
             <div class="review_item">
                 <div class="media">
@@ -85,11 +86,28 @@
                 <h4>Add a Review</h4>
                 <div class="col-md-12">
 
-                            <input type="radio"  v-model="review.star"  value="1"/>
-                            <input type="radio"  v-model="review.star"  value="2"/>
-                            <input type="radio"  v-model="review.star"  value="3"/>
-                            <input type="radio"  v-model="review.star"  value="4"/>
-                            <input type="radio"  v-model="review.star"  value="5"/>
+                <div class="star-rating">
+                    <input type="radio" name="candidate[rating]" id="candidate_rating_1" value="1" class="star-rating__input" />
+                    <label for="candidate_rating_5" class="star-rating__label">
+                        ★
+                    </label>
+                    <input type="radio" name="candidate[rating]" id="candidate_rating_2" value="2" class="star-rating__input" />
+                    <label for="candidate_rating_4" class="star-rating__label">
+                        ★
+                    </label>
+                    <input type="radio" name="candidate[rating]" id="candidate_rating_3" value="3" class="star-rating__input" />
+                    <label for="candidate_rating_3" class="star-rating__label">
+                        ★
+                    </label>
+                    <input type="radio" name="candidate[rating]" id="candidate_rating_4" value="4" class="star-rating__input" checked="checked" />
+                    <label for="candidate_rating_2" class="star-rating__label">
+                        ★
+                    </label>
+                    <input type="radio" name="candidate[rating]" id="candidate_rating_5" value="5" class="star-rating__input" />
+                    <label for="candidate_rating_1" class="star-rating__label">
+                        ★
+                    </label>
+                </div>
 
                 </div>
                 <div class="col-md-12">
@@ -113,7 +131,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-right">
-                    <button  class="primary-btn" @click="addReview(review)">Submit Now</button>
+                    <button class="primary-btn" @click="addReview(review)">Submit Now</button>
                 </div>
             </form>
         </div>
@@ -132,7 +150,8 @@ export default {
                 email: '',
                 phone: '',
                 message: ''
-            }
+            },
+            reviews: []
         }
     },
     methods: {
@@ -158,18 +177,15 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
-        },
-        fetchReview() {
-            let url = `/api/product/review`
-            axios.get(url).then(response => {
-                this.products = response.data.products;
-                this.categories = response.data.categories;
-                this.colors = response.data.colors;
-                this.brands = response.data.brands;
-            }).catch(error => {
-                console.log(error)
-            });
         }
+    },
+    mounted() {
+        let url = `/api/product/${this.$route.params.id}`
+        axios.get(url).then(response => {
+            this.reviews = response.data.review;
+        }).catch(error => {
+            console.log(error)
+        });
     }
 }
 </script>

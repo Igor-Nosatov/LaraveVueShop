@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-  public function index()
- {
-   $review = Review::query()->all()->get();
-   return response()->json($review,200);
- }
+
   public function store(Request $request)
     {
        $review = new Review([

@@ -3982,7 +3982,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  beforeMount: function beforeMount() {
+  mounted: function mounted() {
     var _this2 = this;
 
     var url = "/api/product/".concat(this.$route.params.id);
@@ -4128,6 +4128,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['review_product'],
   data: function data() {
@@ -4138,7 +4156,8 @@ __webpack_require__.r(__webpack_exports__);
         email: '',
         phone: '',
         message: ''
-      }
+      },
+      reviews: []
     };
   },
   methods: {
@@ -4164,20 +4183,17 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
-    },
-    fetchReview: function fetchReview() {
-      var _this2 = this;
-
-      var url = "/api/product/review";
-      axios.get(url).then(function (response) {
-        _this2.products = response.data.products;
-        _this2.categories = response.data.categories;
-        _this2.colors = response.data.colors;
-        _this2.brands = response.data.brands;
-      }).catch(function (error) {
-        console.log(error);
-      });
     }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    var url = "/api/product/".concat(this.$route.params.id);
+    axios.get(url).then(function (response) {
+      _this2.reviews = response.data.review;
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -44206,97 +44222,7 @@ var render = function() {
           [
             _c("h4", [_vm._v("Add a Review")]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.review.star,
-                    expression: "review.star"
-                  }
-                ],
-                attrs: { type: "radio", value: "1" },
-                domProps: { checked: _vm._q(_vm.review.star, "1") },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.review, "star", "1")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.review.star,
-                    expression: "review.star"
-                  }
-                ],
-                attrs: { type: "radio", value: "2" },
-                domProps: { checked: _vm._q(_vm.review.star, "2") },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.review, "star", "2")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.review.star,
-                    expression: "review.star"
-                  }
-                ],
-                attrs: { type: "radio", value: "3" },
-                domProps: { checked: _vm._q(_vm.review.star, "3") },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.review, "star", "3")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.review.star,
-                    expression: "review.star"
-                  }
-                ],
-                attrs: { type: "radio", value: "4" },
-                domProps: { checked: _vm._q(_vm.review.star, "4") },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.review, "star", "4")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.review.star,
-                    expression: "review.star"
-                  }
-                ],
-                attrs: { type: "radio", value: "5" },
-                domProps: { checked: _vm._q(_vm.review.star, "5") },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.review, "star", "5")
-                  }
-                }
-              })
-            ]),
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "form-group" }, [
@@ -44546,14 +44472,14 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("i", { staticClass: "fa fa-star" }),
               _vm._v(" "),
-              _c("i", { staticClass: "fa fa-star" })
+              _c("i", { staticClass: "fa fa-star" }),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n                            commodo"
+                )
+              ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et\n                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo"
-            )
           ])
         ]),
         _vm._v(" "),
@@ -44612,6 +44538,110 @@ var staticRenderFns = [
             )
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "star-rating" }, [
+        _c("input", {
+          staticClass: "star-rating__input",
+          attrs: {
+            type: "radio",
+            name: "candidate[rating]",
+            id: "candidate_rating_1",
+            value: "1"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "star-rating__label",
+            attrs: { for: "candidate_rating_5" }
+          },
+          [_vm._v("\n                        ★\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "star-rating__input",
+          attrs: {
+            type: "radio",
+            name: "candidate[rating]",
+            id: "candidate_rating_2",
+            value: "2"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "star-rating__label",
+            attrs: { for: "candidate_rating_4" }
+          },
+          [_vm._v("\n                        ★\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "star-rating__input",
+          attrs: {
+            type: "radio",
+            name: "candidate[rating]",
+            id: "candidate_rating_3",
+            value: "3"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "star-rating__label",
+            attrs: { for: "candidate_rating_3" }
+          },
+          [_vm._v("\n                        ★\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "star-rating__input",
+          attrs: {
+            type: "radio",
+            name: "candidate[rating]",
+            id: "candidate_rating_4",
+            value: "4",
+            checked: "checked"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "star-rating__label",
+            attrs: { for: "candidate_rating_2" }
+          },
+          [_vm._v("\n                        ★\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "star-rating__input",
+          attrs: {
+            type: "radio",
+            name: "candidate[rating]",
+            id: "candidate_rating_5",
+            value: "5"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "star-rating__label",
+            attrs: { for: "candidate_rating_1" }
+          },
+          [_vm._v("\n                        ★\n                    ")]
+        )
       ])
     ])
   }

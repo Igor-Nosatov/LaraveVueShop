@@ -5839,49 +5839,29 @@ label {
 
 
 
-
     .star-rating {
-   font-family: 'FontAwesome';
-   margin: 10px auto;
- }
- .star-rating > fieldset {
-   border: none;
-   display: inline-block;
- }
- .star-rating > fieldset:not(:checked) > input {
-   position: absolute;
-   top: -9999px;
-   clip: rect(0, 0, 0, 0);
- }
- .star-rating > fieldset:not(:checked) > label {
-   float: right;
-   width: 1em;
-   padding: 0 0.05em;
-   overflow: hidden;
-   white-space: nowrap;
-   cursor: pointer;
-   font-size: 220%;
-   color: #FFFF33;
- }
- .star-rating > fieldset:not(:checked) > label:before {
-   content: '\f006  ';
- }
- .star-rating > fieldset:not(:checked) > label:hover,
- .star-rating > fieldset:not(:checked) > label:hover ~ label {
-   color: #FFFF33;
-   text-shadow: 0 0 3px #FFFF33;
- }
- .star-rating > fieldset:not(:checked) > label:hover:before,
- .star-rating > fieldset:not(:checked) > label:hover ~ label:before {
-   content: '\f005  ';
- }
- .star-rating > fieldset > input:checked ~ label:before {
-   content: '\f005  ';
- }
- .star-rating > fieldset > label:active {
-   position: relative;
-   top: 2px;
- }
+      font-size: 22px;
+      display: inline-block;
+    }
+    .star-rating__input {
+      display: none;
+    }
+    .star-rating__label {
+      float: right;
+      color: grey;
+    }
+
+    .star-rating__input:checked ~ .star-rating__label {
+      color: yellow;
+    }
+
+    .star-rating:hover .star-rating__label {
+      color: grey;
+    }
+    .star-rating:hover .star-rating__label:hover,
+    .star-rating:hover .star-rating__label:hover ~ .star-rating__label {
+      color: yellow;
+    }
 
 
 /*# sourceMappingURL=main.css.map */
