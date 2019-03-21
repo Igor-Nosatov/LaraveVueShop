@@ -4,10 +4,10 @@
       <div class="container">
           <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
               <div class="col-first">
-                  <h1>Shopping Cart</h1>
+                  <h1>Wishlist Cart</h1>
                   <nav class="d-flex align-items-center">
-                      <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                      <a href="category.html">Cart</a>
+                      <router-link to="/" class="nav-link">Home<span class="lnr lnr-arrow-right"></span></router-link>
+                      <router-link to="/wishlist" class="nav-link">Wishlist</router-link>
                   </nav>
               </div>
           </div>
@@ -45,9 +45,9 @@
                                   <div class="product_count">
                                       <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                           class="input-text qty">
-                                      <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                      <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                           class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                      <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                      <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                           class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                   </div>
                               </td>
@@ -73,9 +73,9 @@
                                   <div class="product_count">
                                       <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                           class="input-text qty">
-                                      <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                      <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                           class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                      <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                      <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                           class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                   </div>
                               </td>
@@ -101,9 +101,9 @@
                                   <div class="product_count">
                                       <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                           class="input-text qty">
-                                      <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                      <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                           class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                      <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                      <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                           class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                   </div>
                               </td>
@@ -113,7 +113,7 @@
                           </tr>
                           <tr class="bottom_button">
                               <td>
-                                  <a class="gray_btn" href="#">Update Cart</a>
+                                  <a class="primary-btn" href="#">Update Cart</a>
                               </td>
                               <td>
 
@@ -125,7 +125,7 @@
                                   <div class="cupon_text d-flex align-items-center">
                                       <input type="text" placeholder="Coupon Code">
                                       <a class="primary-btn" href="#">Apply</a>
-                                      <a class="gray_btn" href="#">Close Coupon</a>
+                                      <a class="primary-btn" href="#">Close Coupon</a>
                                   </div>
                               </td>
                           </tr>
@@ -173,7 +173,7 @@
                                           <option value="4">Select a State</option>
                                       </select>
                                       <input type="text" placeholder="Postcode/Zipcode">
-                                      <a class="gray_btn" href="#">Update Details</a>
+                                      <a class="primary-btn" href="#">Update Details</a>
                                   </div>
                               </td>
                           </tr>
@@ -189,7 +189,7 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="#">Continue Shopping</a>
+                                      <a class="primary-btn" href="#">Continue Shopping</a>
                                       <a class="primary-btn" href="#">Proceed to checkout</a>
                                   </div>
                               </td>

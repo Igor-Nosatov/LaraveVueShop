@@ -1964,6 +1964,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3358,7 +3361,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -39474,7 +39476,34 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _c(
+                      "ul",
+                      { staticClass: "nav navbar-nav navbar-right" },
+                      [
+                        _c(
+                          "router-link",
+                          { staticClass: "nav-link", attrs: { to: "/order" } },
+                          [_c("span", { staticClass: "ti-bag" })]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "nav navbar-nav navbar-right" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { to: "/wishlist" }
+                          },
+                          [_c("span", { staticClass: "ti-bag" })]
+                        )
+                      ],
+                      1
+                    )
                   ]
                 )
               ],
@@ -39557,18 +39586,6 @@ var staticRenderFns = [
     return _c("li", { staticClass: "nav-item" }, [
       _c("a", { staticClass: "nav-link", attrs: { href: "contact.html" } }, [
         _vm._v("Contact")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
-      _c("li", { staticClass: "nav-item" }, [
-        _c("a", { staticClass: "cart", attrs: { href: "#" } }, [
-          _c("span", { staticClass: "ti-bag" })
-        ])
       ])
     ])
   }
@@ -40560,416 +40577,418 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Orders")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/" } },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/order" } },
+                    [_vm._v("Order")]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
-            },
-            [
-              _c("div", { staticClass: "col-first" }, [
-                _c("h1", [_vm._v("Shopping Cart")]),
-                _vm._v(" "),
-                _c("nav", { staticClass: "d-flex align-items-center" }, [
-                  _c("a", { attrs: { href: "index.html" } }, [
-                    _vm._v("Home"),
-                    _c("span", { staticClass: "lnr lnr-arrow-right" })
-                  ]),
+    return _c("section", { staticClass: "cart_area" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "cart_inner" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "category.html" } }, [
-                    _vm._v("Cart")
-                  ])
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
                 ])
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "cart_area" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "cart_inner" }, [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [
-                      _c("div", { staticClass: "media" }, [
-                        _c("div", { staticClass: "d-flex" }, [
-                          _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("p", [
-                            _vm._v("Minimalistic shop for multipurpose use")
-                          ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [
+                    _c("div", { staticClass: "media" }, [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("p", [
+                          _vm._v("Minimalistic shop for multipurpose use")
                         ])
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "product_count" }, [
-                        _c("input", {
-                          staticClass: "input-text qty",
-                          attrs: {
-                            type: "text",
-                            name: "qty",
-                            id: "sst",
-                            maxlength: "12",
-                            value: "1",
-                            title: "Quantity:"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "increase items-count",
-                            attrs: {
-                              onclick:
-                                "var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                              type: "button"
-                            }
-                          },
-                          [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "reduced items-count",
-                            attrs: {
-                              onclick:
-                                "var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                              type: "button"
-                            }
-                          },
-                          [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$720.00")])])
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [
-                      _c("div", { staticClass: "media" }, [
-                        _c("div", { staticClass: "d-flex" }, [
-                          _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("p", [
-                            _vm._v("Minimalistic shop for multipurpose use")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "product_count" }, [
-                        _c("input", {
-                          staticClass: "input-text qty",
-                          attrs: {
-                            type: "text",
-                            name: "qty",
-                            id: "sst",
-                            maxlength: "12",
-                            value: "1",
-                            title: "Quantity:"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "increase items-count",
-                            attrs: {
-                              onclick:
-                                "var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                              type: "button"
-                            }
-                          },
-                          [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "reduced items-count",
-                            attrs: {
-                              onclick:
-                                "var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                              type: "button"
-                            }
-                          },
-                          [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$720.00")])])
-                  ]),
+                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [
-                      _c("div", { staticClass: "media" }, [
-                        _c("div", { staticClass: "d-flex" }, [
-                          _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("p", [
-                            _vm._v("Minimalistic shop for multipurpose use")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$360.00")])]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "product_count" }, [
-                        _c("input", {
-                          staticClass: "input-text qty",
-                          attrs: {
-                            type: "text",
-                            name: "qty",
-                            id: "sst",
-                            maxlength: "12",
-                            value: "1",
-                            title: "Quantity:"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "increase items-count",
-                            attrs: {
-                              onclick:
-                                "var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-                              type: "button"
-                            }
-                          },
-                          [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "reduced items-count",
-                            attrs: {
-                              onclick:
-                                "var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-                              type: "button"
-                            }
-                          },
-                          [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$720.00")])])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", { staticClass: "bottom_button" }, [
-                    _c("td", [
+                  _c("td", [
+                    _c("div", { staticClass: "product_count" }, [
+                      _c("input", {
+                        staticClass: "input-text qty",
+                        attrs: {
+                          type: "text",
+                          name: "qty",
+                          id: "sst",
+                          maxlength: "12",
+                          value: "1",
+                          title: "Quantity:"
+                        }
+                      }),
+                      _vm._v(" "),
                       _c(
-                        "a",
-                        { staticClass: "gray_btn", attrs: { href: "#" } },
-                        [_vm._v("Update Cart")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td", [
+                        "button",
+                        {
+                          staticClass: "increase items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
+                      ),
+                      _vm._v(" "),
                       _c(
-                        "div",
-                        { staticClass: "cupon_text d-flex align-items-center" },
-                        [
-                          _c("input", {
-                            attrs: { type: "text", placeholder: "Coupon Code" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "primary-btn",
-                              attrs: { href: "#" }
-                            },
-                            [_vm._v("Apply")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            { staticClass: "gray_btn", attrs: { href: "#" } },
-                            [_vm._v("Close Coupon")]
-                          )
-                        ]
+                        "button",
+                        {
+                          staticClass: "reduced items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
                       )
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("Subtotal")])]),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("$2160.00")])])
+                  _c("td", [_c("h5", [_vm._v("$720.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [
+                    _c("div", { staticClass: "media" }, [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("p", [
+                          _vm._v("Minimalistic shop for multipurpose use")
+                        ])
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("tr", { staticClass: "shipping_area" }, [
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td", [_c("h5", [_vm._v("Shipping")])]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "shipping_box" }, [
-                        _c("ul", { staticClass: "list" }, [
-                          _c("li", [
-                            _c("a", { attrs: { href: "#" } }, [
-                              _vm._v("Flat Rate: $5.00")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("a", { attrs: { href: "#" } }, [
-                              _vm._v("Free Shipping")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("a", { attrs: { href: "#" } }, [
-                              _vm._v("Flat Rate: $10.00")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "active" }, [
-                            _c("a", { attrs: { href: "#" } }, [
-                              _vm._v("Local Delivery: $2.00")
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("h6", [
-                          _vm._v("Calculate Shipping "),
-                          _c("i", {
-                            staticClass: "fa fa-caret-down",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("select", { staticClass: "shipping_select" }, [
-                          _c("option", { attrs: { value: "1" } }, [
-                            _vm._v("Bangladesh")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2" } }, [
-                            _vm._v("India")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "4" } }, [
-                            _vm._v("Pakistan")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("select", { staticClass: "shipping_select" }, [
-                          _c("option", { attrs: { value: "1" } }, [
-                            _vm._v("Select a State")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2" } }, [
-                            _vm._v("Select a State")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "4" } }, [
-                            _vm._v("Select a State")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
+                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "product_count" }, [
+                      _c("input", {
+                        staticClass: "input-text qty",
+                        attrs: {
+                          type: "text",
+                          name: "qty",
+                          id: "sst",
+                          maxlength: "12",
+                          value: "1",
+                          title: "Quantity:"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "increase items-count",
                           attrs: {
-                            type: "text",
-                            placeholder: "Postcode/Zipcode"
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
+                            type: "button"
                           }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "reduced items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$720.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [
+                    _c("div", { staticClass: "media" }, [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("p", [
+                          _vm._v("Minimalistic shop for multipurpose use")
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "product_count" }, [
+                      _c("input", {
+                        staticClass: "input-text qty",
+                        attrs: {
+                          type: "text",
+                          name: "qty",
+                          id: "sst",
+                          maxlength: "12",
+                          value: "1",
+                          title: "Quantity:"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "increase items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "reduced items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$720.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", { staticClass: "bottom_button" }, [
+                  _c("td", [
+                    _c(
+                      "a",
+                      { staticClass: "primary-btn", attrs: { href: "#" } },
+                      [_vm._v("Update Cart")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "div",
+                      { staticClass: "cupon_text d-flex align-items-center" },
+                      [
+                        _c("input", {
+                          attrs: { type: "text", placeholder: "Coupon Code" }
                         }),
                         _vm._v(" "),
                         _c(
                           "a",
-                          { staticClass: "gray_btn", attrs: { href: "#" } },
-                          [_vm._v("Update Details")]
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Apply")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Close Coupon")]
                         )
-                      ])
-                    ])
-                  ]),
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td"),
                   _vm._v(" "),
-                  _c("tr", { staticClass: "out_button_area" }, [
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td", [
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("Subtotal")])]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$2160.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", { staticClass: "shipping_area" }, [
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("Shipping")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "shipping_box" }, [
+                      _c("ul", { staticClass: "list" }, [
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Flat Rate: $5.00")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Free Shipping")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Flat Rate: $10.00")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", { staticClass: "active" }, [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Local Delivery: $2.00")
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("h6", [
+                        _vm._v("Calculate Shipping "),
+                        _c("i", {
+                          staticClass: "fa fa-caret-down",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("select", { staticClass: "shipping_select" }, [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Bangladesh")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("India")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Pakistan")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("select", { staticClass: "shipping_select" }, [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Select a State")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Select a State")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Select a State")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "text", placeholder: "Postcode/Zipcode" }
+                      }),
+                      _vm._v(" "),
                       _c(
-                        "div",
-                        {
-                          staticClass:
-                            "checkout_btn_inner d-flex align-items-center"
-                        },
-                        [
-                          _c(
-                            "a",
-                            { staticClass: "gray_btn", attrs: { href: "#" } },
-                            [_vm._v("Continue Shopping")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "primary-btn",
-                              attrs: { href: "#" }
-                            },
-                            [_vm._v("Proceed to checkout")]
-                          )
-                        ]
+                        "a",
+                        { staticClass: "primary-btn", attrs: { href: "#" } },
+                        [_vm._v("Update Details")]
                       )
                     ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", { staticClass: "out_button_area" }, [
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "checkout_btn_inner d-flex align-items-center"
+                      },
+                      [
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Continue Shopping")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Proceed to checkout")]
+                        )
+                      ]
+                    )
                   ])
                 ])
               ])
@@ -41239,6 +41258,449 @@ var staticRenderFns = [
             },
             [_vm._v("Create an Account")]
           )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Wishlist Cart")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/" } },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/wishlist" } },
+                    [_vm._v("Wishlist")]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "cart_area" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "cart_inner" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [
+                    _c("div", { staticClass: "media" }, [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("p", [
+                          _vm._v("Minimalistic shop for multipurpose use")
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "product_count" }, [
+                      _c("input", {
+                        staticClass: "input-text qty",
+                        attrs: {
+                          type: "text",
+                          name: "qty",
+                          id: "sst",
+                          maxlength: "12",
+                          value: "1",
+                          title: "Quantity:"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "increase items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "reduced items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$720.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [
+                    _c("div", { staticClass: "media" }, [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("p", [
+                          _vm._v("Minimalistic shop for multipurpose use")
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "product_count" }, [
+                      _c("input", {
+                        staticClass: "input-text qty",
+                        attrs: {
+                          type: "text",
+                          name: "qty",
+                          id: "sst",
+                          maxlength: "12",
+                          value: "1",
+                          title: "Quantity:"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "increase items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "reduced items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$720.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [
+                    _c("div", { staticClass: "media" }, [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", { attrs: { src: "img/cart.jpg", alt: "" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("p", [
+                          _vm._v("Minimalistic shop for multipurpose use")
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$360.00")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "product_count" }, [
+                      _c("input", {
+                        staticClass: "input-text qty",
+                        attrs: {
+                          type: "text",
+                          name: "qty",
+                          id: "sst",
+                          maxlength: "12",
+                          value: "1",
+                          title: "Quantity:"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "increase items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-up" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "reduced items-count",
+                          attrs: {
+                            onclick:
+                              "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
+                            type: "button"
+                          }
+                        },
+                        [_c("i", { staticClass: "lnr lnr-chevron-down" })]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$720.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", { staticClass: "bottom_button" }, [
+                  _c("td", [
+                    _c(
+                      "a",
+                      { staticClass: "primary-btn", attrs: { href: "#" } },
+                      [_vm._v("Update Cart")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "div",
+                      { staticClass: "cupon_text d-flex align-items-center" },
+                      [
+                        _c("input", {
+                          attrs: { type: "text", placeholder: "Coupon Code" }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Apply")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Close Coupon")]
+                        )
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("Subtotal")])]),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("$2160.00")])])
+                ]),
+                _vm._v(" "),
+                _c("tr", { staticClass: "shipping_area" }, [
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [_c("h5", [_vm._v("Shipping")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "shipping_box" }, [
+                      _c("ul", { staticClass: "list" }, [
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Flat Rate: $5.00")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Free Shipping")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Flat Rate: $10.00")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", { staticClass: "active" }, [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Local Delivery: $2.00")
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("h6", [
+                        _vm._v("Calculate Shipping "),
+                        _c("i", {
+                          staticClass: "fa fa-caret-down",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("select", { staticClass: "shipping_select" }, [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Bangladesh")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("India")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Pakistan")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("select", { staticClass: "shipping_select" }, [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Select a State")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Select a State")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Select a State")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "text", placeholder: "Postcode/Zipcode" }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { staticClass: "primary-btn", attrs: { href: "#" } },
+                        [_vm._v("Update Details")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", { staticClass: "out_button_area" }, [
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "checkout_btn_inner d-flex align-items-center"
+                      },
+                      [
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Continue Shopping")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { staticClass: "primary-btn", attrs: { href: "#" } },
+                          [_vm._v("Proceed to checkout")]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
         ])
       ])
     ])
@@ -42154,7 +42616,44 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-block" }, [
-    _vm._m(0),
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Shop Category page")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/" } },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/shop" } },
+                    [_vm._v("Shop")]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
@@ -42773,43 +43272,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
-          },
-          [
-            _c("div", { staticClass: "col-first" }, [
-              _c("h1", [_vm._v("Shop Category page")]),
-              _vm._v(" "),
-              _c("nav", { staticClass: "d-flex align-items-center" }, [
-                _c("a", { attrs: { href: "index.html" } }, [
-                  _vm._v("Home"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("Shop"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "category.html" } })
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42832,7 +43295,44 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-block" }, [
-    _vm._m(0),
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Shop Category page")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/" } },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/shop" } },
+                    [_vm._v("Shop")]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
@@ -43453,45 +43953,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
-          },
-          [
-            _c("div", { staticClass: "col-first" }, [
-              _c("h1", [_vm._v("Shop Category page")]),
-              _vm._v(" "),
-              _c("nav", { staticClass: "d-flex align-items-center" }, [
-                _c("a", { attrs: { href: "index.html" } }, [
-                  _vm._v("Home"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("Shop"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "category.html" } }, [
-                  _vm._v("Fashion Category")
-                ])
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43514,7 +43976,51 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-block" }, [
-    _vm._m(0),
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Product Details Page")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/" } },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/shop" } },
+                    [
+                      _vm._v("Shop"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("router-link", { staticClass: "nav-link" }, [
+                    _vm._v("Product page")
+                  ])
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "product_image_area" }, [
       _c("div", { staticClass: "container" }, [
@@ -43657,7 +44163,7 @@ var render = function() {
     _vm._v(" "),
     _c("section", { staticClass: "product_description_area" }, [
       _c("div", { staticClass: "container" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
@@ -43725,43 +44231,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
-          },
-          [
-            _c("div", { staticClass: "col-first" }, [
-              _c("h1", [_vm._v("Product Details Page")]),
-              _vm._v(" "),
-              _c("nav", { staticClass: "d-flex align-items-center" }, [
-                _c("a", { attrs: { href: "index.html" } }, [
-                  _vm._v("Home"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("Shop"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "single-product.html" } }, [
-                  _vm._v("product-details")
-                ])
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -58892,6 +59361,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Checkout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/Checkout */ "./resources/js/views/Checkout.vue");
 /* harmony import */ var _views_Confirmation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/Confirmation */ "./resources/js/views/Confirmation.vue");
 /* harmony import */ var _views_Order__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/Order */ "./resources/js/views/Order.vue");
+/* harmony import */ var _views_Wishlist__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/Wishlist */ "./resources/js/views/Wishlist.vue");
+
 
 
 
@@ -58933,6 +59404,10 @@ var routes = [{
   path: '/order',
   name: 'order',
   component: _views_Order__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
+  path: '/wishlist',
+  name: 'wishlist',
+  component: _views_Wishlist__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
   path: '/checkout',
   name: 'checkout',
@@ -59271,6 +59746,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_3563ad7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_3563ad7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Wishlist.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/views/Wishlist.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Wishlist.vue?vue&type=template&id=39794f64& */ "./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Wishlist.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64&":
+/*!************************************************************************!*\
+  !*** ./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Wishlist.vue?vue&type=template&id=39794f64& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Wishlist.vue?vue&type=template&id=39794f64&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Wishlist_vue_vue_type_template_id_39794f64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

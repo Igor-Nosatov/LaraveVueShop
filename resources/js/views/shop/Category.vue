@@ -6,9 +6,9 @@
                 <div class="col-first">
                     <h1>Shop Category page</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html"></a>
+                    <router-link to="/" class="nav-link">Home<span class="lnr lnr-arrow-right"></span></router-link>
+                    <router-link to="/shop" class="nav-link">Shop</router-link>
+
                     </nav>
                 </div>
             </div>
