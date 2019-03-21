@@ -8,7 +8,6 @@
                     <nav class="d-flex align-items-center">
                     <router-link to="/" class="nav-link">Home<span class="lnr lnr-arrow-right"></span></router-link>
                     <router-link to="/shop" class="nav-link">Shop</router-link>
-
                     </nav>
                 </div>
             </div>

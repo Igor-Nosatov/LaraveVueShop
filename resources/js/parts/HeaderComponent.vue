@@ -51,7 +51,7 @@
                               <router-link to="/order" class="nav-link"><span class="ti-bag"></span></router-link>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                              <router-link to="/wishlist" class="nav-link"><span class="ti-bag"></span></router-link>
+                              <router-link to="/wishlist" class="nav-link"><span class=" ti-heart"></span></router-link>
                         </ul>
                     </div>
                 </div>

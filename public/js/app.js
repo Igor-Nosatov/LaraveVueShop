@@ -3222,7 +3222,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     this.fetchProducts();
@@ -39499,7 +39498,7 @@ var render = function() {
                             staticClass: "nav-link",
                             attrs: { to: "/wishlist" }
                           },
-                          [_c("span", { staticClass: "ti-bag" })]
+                          [_c("span", { staticClass: " ti-heart" })]
                         )
                       ],
                       1
