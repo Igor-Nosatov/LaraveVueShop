@@ -5838,30 +5838,42 @@ label {
     }
 
 
-
-    .star-rating {
-      font-size: 22px;
+    div.stars {
+      width: 270px;
       display: inline-block;
     }
-    .star-rating__input {
+
+    input.star {
       display: none;
     }
-    .star-rating__label {
+
+    label.star {
       float: right;
-      color: grey;
+      padding: 6px;
+      font-size: 25px;
+      color: #444;
+      transition: all .2s;
     }
 
-    .star-rating__input:checked ~ .star-rating__label {
-      color: yellow;
+    input.star:checked ~ label.star:before {
+      content: '\f005';
+      color: #FD4;
+      transition: all .25s;
     }
 
-    .star-rating:hover .star-rating__label {
-      color: grey;
+    input.star-1:checked ~ label.star:before {
+      color: #F62;
     }
-    .star-rating:hover .star-rating__label:hover,
-    .star-rating:hover .star-rating__label:hover ~ .star-rating__label {
-      color: yellow;
+
+    label.star:hover {
+      transform: rotate(-15deg) scale(1.3);
     }
+
+    label.star:before {
+      content: '\f006';
+      font-family: FontAwesome;
+    }
+
 
 
 /*# sourceMappingURL=main.css.map */

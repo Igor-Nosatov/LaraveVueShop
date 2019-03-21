@@ -6,8 +6,6 @@ import Register from '../views/Register'
 import SingleProduct from '../views/single_product/SingleProduct'
 import Checkout from '../views/Checkout'
 import Confirmation from '../views/Confirmation'
-import UserBoard from '../views/UserBoard'
-import Admin from '../views/Admin'
 import Order from '../views/Order'
 
 const routes = [{
@@ -36,7 +34,7 @@ const routes = [{
         component: Register
     },
     {
-        path: '/products/:id',
+        path: '/product/:id',
         name: 'single-products',
         component: SingleProduct
     },
@@ -58,34 +56,8 @@ const routes = [{
         props: (route) => ({
             pid: route.query.pid
         })
-    },
-    {
-        path: '/dashboard',
-        name: 'userboard',
-        component: UserBoard,
-        meta: {
-            requiresAuth: true,
-            is_user: true
-        }
-    },
-    {
-        path: '/admin/:page',
-        name: 'admin-pages',
-        component: Admin,
-        meta: {
-            requiresAuth: true,
-            is_admin: true
-        }
-    },
-    {
-        path: '/admin',
-        name: 'admin',
-        component: Admin,
-        meta: {
-            requiresAuth: true,
-            is_admin: true
-        }
     }
+
   ]
 
 export default routes

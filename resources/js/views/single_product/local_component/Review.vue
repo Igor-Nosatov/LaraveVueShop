@@ -23,60 +23,45 @@
             </div>
         </div>
         <div class="review_list">
-            <div class="review_item">
+            <div class="review_item" v-for="rate in rating">
                 <div class="media">
-                    <div class="d-flex">
-                        <img src="img/product/review-1.png" alt="">
-                    </div>
                     <div class="media-body">
-                        <h4>Blake Ruiz</h4>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo</p>
-                    </div>
-                </div>
+                        <h4>{{rate.name}}</h4>
+                        <div>
 
-            </div>
-            <div class="review_item">
-                <div class="media">
-                    <div class="d-flex">
-                        <img src="img/product/review-2.png" alt="">
-                    </div>
-                    <div class="media-body">
-                        <h4>Blake Ruiz</h4>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                            <div v-if="rate.star==5">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+
+                            <div v-else-if="rate.star==4">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+
+                            <div v-else-if="rate.star==3">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+
+                            <div v-else-if="rate.star==2">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+
+                            <div v-else>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <p>{{rate.message}}</p>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo</p>
-            </div>
-            <div class="review_item">
-                <div class="media">
-                    <div class="d-flex">
-                        <img src="img/product/review-3.png" alt="">
-                    </div>
-                    <div class="media-body">
-                        <h4>Blake Ruiz</h4>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo</p>
             </div>
         </div>
     </div>
@@ -85,30 +70,18 @@
             <form class="row contact_form" novalidate="novalidate">
                 <h4>Add a Review</h4>
                 <div class="col-md-12">
-
-                <div class="star-rating">
-                    <input type="radio" name="candidate[rating]" id="candidate_rating_1" value="1" class="star-rating__input" />
-                    <label for="candidate_rating_5" class="star-rating__label">
-                        ★
-                    </label>
-                    <input type="radio" name="candidate[rating]" id="candidate_rating_2" value="2" class="star-rating__input" />
-                    <label for="candidate_rating_4" class="star-rating__label">
-                        ★
-                    </label>
-                    <input type="radio" name="candidate[rating]" id="candidate_rating_3" value="3" class="star-rating__input" />
-                    <label for="candidate_rating_3" class="star-rating__label">
-                        ★
-                    </label>
-                    <input type="radio" name="candidate[rating]" id="candidate_rating_4" value="4" class="star-rating__input" checked="checked" />
-                    <label for="candidate_rating_2" class="star-rating__label">
-                        ★
-                    </label>
-                    <input type="radio" name="candidate[rating]" id="candidate_rating_5" value="5" class="star-rating__input" />
-                    <label for="candidate_rating_1" class="star-rating__label">
-                        ★
-                    </label>
-                </div>
-
+                    <div>
+                        <input class="star star-1"  v-model="review.star" id="star-1" type="radio" name="star" value="1"/>
+                        <label class="star star-1" for="star-1"></label>
+                        <input class="star star-2"  v-model="review.star" id="star-2" type="radio" name="star" value="2"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-3"  v-model="review.star" id="star-3" type="radio" name="star" value="3"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-4"  v-model="review.star" id="star-4" type="radio" name="star" value="4"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-5"  v-model="review.star" id="star-5" type="radio" name="star" value="5"/>
+                        <label class="star star-5" for="star-5"></label>
+                    </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
@@ -151,7 +124,7 @@ export default {
                 phone: '',
                 message: ''
             },
-            reviews: []
+            rating: []
         }
     },
     methods: {
@@ -182,7 +155,7 @@ export default {
     mounted() {
         let url = `/api/product/${this.$route.params.id}`
         axios.get(url).then(response => {
-            this.reviews = response.data.review;
+            this.rating = response.data.review;
         }).catch(error => {
             console.log(error)
         });

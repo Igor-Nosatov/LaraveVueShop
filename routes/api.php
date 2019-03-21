@@ -8,9 +8,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/shop', 'ShopController@index');
 Route::get('/shop/search', 'ShopController@search');
 Route::get('/category/{shop}', 'ShopController@category');
-Route::get('/products', 'ProductController@index');
 Route::get('/product/{product}', 'ProductController@show');
-
 
 Route::post('/order/add','OrderController@store');
 Route::post('/wishlist/add','WishlistController@store');
