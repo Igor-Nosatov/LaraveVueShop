@@ -14,8 +14,11 @@ class CreateTableCheckout extends Migration
     public function up()
     {
         Schema::create('checkout', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('name')->nullable();
+          $table->integer('price')->nullable();
+          $table->integer('total')->nullable();
+          $table->timestamps();
         });
     }
 

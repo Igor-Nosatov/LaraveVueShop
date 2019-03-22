@@ -22,3 +22,6 @@ Route::get('/order','OrderController@index');
 Route::post('/wishlist/add','WishlistController@store');
 Route::get('/wishlist','WishlistController@index');
 Route::delete('/wishlist/delete/{id}', 'WishlistController@delete');
+
+Route::get('/checkout','CheckoutController@index');
+Route::post('/checkout/add','CheckoutController@store');

@@ -23,7 +23,6 @@
                                 <th scope="col">Product</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
                                 <th scope="col">Add to Order</th>
                                 <th scope="col">Delete Products</th>
                             </tr>
@@ -46,11 +45,12 @@
                                     </td>
                                     <td>
                                         <div class="product_count">
-                                            <input type="number" name="qty" id="sst" maxlength="12" value="wish.qty" v-model="wish.qty" title="Quantity:" class="input-text qty">
+                                            <input type="text" min="1" max="100" name="qty" id="sst" maxlength="12" :value="wish.qty" title="Quantity:" class="input-text qty">
+                                            <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i
+                                                  class="lnr lnr-chevron-up"></i></button>
+                                            <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i
+                                                  class="lnr lnr-chevron-down"></i></button>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <h5>${{wish.qty * wish.price}}</h5>
                                     </td>
                                     <td>
                                         <div class="checkout_btn_inner d-flex align-items-center">

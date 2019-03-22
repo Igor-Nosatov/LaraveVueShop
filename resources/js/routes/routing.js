@@ -5,7 +5,6 @@ import Login from '../views/Login'
 import Register from '../views/Register'
 import SingleProduct from '../views/single_product/SingleProduct'
 import Checkout from '../views/Checkout'
-import Confirmation from '../views/Confirmation'
 import Order from '../views/Order'
 import Wishlist from '../views/Wishlist'
 
@@ -40,11 +39,6 @@ const routes = [{
         component: SingleProduct
     },
     {
-        path: '/confirmation',
-        name: 'confirmation',
-        component: Confirmation
-    },
-    {
         path: '/order',
         name: 'order',
         component: Order,
@@ -60,9 +54,6 @@ const routes = [{
         path: '/checkout',
         name: 'checkout',
         component: Checkout,
-        props: (route) => ({
-            pid: route.query.pid
-        })
     }
 
   ]
