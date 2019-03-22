@@ -41544,15 +41544,32 @@ var render = function() {
                     _c("td", [
                       _c("div", { staticClass: "product_count" }, [
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: wish.qty,
+                              expression: "wish.qty"
+                            }
+                          ],
                           staticClass: "input-text qty",
                           attrs: {
                             type: "number",
                             name: "qty",
                             id: "sst",
                             maxlength: "12",
+                            value: "wish.qty",
                             title: "Quantity:"
                           },
-                          domProps: { value: wish.qty }
+                          domProps: { value: wish.qty },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(wish, "qty", $event.target.value)
+                            }
+                          }
                         })
                       ])
                     ]),

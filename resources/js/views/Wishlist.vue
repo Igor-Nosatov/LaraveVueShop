@@ -45,7 +45,7 @@
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="number" name="qty" id="sst" maxlength="12" :value="wish.qty" title="Quantity:" class="input-text qty">
+                                        <input type="number" name="qty" id="sst" maxlength="12" value="wish.qty" v-model="wish.qty" title="Quantity:" class="input-text qty">
                                     </div>
                                 </td>
                                 <td>
@@ -58,7 +58,7 @@
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="primary-btn" @click.prevent="deleteWish(wish.id)">Delete Wish Product</a>
+                                        <a class="primary-btn" @click.prevent="deleteWish(wish)">Delete Wish Product</a>
                                     </div>
                                 </td>
                             </tr>
@@ -103,7 +103,7 @@ export default {
                 console.log(error)
             })
         },
-        deleteWish(id) {
+        deleteWish(wish) {
             let url = `/api/wishlist/delete/${id}`;
             this.axios.delete(url).then(response => {
                 this.wishlist.splice(this.wishlist.indexOf(id), 1);
