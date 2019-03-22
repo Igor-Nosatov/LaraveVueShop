@@ -2835,6 +2835,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2870,12 +2872,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    deleteWish: function deleteWish(id) {
+    deleteWish: function deleteWish(id, index) {
       var _this3 = this;
 
-      var url = "/api/wishlist/delete/".concat(id);
-      this.axios.delete(url).then(function (response) {
-        _this3.wishlist.splice(_this3.wishlist.indexOf(id), 1);
+      axios.delete('/api/wishlist/delete/' + id).then(function (response) {
+        console.log(response);
+
+        _this3.wishlist.splice(index, 1);
+      }).catch(function (error) {
+        console.log(error);
       });
     }
   },
@@ -3538,6 +3543,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     this.fetchProducts();
@@ -3604,7 +3612,7 @@ __webpack_require__.r(__webpack_exports__);
         name: product.name,
         image: product.image,
         price: product.price,
-        qty: this.qty
+        qty: product.qty
       }).then(function (response) {
         console.log(response);
         _this2.name = '';
@@ -3622,7 +3630,7 @@ __webpack_require__.r(__webpack_exports__);
         name: product.name,
         image: product.image,
         price: product.price,
-        qty: this.qty
+        qty: product.qty
       }).then(function (response) {
         console.log(response);
         _this3.name = '';
@@ -3840,6 +3848,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     this.fetchProducts();
@@ -3859,8 +3870,7 @@ __webpack_require__.r(__webpack_exports__);
       sort: '',
       minPrice: 0,
       maxPrice: 300,
-      search: '',
-      qty: 1
+      search: ''
     };
   },
   methods: {
@@ -3907,7 +3917,7 @@ __webpack_require__.r(__webpack_exports__);
         name: product.name,
         image: product.image,
         price: product.price,
-        qty: this.qty
+        qty: product.qty
       }).then(function (response) {
         console.log(response);
         _this2.name = '';
@@ -3925,7 +3935,7 @@ __webpack_require__.r(__webpack_exports__);
         name: product.name,
         image: product.image,
         price: product.price,
-        qty: this.qty
+        qty: product.qty
       }).then(function (response) {
         console.log(response);
         _this3.name = '';
@@ -41522,7 +41532,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.wishlist, function(wish) {
+                _vm._l(_vm.wishlist, function(wish, index) {
                   return _c("tr", [
                     _c("td", [
                       _c("div", { staticClass: "media" }, [
@@ -41611,17 +41621,17 @@ var render = function() {
                         },
                         [
                           _c(
-                            "a",
+                            "button",
                             {
                               staticClass: "primary-btn",
+                              attrs: { type: "submit" },
                               on: {
                                 click: function($event) {
-                                  $event.preventDefault()
-                                  _vm.deleteWish(wish.id)
+                                  _vm.deleteWish(wish.id, index)
                                 }
                               }
                             },
-                            [_vm._v("Delete Wish Product")]
+                            [_vm._v("Delete Wish")]
                           )
                         ]
                       )
@@ -42992,6 +43002,41 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("h6", { staticClass: "l-through" }, [
                                   _vm._v("$" + _vm._s(product.old_price))
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "product_count" }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: product.qty,
+                                        expression: "product.qty"
+                                      }
+                                    ],
+                                    staticClass: "input-text qty",
+                                    attrs: {
+                                      type: "number",
+                                      name: "qty",
+                                      id: "sst",
+                                      maxlength: "12",
+                                      value: "1",
+                                      title: "Quantity:"
+                                    },
+                                    domProps: { value: product.qty },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          product,
+                                          "qty",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
                                 ])
                               ]),
                               _vm._v(" "),
@@ -43678,6 +43723,41 @@ var render = function() {
                               _vm._v(" "),
                               _c("h6", { staticClass: "l-through" }, [
                                 _vm._v("$" + _vm._s(product.old_price))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "product_count" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: product.qty,
+                                      expression: "product.qty"
+                                    }
+                                  ],
+                                  staticClass: "input-text qty",
+                                  attrs: {
+                                    type: "number",
+                                    name: "qty",
+                                    id: "sst",
+                                    maxlength: "12",
+                                    value: "1",
+                                    title: "Quantity:"
+                                  },
+                                  domProps: { value: product.qty },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        product,
+                                        "qty",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
                               ])
                             ]),
                             _vm._v(" "),

@@ -106,6 +106,9 @@
                                         <div class="price">
                                             <h6>${{ product.price }}</h6>
                                             <h6 class="l-through">${{ product.old_price }}</h6>
+                                            <div class="product_count">
+                                                <input type="number" name="qty" id="sst" maxlength="12" value="1" v-model="product.qty" title="Quantity:" class="input-text qty">
+                                            </div>
                                         </div>
                                         <div class="prd-bottom">
                                             <a class="social-info">
@@ -217,7 +220,7 @@ export default {
                 name: product.name,
                 image: product.image,
                 price: product.price,
-                qty: this.qty
+                qty: product.qty
             }).then(response => {
                 console.log(response)
                 this.name = ''
@@ -233,7 +236,7 @@ export default {
                 name: product.name,
                 image: product.image,
                 price: product.price,
-                qty: this.qty
+                qty: product.qty
             }).then(response => {
                 console.log(response)
                 this.name = ''

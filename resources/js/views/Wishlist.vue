@@ -29,38 +29,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="wish in wishlist">
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img :src="wish.image" :alt="wish.name" class="img-fluid">
+                            <tr v-for="(wish, index) in wishlist">
+
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img :src="wish.image" :alt="wish.name" class="img-fluid">
+                                            </div>
+                                            <div class="media-body">
+                                                <p>{{wish.name}}</p>
+                                            </div>
                                         </div>
-                                        <div class="media-body">
-                                            <p>{{wish.name}}</p>
+                                    </td>
+                                    <td>
+                                        <h5>${{wish.price}}</h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <input type="number" name="qty" id="sst" maxlength="12" value="wish.qty" v-model="wish.qty" title="Quantity:" class="input-text qty">
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>${{wish.price}}</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="number" name="qty" id="sst" maxlength="12" value="wish.qty" v-model="wish.qty" title="Quantity:" class="input-text qty">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>${{wish.qty * wish.price}}</h5>
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="primary-btn" @click="addWishToOrder(wish)">Add to Order</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="primary-btn" @click.prevent="deleteWish(wish)">Delete Wish Product</a>
-                                    </div>
-                                </td>
+                                    </td>
+                                    <td>
+                                        <h5>${{wish.qty * wish.price}}</h5>
+                                    </td>
+                                    <td>
+                                        <div class="checkout_btn_inner d-flex align-items-center">
+                                            <a class="primary-btn" @click="addWishToOrder(wish)">Add to Order</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="checkout_btn_inner d-flex align-items-center">
+                                            <button type="submit" class="primary-btn" @click="deleteWish(wish.id, index)">Delete Wish</button>
+                                        </div>
+                                    </td>
+
                             </tr>
                         </tbody>
                     </table>
@@ -103,13 +105,14 @@ export default {
                 console.log(error)
             })
         },
-        deleteWish(wish) {
-            let url = `/api/wishlist/delete/${id}`;
-            this.axios.delete(url).then(response => {
-                this.wishlist.splice(this.wishlist.indexOf(id), 1);
-            });
+        deleteWish(id, index) {
+            axios.delete('/api/wishlist/delete/' + id).then(response => {
+                console.log(response);
+                this.wishlist.splice(index, 1)
+            }).catch(error => {
+                console.log(error)
+            })
         }
-
     },
     mounted() {
         this.fetchWishListProduct();
