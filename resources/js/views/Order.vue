@@ -35,24 +35,20 @@
                                             <img :src="order.image" :alt="order.name" class="img-fluid">
                                         </div>
                                         <div class="media-body">
-                                            <p v-model="client.name">{{order.name}}</p>
+                                            <p  v-model="client.name">{{order.name}}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 v-model="client.price">${{order.price}}</h5>
+                                    <h5  v-model="client.price">${{order.price}}</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" min="1"  max="100" name="qty" id="sst" maxlength="12" v-model="client.qty" value="order.qty" title="Quantity:" class="input-text qty">
-                                        <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i
-                                              class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i
-                                              class="lnr lnr-chevron-down"></i></button>
+                                        <input type="number" min="1"  max="100" name="qty" id="sst" maxlength="12" v-model="order.qty" value="order.qty" title="Quantity:" class="input-text qty">
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 v-model="client.total">${{order.price * client.qty}}</h5>
+                                    <h5 v-model="client.total">$ {{order.price * order.qty }} </h5>
                                 </td>
                             </tr>
 
@@ -64,12 +60,12 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>${{}}</h5>
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <router-link to="/shop" class="primary-btn">Shop</router-link>
-                                        <router-link to="/checkout" class="primary-btn" @click="addToCheckout(client)>Checkout</router-link>
+                                        <button class="primary-btn" @click="addToCheckout(client)>Checkout</button>
                                     </div>
                                 </td>
                             </tr>

@@ -2382,10 +2382,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2565,10 +2561,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -40554,13 +40546,13 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.client.qty,
-                                expression: "client.qty"
+                                value: order.qty,
+                                expression: "order.qty"
                               }
                             ],
                             staticClass: "input-text qty",
                             attrs: {
-                              type: "text",
+                              type: "number",
                               min: "1",
                               max: "100",
                               name: "qty",
@@ -40569,20 +40561,16 @@ var render = function() {
                               value: "order.qty",
                               title: "Quantity:"
                             },
-                            domProps: { value: _vm.client.qty },
+                            domProps: { value: order.qty },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.$set(_vm.client, "qty", $event.target.value)
+                                _vm.$set(order, "qty", $event.target.value)
                               }
                             }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _vm._m(2, true)
+                          })
                         ])
                       ]),
                       _vm._v(" "),
@@ -40598,7 +40586,7 @@ var render = function() {
                               expression: "client.total"
                             }
                           },
-                          [_vm._v("$" + _vm._s(order.price * order.qty))]
+                          [_vm._v("$ " + _vm._s(order.price * order.qty) + " ")]
                         )
                       ])
                     ])
@@ -40607,9 +40595,9 @@ var render = function() {
                   _c("tr", { staticClass: "out_button_area" }, [
                     _c("td"),
                     _vm._v(" "),
-                    _vm._m(3),
+                    _vm._m(1),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("td", [
                       _c(
@@ -40628,7 +40616,7 @@ var render = function() {
                             [_vm._v("Shop")]
                           ),
                           _vm._v(" "),
-                          _vm._v('="addToCheckout(client)>Checkout')
+                          _vm._v('="addToCheckout(order)>Checkout')
                         ],
                         1
                       )
@@ -40660,40 +40648,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "increase items-count",
-        attrs: {
-          onclick:
-            "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-          type: "button"
-        }
-      },
-      [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "reduced items-count",
-        attrs: {
-          onclick:
-            "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-          type: "button"
-        }
-      },
-      [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-    )
   },
   function() {
     var _vm = this
@@ -41066,7 +41020,7 @@ var render = function() {
                         _c("input", {
                           staticClass: "input-text qty",
                           attrs: {
-                            type: "text",
+                            type: "number",
                             min: "1",
                             max: "100",
                             name: "qty",
@@ -41075,11 +41029,7 @@ var render = function() {
                             title: "Quantity:"
                           },
                           domProps: { value: wish.qty }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1, true),
-                        _vm._v(" "),
-                        _vm._m(2, true)
+                        })
                       ])
                     ]),
                     _vm._v(" "),
@@ -41160,40 +41110,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete Products")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "increase items-count",
-        attrs: {
-          onclick:
-            "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;",
-          type: "button"
-        }
-      },
-      [_c("i", { staticClass: "lnr lnr-chevron-up" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "reduced items-count",
-        attrs: {
-          onclick:
-            "let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;",
-          type: "button"
-        }
-      },
-      [_c("i", { staticClass: "lnr lnr-chevron-down" })]
-    )
   }
 ]
 render._withStripped = true
@@ -43252,40 +43168,7 @@ var render = function() {
                                 _vm._v("$" + _vm._s(product.old_price))
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "product_count" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: product.qty,
-                                      expression: "product.qty"
-                                    }
-                                  ],
-                                  staticClass: "input-text qty",
-                                  attrs: {
-                                    type: "number",
-                                    name: "qty",
-                                    id: "sst",
-                                    maxlength: "12",
-                                    value: "1",
-                                    title: "Quantity:"
-                                  },
-                                  domProps: { value: product.qty },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        product,
-                                        "qty",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ])
+                              _vm._m(0, true)
                             ]),
                             _vm._v(" "),
                             _c(
@@ -43513,7 +43396,28 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "product_count" }, [
+      _c("input", {
+        staticClass: "input-text qty",
+        attrs: {
+          type: "number",
+          min: "1",
+          max: "100",
+          name: "qty",
+          id: "sst",
+          maxlength: "12",
+          value: "",
+          title: "Quantity:"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 

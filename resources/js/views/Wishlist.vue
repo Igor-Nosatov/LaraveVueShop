@@ -45,11 +45,7 @@
                                     </td>
                                     <td>
                                         <div class="product_count">
-                                            <input type="text" min="1" max="100" name="qty" id="sst" maxlength="12" :value="wish.qty" title="Quantity:" class="input-text qty">
-                                            <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i
-                                                  class="lnr lnr-chevron-up"></i></button>
-                                            <button onclick="let result = document.getElementById('sst'); let sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i
-                                                  class="lnr lnr-chevron-down"></i></button>
+                                            <input type="number" min="1"  max="100" name="qty" id="sst" maxlength="12"  :value="wish.qty" title="Quantity:" class="input-text qty">
                                         </div>
                                     </td>
                                     <td>
