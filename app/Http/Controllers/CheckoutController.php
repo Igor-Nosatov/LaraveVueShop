@@ -15,7 +15,7 @@ class CheckoutController extends Controller
 
   public function store(Request $request)
     {
-       $checkout = new Order([
+       $checkout = new Checkout([
         'name' => $request->get('name'),
         'price' => $request->get('price'),
         'total' => $request->get('total')

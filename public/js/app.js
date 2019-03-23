@@ -2399,10 +2399,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      client: {
+      checkout: {
         name: '',
         qty: '',
         total: ''
@@ -2421,17 +2425,18 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    addToCheckout: function addToCheckout(client) {
+    Order: function Order(checkout) {
       var _this2 = this;
 
-      var url = "/api/checkout/add";
-      axios.post(url, {
-        name: client.name,
-        price: client.price,
-        total: client.total
+      axios.post('/api/checkout/add', {
+        name: this.checkout.name,
+        price: this.checkout.price,
+        total: this.checkout.total
       }).then(function (response) {
         console.log(response);
-        _this2.name = '', _this2.price = '', _this2.total = '';
+        _this2.name = '';
+        _this2.price = '';
+        _this2.total = '';
       }).catch(function (error) {
         console.log(error);
       });
@@ -40545,11 +40550,11 @@ var render = function() {
                               "p",
                               {
                                 model: {
-                                  value: _vm.client.name,
+                                  value: _vm.checkout.name,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.client, "name", $$v)
+                                    _vm.$set(_vm.checkout, "name", $$v)
                                   },
-                                  expression: "client.name"
+                                  expression: "checkout.name"
                                 }
                               },
                               [_vm._v(_vm._s(order.name))]
@@ -40563,11 +40568,11 @@ var render = function() {
                           "h5",
                           {
                             model: {
-                              value: _vm.client.price,
+                              value: _vm.checkout.price,
                               callback: function($$v) {
-                                _vm.$set(_vm.client, "price", $$v)
+                                _vm.$set(_vm.checkout, "price", $$v)
                               },
-                              expression: "client.price"
+                              expression: "checkout.price"
                             }
                           },
                           [_vm._v("$" + _vm._s(order.price))]
@@ -40614,11 +40619,11 @@ var render = function() {
                           "h5",
                           {
                             model: {
-                              value: _vm.client.total,
+                              value: _vm.checkout.total,
                               callback: function($$v) {
-                                _vm.$set(_vm.client, "total", $$v)
+                                _vm.$set(_vm.checkout, "total", $$v)
                               },
-                              expression: "client.total"
+                              expression: "checkout.total"
                             }
                           },
                           [_vm._v("$ " + _vm._s(order.price * order.qty) + " ")]
@@ -40638,6 +40643,21 @@ var render = function() {
                             }
                           },
                           [_vm._v("Delete Order")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "primary-btn",
+                            on: {
+                              click: function($event) {
+                                _vm.Order(_vm.checkout)
+                              }
+                            }
+                          },
+                          [_vm._v("Order")]
                         )
                       ])
                     ])
@@ -40682,14 +40702,10 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c(
-                            "button",
+                            "router-link",
                             {
                               staticClass: "primary-btn",
-                              on: {
-                                click: function($event) {
-                                  _vm.addToCheckout(_vm.client)
-                                }
-                              }
+                              attrs: { to: "/checkout" }
                             },
                             [_vm._v("Checkout")]
                           )
@@ -40723,7 +40739,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Order")])
       ])
     ])
   },

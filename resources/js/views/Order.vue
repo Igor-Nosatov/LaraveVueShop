@@ -25,6 +25,7 @@
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Delete</th>
+                                <th scope="col">Order</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,12 +37,12 @@
                                             <img :src="order.image" :alt="order.name" class="img-fluid">
                                         </div>
                                         <div class="media-body">
-                                            <p v-model="client.name">{{order.name}}</p>
+                                            <p v-model="checkout.name">{{order.name}}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 v-model="client.price">${{order.price}}</h5>
+                                    <h5 v-model="checkout.price">${{order.price}}</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
@@ -49,10 +50,13 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 v-model="client.total">$ {{order.price * order.qty }} </h5>
+                                    <h5 v-model="checkout.total">$ {{order.price * order.qty }} </h5>
                                 </td>
                                 <td>
                                     <button type="submit" class="primary-btn" @click="deleteOrder(order.id, index)">Delete Order</button>
+                                </td>
+                                <td>
+                                    <a class="primary-btn" @click="Order(checkout)">Order</a>
                                 </td>
                             </tr>
                             <tr>
@@ -82,7 +86,7 @@
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <router-link to="/shop" class="primary-btn">Shop</router-link>
-                                        <button class="primary-btn" @click="addToCheckout(client)">Checkout</button>
+                                        <router-link to="/checkout" class="primary-btn">Checkout</router-link>
                                     </div>
                                 </td>
                             </tr>
@@ -100,7 +104,7 @@
 export default {
     data() {
         return {
-            client: {
+            checkout: {
                 name: '',
                 qty: '',
                 total: ''
@@ -117,20 +121,17 @@ export default {
                 console.log(error)
             });
         },
-        addToCheckout(client) {
-            let url = `/api/checkout/add`
-            axios.post(url, {
-                name: client.name,
-                price: client.price,
-                total: client.total
-            }).then(response => {
-                console.log(response)
-                this.name = '',
-                    this.price = '',
-                    this.total = ''
-            }).catch(error => {
-                console.log(error)
+        Order() {
+        axios.post('api/products', this.product)
+            .then(data => {
+                this.product.name = '';
+                this.product.description = '';
+                this.product.price = '';
+                this.product.image = '';
+                alert('Product Added');
+                this.getProducts();
             })
+            .catch(err => console.log(err));
         },
         deleteOrder(id, index) {
             axios.delete('/api/order/delete/' + id).then(response => {
