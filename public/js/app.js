@@ -2382,6 +2382,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2418,6 +2431,13 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
+    }
+  },
+  computed: {
+    total: function total() {
+      return this.orders.reduce(function (t, order) {
+        return t + order.price * order.qty;
+      }, 0);
     }
   },
   mounted: function mounted() {
@@ -40592,12 +40612,26 @@ var render = function() {
                     ])
                   }),
                   _vm._v(" "),
-                  _c("tr", { staticClass: "out_button_area" }, [
+                  _c("tr", [
+                    _c("td"),
+                    _vm._v(" "),
                     _c("td"),
                     _vm._v(" "),
                     _vm._m(1),
                     _vm._v(" "),
-                    _vm._m(2),
+                    _c("td", [
+                      _c("h5", { staticClass: "black" }, [
+                        _vm._v(_vm._s(_vm.total))
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", { staticClass: "out_button_area" }, [
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
                     _vm._v(" "),
                     _c("td", [
                       _c(
@@ -40616,7 +40650,18 @@ var render = function() {
                             [_vm._v("Shop")]
                           ),
                           _vm._v(" "),
-                          _vm._v('="addToCheckout(order)>Checkout')
+                          _c(
+                            "button",
+                            {
+                              staticClass: "primary-btn",
+                              on: {
+                                click: function($event) {
+                                  _vm.addToCheckout(_vm.client)
+                                }
+                              }
+                            },
+                            [_vm._v("Checkout")]
+                          )
                         ],
                         1
                       )
@@ -40653,13 +40698,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [_c("h5", [_vm._v("Subtotal")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("h5", [_vm._v("$2160.00")])])
+    return _c("td", [_c("h5", { staticClass: "black" }, [_vm._v("Subtotal")])])
   }
 ]
 render._withStripped = true

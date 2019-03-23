@@ -35,37 +35,51 @@
                                             <img :src="order.image" :alt="order.name" class="img-fluid">
                                         </div>
                                         <div class="media-body">
-                                            <p  v-model="client.name">{{order.name}}</p>
+                                            <p v-model="client.name">{{order.name}}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5  v-model="client.price">${{order.price}}</h5>
+                                    <h5 v-model="client.price">${{order.price}}</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="number" min="1"  max="100" name="qty" id="sst" maxlength="12" v-model="order.qty" value="order.qty" title="Quantity:" class="input-text qty">
+                                        <input type="number" min="1" max="100" name="qty" id="sst" maxlength="12" v-model="order.qty" value="order.qty" title="Quantity:" class="input-text qty">
                                     </div>
                                 </td>
                                 <td>
                                     <h5 v-model="client.total">$ {{order.price * order.qty }} </h5>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
 
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <h5 class="black">Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5 class="black">{{total}}</h5>
+                                </td>
+                            </tr>
 
                             <tr class="out_button_area">
                                 <td>
                                 </td>
                                 <td>
-                                    <h5>Subtotal</h5>
+
                                 </td>
                                 <td>
-                                    <h5>${{}}</h5>
+
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <router-link to="/shop" class="primary-btn">Shop</router-link>
-                                        <button class="primary-btn" @click="addToCheckout(client)>Checkout</button>
+                                        <button class="primary-btn" @click="addToCheckout(client)">Checkout</button>
+                                        <button type="submit" class="primary-btn" @click="deleteOrder(order.id, index)">Delete Order</button>
                                     </div>
                                 </td>
                             </tr>
@@ -109,11 +123,24 @@ export default {
             }).then(response => {
                 console.log(response)
                 this.name = '',
-                this.price = '',
-                this.total = ''
+                    this.price = '',
+                    this.total = ''
             }).catch(error => {
                 console.log(error)
             })
+        },
+        deleteOrder(id, index) {
+            axios.delete('/api/order/delete/' + id).then(response => {
+                console.log(response);
+                this.order.splice(index, 1)
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+    },
+    computed: {
+        total: function() {
+            return this.orders.reduce((t, order) => t + order.price * order.qty, 0)
         }
     },
     mounted() {
