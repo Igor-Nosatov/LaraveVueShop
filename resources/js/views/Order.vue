@@ -24,6 +24,7 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,9 @@
                                 </td>
                                 <td>
                                     <h5 v-model="client.total">$ {{order.price * order.qty }} </h5>
+                                </td>
+                                <td>
+                                    <button type="submit" class="primary-btn" @click="deleteOrder(order.id, index)">Delete Order</button>
                                 </td>
                             </tr>
                             <tr>
@@ -79,7 +83,6 @@
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <router-link to="/shop" class="primary-btn">Shop</router-link>
                                         <button class="primary-btn" @click="addToCheckout(client)">Checkout</button>
-                                        <button type="submit" class="primary-btn" @click="deleteOrder(order.id, index)">Delete Order</button>
                                     </div>
                                 </td>
                             </tr>
@@ -132,7 +135,7 @@ export default {
         deleteOrder(id, index) {
             axios.delete('/api/order/delete/' + id).then(response => {
                 console.log(response);
-                this.order.splice(index, 1)
+                this.orders.splice(index, 1)
             }).catch(error => {
                 console.log(error)
             })

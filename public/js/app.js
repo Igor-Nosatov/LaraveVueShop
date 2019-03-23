@@ -2395,6 +2395,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2428,6 +2432,17 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response);
         _this2.name = '', _this2.price = '', _this2.total = '';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteOrder: function deleteOrder(id, index) {
+      var _this3 = this;
+
+      axios.delete('/api/order/delete/' + id).then(function (response) {
+        console.log(response);
+
+        _this3.orders.splice(index, 1);
       }).catch(function (error) {
         console.log(error);
       });
@@ -40608,6 +40623,22 @@ var render = function() {
                           },
                           [_vm._v("$ " + _vm._s(order.price * order.qty) + " ")]
                         )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "primary-btn",
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteOrder(order.id, index)
+                              }
+                            }
+                          },
+                          [_vm._v("Delete Order")]
+                        )
                       ])
                     ])
                   }),
@@ -40690,7 +40721,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
     ])
   },
