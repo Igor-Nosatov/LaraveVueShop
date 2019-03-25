@@ -30,35 +30,33 @@
                         </thead>
                         <tbody>
 
-                            <tr v-for="(cart, index) in cart">
+                            <tr v-for="(cr, index) in cart">
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img :src="cart.image" :alt="cart.name" class="img-fluid">
+                                            <img :src="cr.image" :alt="cr.name" class="img-fluid">
                                         </div>
                                         <div class="media-body">
-                                            <p>{{cart.name}}</p>
-                                            <input type="hidden" :value="cart.name" v-model="cart.name">
+                                            <p>{{cr.name}}</p>
+
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>${{cart.price}}</h5>
-                                    <input type="hidden" :value="cart.price" v-model="cart.price">
+                                    <h5>${{cr.price}}</h5>
+
                                 </td>
                                 <td>
-                                    <div class="product_count">
-                                        <input type="number" min="1" max="100" name="qty" id="sst" maxlength="12" v-model="cart.qty" value="cart.qty" title="Quantity:" class="input-text qty">
-                                    </div>
+                                    <input type="number" v-model="cr.qty" class="form-control" min="1" step="1" />
                                 </td>
                                 <td>
-                                    <h5>$ {{cart.price * cart.qty }} </h5>
+                                    <h5>$ {{cr.qty * cr.price}} </h5>
                                 </td>
                                 <td>
-                                    <button type="submit" class="primary-btn" @click="deletecart(cart.id, index)">Delete cart</button>
+                                    <button type="submit" class="primary-btn" @click="deleteCart(cr.id, index)">Delete cart</button>
                                 </td>
                                 <td>
-                                    <a class="primary-btn" @click="addToOrder()">cart</a>
+                                    <a class="primary-btn" @click="addToOrder(cr)">cart</a>
                                 </td>
                             </tr>
                             <tr>
@@ -106,11 +104,6 @@
 export default {
     data() {
         return {
-            checkout: {
-                name: '',
-                qty: '',
-                price: ''
-            },
             cart: []
         }
     },
@@ -123,11 +116,11 @@ export default {
                 console.log(error)
             });
         },
-        addToOrder() {
+        addToOrder(cart) {
             axios.post('/api/order/add', {
-                name: cart.name,
-                price: cart.price,
-                qty: cart.qty
+                name: order.name,
+                price: order.price,
+                qty: order.qty
             }).then(response => {
                 console.log(response)
                 this.name = ''
@@ -148,7 +141,7 @@ export default {
     },
     computed: {
         total() {
-            return this.cart.reduce((t, cart) => t + cart.price * cart.qty, 0)
+            return this.cart.reduce((t, cr) => t + cr.price * cr.qty, 0)
         }
     },
     mounted() {

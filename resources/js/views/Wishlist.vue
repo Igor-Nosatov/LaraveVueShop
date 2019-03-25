@@ -45,7 +45,7 @@
                                     </td>
                                     <td>
                                         <div class="product_count">
-                                            <input type="number" min="1"  max="100" name="qty" id="sst" maxlength="12"  :value="wish.qty" title="Quantity:" class="input-text qty">
+                                            <input type="number" min="1"  max="100" name="qty" id="sst" maxlength="12"  v-model="wish.qty" title="Quantity:" class="input-text qty">
                                         </div>
                                     </td>
                                     <td>

@@ -110,13 +110,13 @@
                                         <h6>${{ product.price }}</h6>
                                         <h6 class="l-through">${{ product.old_price }}</h6>
                                         <div class="product_count">
-                                            <input type="number" min="1" max="100" name="qty" id="sst" maxlength="12" value=""  title="Quantity:" class="input-text qty">
+                                            <input type="number" min="1" max="100" v-model="product.qty" name="qty" id="sst" maxlength="12" value=""  title="Quantity:" class="input-text qty">
                                         </div>
                                     </div>
                                     <div class="prd-bottom">
                                         <a class="social-info">
                                             <span class="ti-bag"></span>
-                                            <p class="hover-text"> <button class="add-btn" @click="addProduct(product)">Cart</button></p>
+                                            <p class="hover-text"> <button class="add-btn" @click="addToCart(product)">Cart</button></p>
                                         </a>
                                         <a class="social-info">
                                             <span class="lnr lnr-heart"></span>
@@ -217,7 +217,7 @@ export default {
                 this.products.sort((a, b) => a[key] < b[key] ? 1 : -1)
             }
         },
-        addProduct(product) {
+        addToCart(product) {
             axios.post('/api/cart/add', {
                 name: product.name,
                 image: product.image,

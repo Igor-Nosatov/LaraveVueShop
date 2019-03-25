@@ -16,8 +16,8 @@ Route::post('/product/review/add','ReviewController@store');
 Route::get('/product/comment','CommentController@index');
 Route::post('/product/comment/add','CommentController@store');
 
-Route::get('/cart','CartController@index');
-Route::post('/cart/add','CartController@store');
+Route::post('cart/add','CartController@store');
+Route::get('cart','CartController@index');
 Route::delete('/cart/delete/{id}', 'CartController@delete');
 
 Route::post('/wishlist/add','WishlistController@store');
