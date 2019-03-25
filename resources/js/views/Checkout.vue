@@ -53,67 +53,54 @@
                         <h3>Billing Details</h3>
                         <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="first" name="name">
+                                <input type="text" class="form-control" id="first" name="name" v-model="checkout.firstname">
                                 <span class="placeholder" data-placeholder="First name"></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="last" name="name">
+                                <input type="text" class="form-control" id="last" name="name" v-model="checkout.lasttname">
                                 <span class="placeholder" data-placeholder="Last name"></span>
                             </div>
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="company" name="company" placeholder="Company name">
-                            </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="number" name="number">
+                                <input type="text" class="form-control" id="number" name="number"  v-model="checkout.phone">
                                 <span class="placeholder" data-placeholder="Phone number"></span>
                             </div>
+                            <div class="col-md-12 form-group">
+                                <input type="text" class="form-control" id="company" name="company" placeholder="Company name" v-model="checkout.company">
+                            </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="email" name="compemailany">
+                                <input type="text" class="form-control" id="email" name="compemailany" v-model="checkout.email">
                                 <span class="placeholder" data-placeholder="Email Address"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
+                                <select class="country_select"  v-model="checkout.country">
                                     <option value="1">Country</option>
                                     <option value="2">Country</option>
                                     <option value="4">Country</option>
                                 </select>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add1" name="add1">
+                                <input type="text" class="form-control" id="add1" name="add1"  v-model="checkout.adressone">
                                 <span class="placeholder" data-placeholder="Address line 01"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add2" name="add2">
+                                <input type="text" class="form-control" id="add2" name="add2" v-model="checkout.adresstwo">
                                 <span class="placeholder" data-placeholder="Address line 02"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="city" name="city">
+                                <input type="text" class="form-control" id="city" name="city" v-model="checkout.city">
                                 <span class="placeholder" data-placeholder="Town/City"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
+                                <select class="country_select" v-model="checkout.country">
                                     <option value="1">District</option>
                                     <option value="2">District</option>
                                     <option value="4">District</option>
                                 </select>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
+                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP"  v-model="checkout.postcode">
                             </div>
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <input type="checkbox" id="f-option2" name="selector">
-                                    <label for="f-option2">Create an account?</label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <h3>Shipping Details</h3>
-                                    <input type="checkbox" id="f-option3" name="selector">
-                                    <label for="f-option3">Ship to a different address?</label>
-                                </div>
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
-                            </div>
+
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -129,6 +116,7 @@
                                 <li><a href="#">Subtotal <span>$2160.00</span></a></li>
                                 <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
                                 <li><a href="#">Total <span>$2210.00</span></a></li>
+                                <input type="hidden" v-model="checkout.total" value="total">
                             </ul>
                             <div class="payment_item">
                                 <div class="radion_btn">
@@ -154,7 +142,7 @@
                                 <label for="f-option4">I’ve read and accept the </label>
                                 <a href="#">terms & conditions*</a>
                             </div>
-                            <a class="primary-btn" href="#">Proceed to Paypal</a>
+                            <a class="primary-btn" href="#" @click="checkoutProduct()">Proceed to Paypal</a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +156,7 @@
 export default {
     data() {
         return {
-            orders: [],
+            order: [],
             checkout: {
                 firstname: '',
                 lastname: '',
@@ -189,15 +177,35 @@ export default {
         fetchOrder() {
             let url = `/api/order`;
             axios.get(url).then(response => {
-                this.orders = response.data.orders;
+                this.order = response.data.order;
             }).catch(error => {
                 console.log(error)
             });
+        },
+        checkoutProduct() {
+            axios.post('/api/checkout/add', {
+                firstname: checkout.firstname,
+                lastname: checkout.lastname,
+                company: checkout.company,
+                phone: checkout.phone,
+                email: checkout.  email,
+                country: checkout.country,
+                adressone: checkout.adressone,
+                adresstwo: checkout.adresstwo,
+                city: checkout.city,
+                district: checkout.district,
+                postcode: checkout.postcode,
+                total: checkout.total,
+            }).then(response => {
+                console.log(response)
+            }).catch(error => {
+                console.log(error)
+            })
         }
     },
     computed: {
         total() {
-            return this.orders.reduce((t, orders) => t + orders.price * orders.qty, 0)
+            return this.order.reduce((t, order) => t + order.price * order.qty, 0)
         }
     },
     mounted() {
