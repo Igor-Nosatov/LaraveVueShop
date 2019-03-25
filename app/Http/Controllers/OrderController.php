@@ -10,7 +10,7 @@ class OrderController extends Controller
 
   public function index()
   {
-    $data['orders'] = Order::query()->get();
+    $data['order'] = Order::query()->get();
     return response()->json($data,200);
   }
 

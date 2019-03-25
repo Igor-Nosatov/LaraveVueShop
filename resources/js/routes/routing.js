@@ -7,6 +7,7 @@ import SingleProduct from '../views/single_product/SingleProduct'
 import Checkout from '../views/Checkout'
 import Cart from '../views/Cart'
 import Wishlist from '../views/Wishlist'
+import Contact from '../views/Contact'
 
 const routes = [{
         name: 'home',
@@ -54,6 +55,11 @@ const routes = [{
         path: '/checkout',
         name: 'checkout',
         component: Checkout,
+    },
+    {
+        path: '/contact',
+        name: 'contact',
+        component: Contact,
     }
 
   ]
