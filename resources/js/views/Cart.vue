@@ -116,11 +116,11 @@ export default {
                 console.log(error)
             });
         },
-        addToOrder(cart) {
+        addToOrder(cr) {
             axios.post('/api/order/add', {
-                name: order.name,
-                price: order.price,
-                qty: order.qty
+                name: cr.name,
+                price: cr.price,
+                qty: cr.qty
             }).then(response => {
                 console.log(response)
                 this.name = ''

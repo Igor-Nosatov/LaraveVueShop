@@ -2129,13 +2129,13 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    addToOrder: function addToOrder(cart) {
+    addToOrder: function addToOrder(cr) {
       var _this2 = this;
 
       axios.post('/api/order/add', {
-        name: order.name,
-        price: order.price,
-        qty: order.qty
+        name: cr.name,
+        price: cr.price,
+        qty: cr.qty
       }).then(function (response) {
         console.log(response);
         _this2.name = '';
