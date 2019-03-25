@@ -116,7 +116,7 @@
                                     <div class="prd-bottom">
                                         <a class="social-info">
                                             <span class="ti-bag"></span>
-                                            <p class="hover-text"> <button class="add-btn" @click="addProduct(product)">Orders</button></p>
+                                            <p class="hover-text"> <button class="add-btn" @click="addProduct(product)">Cart</button></p>
                                         </a>
                                         <a class="social-info">
                                             <span class="lnr lnr-heart"></span>
@@ -173,7 +173,6 @@ export default {
     data() {
         return {
             products: [],
-            order: [],
             currentPage: 1,
             productsPerPage: 9,
             resultCount: 1,
@@ -219,7 +218,7 @@ export default {
             }
         },
         addProduct(product) {
-            axios.post('/api/order/add', {
+            axios.post('/api/cart/add', {
                 name: product.name,
                 image: product.image,
                 price: product.price,

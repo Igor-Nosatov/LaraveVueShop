@@ -4,10 +4,10 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Orders</h1>
+                    <h1>cart</h1>
                     <nav class="d-flex align-items-center">
                         <router-link to="/" class="nav-link">Home<span class="lnr lnr-arrow-right"></span></router-link>
-                        <router-link to="/order" class="nav-link">Order</router-link>
+                        <router-link to="/cart" class="nav-link">cart</router-link>
                     </nav>
                 </div>
             </div>
@@ -25,38 +25,40 @@
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Delete</th>
-                                <th scope="col">Order</th>
+                                <th scope="col">cart</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr v-for="(order, index) in orders">
+                            <tr v-for="(cart, index) in cart">
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img :src="order.image" :alt="order.name" class="img-fluid">
+                                            <img :src="cart.image" :alt="cart.name" class="img-fluid">
                                         </div>
                                         <div class="media-body">
-                                            <p v-model="checkout.name">{{order.name}}</p>
+                                            <p>{{cart.name}}</p>
+                                            <input type="hidden" :value="cart.name" v-model="cart.name">
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 v-model="checkout.price">${{order.price}}</h5>
+                                    <h5>${{cart.price}}</h5>
+                                    <input type="hidden" :value="cart.price" v-model="cart.price">
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="number" min="1" max="100" name="qty" id="sst" maxlength="12" v-model="order.qty" value="order.qty" title="Quantity:" class="input-text qty">
+                                        <input type="number" min="1" max="100" name="qty" id="sst" maxlength="12" v-model="cart.qty" value="cart.qty" title="Quantity:" class="input-text qty">
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 v-model="checkout.total">$ {{order.price * order.qty }} </h5>
+                                    <h5>$ {{cart.price * cart.qty }} </h5>
                                 </td>
                                 <td>
-                                    <button type="submit" class="primary-btn" @click="deleteOrder(order.id, index)">Delete Order</button>
+                                    <button type="submit" class="primary-btn" @click="deletecart(cart.id, index)">Delete cart</button>
                                 </td>
                                 <td>
-                                    <a class="primary-btn" @click="Order(checkout)">Order</a>
+                                    <a class="primary-btn" @click="addToOrder()">cart</a>
                                 </td>
                             </tr>
                             <tr>
@@ -107,48 +109,50 @@ export default {
             checkout: {
                 name: '',
                 qty: '',
-                total: ''
+                price: ''
             },
-            orders: []
+            cart: []
         }
     },
     methods: {
-        fetchOrderProduct() {
-            let url = `/api/order`;
+        fetchCart() {
+            let url = `/api/cart`;
             axios.get(url).then(response => {
-                this.orders = response.data.orders;
+                this.cart = response.data.cart;
             }).catch(error => {
                 console.log(error)
             });
         },
-        Order() {
-        axios.post('api/products', this.product)
-            .then(data => {
-                this.product.name = '';
-                this.product.description = '';
-                this.product.price = '';
-                this.product.image = '';
-                alert('Product Added');
-                this.getProducts();
+        addToOrder() {
+            axios.post('/api/order/add', {
+                name: cart.name,
+                price: cart.price,
+                qty: cart.qty
+            }).then(response => {
+                console.log(response)
+                this.name = ''
+                this.price = ''
+                this.qty = ''
+            }).catch(error => {
+                console.log(error)
             })
-            .catch(err => console.log(err));
         },
-        deleteOrder(id, index) {
-            axios.delete('/api/order/delete/' + id).then(response => {
+        deleteCart(id, index) {
+            axios.delete('/api/cart/delete/' + id).then(response => {
                 console.log(response);
-                this.orders.splice(index, 1)
+                this.cart.splice(index, 1)
             }).catch(error => {
                 console.log(error)
             })
         }
     },
     computed: {
-        total: function() {
-            return this.orders.reduce((t, order) => t + order.price * order.qty, 0)
+        total() {
+            return this.cart.reduce((t, cart) => t + cart.price * cart.qty, 0)
         }
     },
     mounted() {
-        this.fetchOrderProduct();
+        this.fetchCart();
     }
 }
 </script>

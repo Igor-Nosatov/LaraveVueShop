@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Contact extends Model
 {
   protected $fillable = [
-    'name', 'image', 'price', 'qty'
+    'name', 'email', 'subject','message'
   ];
 }

@@ -111,7 +111,7 @@
         },
         methods: {
         add(product) {
-            axios.post('/api/order/add', {
+            axios.post('/api/cart/add', {
                 name: product.name,
                 image: product.image,
                 price: product.price,

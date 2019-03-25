@@ -2,38 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\Cart;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class CartController extends Controller
 {
-
   public function index()
   {
-    $data['orders'] = Order::query()->get();
+    $data['cart'] = Cart::query()->get();
     return response()->json($data,200);
   }
 
   public function store(Request $request)
     {
-       $order = new Order([
+       $cart = new Cart([
         'name' => $request->get('name'),
+        'image' => $request->get('image'),
         'price' => $request->get('price'),
         'qty' => $request->get('qty')
       ]);
 
-      $order->save();
+      $cart->save();
 
       return response()->json('success');
     }
 
     public function delete($id)
     {
-      $order = Order::find($id);
+      $cart = Cart::find($id);
 
-      $order->delete();
+      $cart->delete();
 
       return response()->json('successfully deleted');
     }
-
 }

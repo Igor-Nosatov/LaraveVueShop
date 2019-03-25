@@ -5,7 +5,7 @@ import Login from '../views/Login'
 import Register from '../views/Register'
 import SingleProduct from '../views/single_product/SingleProduct'
 import Checkout from '../views/Checkout'
-import Order from '../views/Order'
+import Cart from '../views/Cart'
 import Wishlist from '../views/Wishlist'
 
 const routes = [{
@@ -39,9 +39,9 @@ const routes = [{
         component: SingleProduct
     },
     {
-        path: '/order',
-        name: 'order',
-        component: Order,
+        path: '/cart',
+        name: 'cart',
+        component: Cart,
 
     },
     {
