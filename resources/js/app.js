@@ -35,7 +35,7 @@ router.beforeEach((to, from, next) => {
                     next()
                 }
                 else {
-                    next({ name: 'userboard' })
+                    next({ name: 'cart' })
                 }
             }
             else if (to.matched.some(record => record.meta.is_user)) {

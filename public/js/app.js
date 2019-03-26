@@ -2578,7 +2578,7 @@ __webpack_require__.r(__webpack_exports__);
             if (_this.$route.params.nextUrl != null) {
               _this.$router.push(_this.$route.params.nextUrl);
             } else {
-              _this.$router.push(is_admin == 1 ? 'admin' : 'dashboard');
+              _this.$router.push(is_admin == 1 ? 'admin' : 'cart');
             }
           }
         });
@@ -59120,7 +59120,7 @@ router.beforeEach(function (to, from, next) {
           next();
         } else {
           next({
-            name: 'userboard'
+            name: 'cart'
           });
         }
       } else if (to.matched.some(function (record) {
@@ -59400,15 +59400,27 @@ var routes = [{
 }, {
   path: '/cart',
   name: 'cart',
-  component: _views_Cart__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _views_Cart__WEBPACK_IMPORTED_MODULE_7__["default"],
+  meta: {
+    requiresAuth: true,
+    is_user: true
+  }
 }, {
   path: '/wishlist',
   name: 'wishlist',
-  component: _views_Wishlist__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _views_Wishlist__WEBPACK_IMPORTED_MODULE_8__["default"],
+  meta: {
+    requiresAuth: true,
+    is_user: true
+  }
 }, {
   path: '/checkout',
   name: 'checkout',
-  component: _views_Checkout__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _views_Checkout__WEBPACK_IMPORTED_MODULE_6__["default"],
+  meta: {
+    requiresAuth: true,
+    is_user: true
+  }
 }, {
   path: '/contact',
   name: 'contact',
