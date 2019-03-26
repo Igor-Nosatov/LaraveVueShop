@@ -27,9 +27,11 @@ class CreateTableCheckout extends Migration
           $table->string('district')->nullable();
           $table->string('postcode')->nullable();
           $table->integer('total')->nullable();
+          $table->unsignedInteger('user_id')->nullable();
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->timestamps();
         });
-      
+
     }
 
     /**

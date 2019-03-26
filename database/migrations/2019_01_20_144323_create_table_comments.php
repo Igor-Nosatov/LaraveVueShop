@@ -21,6 +21,8 @@ class CreateTableComments extends Migration
          $table->text('message')->nullable();
          $table->unsignedInteger('product_id')->nullable();
          $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+         $table->unsignedInteger('user_id')->nullable();
+         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
          $table->timestamps();
         });
     }

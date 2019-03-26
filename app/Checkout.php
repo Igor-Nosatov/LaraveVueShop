@@ -11,6 +11,12 @@ class Checkout extends Model
   protected $fillable = [
     'firstname', 'lastname','company', 'phone', 'email',
     'country', 'adressone', 'adresstwo','city',
-    'district', 'postcode','total'
+    'district', 'postcode','total', 'user_id'
   ];
+
+  public function user()
+        {
+            return $this->belongsTo(User::class, 'user_id');
+        }
+
 }

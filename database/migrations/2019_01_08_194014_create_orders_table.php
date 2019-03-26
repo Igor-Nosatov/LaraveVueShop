@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string('name')->nullable();
             $table->integer('price')->nullable();
             $table->integer('qty')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
