@@ -20,7 +20,8 @@ class OrderController extends Controller
        $order = new Order([
         'name' => $request->get('name'),
         'price' => $request->get('price'),
-        'qty' => $request->get('qty')
+        'qty' => $request->get('qty'),
+        'user_id' => Auth::id(),
       ]);
 
       $order->save();

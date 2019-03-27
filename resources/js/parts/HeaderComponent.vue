@@ -19,34 +19,21 @@
                                 <router-link to="/shop" class="nav-link">Shop</router-link>
                             </li>
                             <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                                </ul>
+                                <router-link to="/cart" class="nav-link">Cart</router-link>
                             </li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                        <router-link :to="{ name: 'login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
-                                    </li>
-                                    <li class="nav-item">
-                                        <router-link :to="{ name: 'register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
-                                    </li>
+                                    <router-link :to="{ name: 'login' }" class="nav-link text-uppercase text-dark" v-if="!isLoggedIn">Login</router-link>
+                                    <router-link :to="{ name: 'register' }" class="nav-link text-uppercase text-dark" v-if="!isLoggedIn">Register</router-link>
                                     <span v-if="isLoggedIn">
-                                        <li class="nav-item">
-                                            <router-link :to="{ name: 'userboard' }" class="nav-link" v-if="user_type == 0"> Hi, {{name}}</router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link :to="{ name: 'admin' }" class="nav-link" v-if="user_type == 1"> Hi, {{name}}</router-link>
-                                        </li>
+                                        <router-link :to="{ name: 'userboard' }" class="nav-link text-uppercase text-dark" v-if="user_type == 0"> Hi, {{name}}</router-link>
+                                        <router-link :to="{ name: 'admin' }" class="nav-link text-uppercase text-dark" v-if="user_type == 1"> Hi, {{name}}</router-link>
                                     </span>
-                                    <li class="nav-item" v-if="isLoggedIn" @click="logout"> Logout</li>
+                                    <li class="nav-link text-uppercase" v-if="isLoggedIn" @click="logout"> Logout</li>
                                 </ul>
-                            </li>
+                            </div>
                             <li class="nav-item ">
-                                <router-link to="/contact" class="nav-link">Contact</router-link>
+                                <router-link to="/contact" class="text-uppercase text-dark">Contact</router-link>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

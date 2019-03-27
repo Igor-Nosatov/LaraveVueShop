@@ -20,7 +20,8 @@ class CartController extends Controller
         'name' => $request->get('name'),
         'image' => $request->get('image'),
         'price' => $request->get('price'),
-        'qty' => $request->get('qty')
+        'qty' => $request->get('qty'),
+        'user_id' => Auth::id(),
       ]);
 
       $cart->save();

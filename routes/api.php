@@ -14,20 +14,21 @@ Route::get('/category/{shop}', 'ShopController@category');
 Route::get('/product/review','ReviewController@index');
 Route::get('/product/{product}', 'ProductController@show');
 Route::get('/product/comment','CommentController@index');
-Route::get('cart','CartController@index');
-Route::get('/wishlist','WishlistController@index');
-Route::post('/wishlist/add','WishlistController@store');
-     Route::delete('/wishlist/delete/{id}', 'WishlistController@delete');
-Route::get('/order','OrderController@index');
-Route::get('/checkout','CheckoutController@index');
+
 
   Route::group(['middleware' => 'auth:api'], function(){
        Route::get('/users','UserController@index');
        Route::post('/product/review/add','ReviewController@store');
        Route::post('/product/comment/add','CommentController@store');
+       Route::get('cart','CartController@index');
        Route::post('cart/add','CartController@store');
        Route::delete('/cart/delete/{id}', 'CartController@delete');
+       Route::get('/wishlist','WishlistController@index');
+       Route::post('/wishlist/add','WishlistController@store');
+       Route::delete('/wishlist/delete/{id}', 'WishlistController@delete');
+       Route::get('/order','OrderController@index');
        Route::post('/order/add','OrderController@store');
+       Route::get('/checkout','CheckoutController@index');
        Route::post('/checkout/add','CheckoutController@store');
        Route::post('/contact/add','ContactController@store');
   });

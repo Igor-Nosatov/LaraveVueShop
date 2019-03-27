@@ -13,6 +13,5 @@
 	<div id="app"></div>
 
   <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
-  <script src="{{asset('js/all.js')}}"></script>
 </body>
 </html>

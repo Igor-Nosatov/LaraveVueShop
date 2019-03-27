@@ -115,6 +115,9 @@
     <section class="brand-area section_gap">
         <brand></brand>
     </section>
+    <section class="brand-area section_gap">
+        <feature></feature >
+    </section>
 </div>
 </template>
 

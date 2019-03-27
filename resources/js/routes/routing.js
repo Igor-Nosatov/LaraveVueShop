@@ -1,13 +1,15 @@
 import Home from '../views/home/Home';
 import Shop from '../views/shop/Shop';
 import Category from '../views/shop/Category';
-import Login from '../views/Login'
+import Login from '../views/Login';
 import Register from '../views/Register'
-import SingleProduct from '../views/single_product/SingleProduct'
-import Checkout from '../views/Checkout'
-import Cart from '../views/Cart'
-import Wishlist from '../views/Wishlist'
-import Contact from '../views/Contact'
+import SingleProduct from '../views/single_product/SingleProduct';
+import Checkout from '../views/Checkout';
+import Cart from '../views/Cart';
+import Wishlist from '../views/Wishlist';
+import Contact from '../views/Contact';
+import Admin from '../views/Admin';
+
 
 const routes = [{
         name: 'home',
@@ -72,6 +74,15 @@ const routes = [{
         path: '/contact',
         name: 'contact',
         component: Contact,
+    },
+    {
+        path: '/admin',
+        name: 'admin',
+        component: Admin,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
     }
 
 ]
