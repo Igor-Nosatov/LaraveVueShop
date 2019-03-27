@@ -5,6 +5,7 @@
     use App\Product;
     use App\Comment;
     use App\Review;
+    use Auth;
 
     use Illuminate\Http\Request;
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Review;
+use Auth;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller

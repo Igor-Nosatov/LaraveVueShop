@@ -11,7 +11,7 @@ class UserController extends Controller
 {
   public function index()
       {
-          return response()->json(User::with(['orders'])->get());
+          return response()->json(User::with(['order','cart'])->get());
       }
 
       public function login(Request $request)
@@ -59,8 +59,5 @@ class UserController extends Controller
               return response()->json($user);
           }
 
-          public function showOrders(User $user)
-          {
-              return response()->json($user->orders()->with(['product'])->get());
-          }
+  
 }

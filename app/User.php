@@ -4,15 +4,14 @@
 
     use Illuminate\Notifications\Notifiable;
     use Laravel\Passport\HasApiTokens;
-    use Illuminate\Database\Eloquent\SoftDeletes;
     use Illuminate\Foundation\Auth\User as Authenticatable;
 
     class User extends Authenticatable
     {
-        use Notifiable, SoftDeletes, HasApiTokens;
+        use Notifiable, HasApiTokens;
 
         protected $fillable = [
-            'name', 'email', 'password',
+            'name', 'email', 'password', 'provider', 'provider_id',
         ];
 
         protected $hidden = [

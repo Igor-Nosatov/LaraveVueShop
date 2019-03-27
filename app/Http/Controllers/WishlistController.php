@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Wishlist;
+use Auth;
 use Illuminate\Http\Request;
 
 class WishlistController extends Controller

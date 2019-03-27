@@ -6,6 +6,7 @@ use App\Product;
 use App\Category;
 use App\Color;
 use App\Brand;
+use Auth;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller

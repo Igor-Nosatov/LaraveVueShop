@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Checkout;
+use Auth;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
