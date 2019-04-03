@@ -22,7 +22,8 @@ class CheckoutController extends Controller
          'city'        => $request->get('city'),
          'district'    => $request->get('district'),
          'postcode'    => $request->get('postcode'),
-         'total'       => $request->get('total')
+         'total'       => $request->get('total'),
+         'user_id' => Auth::id(),
       ]);
       $checkout->save();
       return response()->json('success');

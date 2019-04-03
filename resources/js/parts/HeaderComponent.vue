@@ -21,26 +21,18 @@
                             <li class="nav-item submenu dropdown">
                                 <router-link to="/cart" class="nav-link">Cart</router-link>
                             </li>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ml-auto">
-                                    <router-link :to="{ name: 'login' }" class="nav-link text-uppercase text-dark" v-if="!isLoggedIn">Login</router-link>
-                                    <router-link :to="{ name: 'register' }" class="nav-link text-uppercase text-dark" v-if="!isLoggedIn">Register</router-link>
-                                    <span v-if="isLoggedIn">
-                                        <router-link :to="{ name: 'userboard' }" class="nav-link text-uppercase text-dark" v-if="user_type == 0"> Hi, {{name}}</router-link>
-                                        <router-link :to="{ name: 'admin' }" class="nav-link text-uppercase text-dark" v-if="user_type == 1"> Hi, {{name}}</router-link>
-                                    </span>
-                                    <li class="nav-link text-uppercase" v-if="isLoggedIn" @click="logout"> Logout</li>
-                                </ul>
-                            </div>
-                            <li class="nav-item ">
-                                <router-link to="/contact" class="text-uppercase text-dark">Contact</router-link>
+
+                            <li class="nav-item  submenu dropdown">
+                                <router-link to="/contact" class="nav-link">Contact</router-link>
                             </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <router-link to="/cart" class="nav-link"><span class="ti-bag"></span></router-link>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <router-link to="/wishlist" class="nav-link"><span class=" ti-heart"></span></router-link>
+
+                            <li class="nav-item  submenu dropdown">
+                                <router-link to="/cart" class="nav-link"><span class="ti-bag"></span></router-link>
+                            </li>
+
+                            <li class="nav-item  submenu dropdown">
+                                <router-link to="/wishlist" class="nav-link"><span class=" ti-heart"></span></router-link>
+                            </li>
                         </ul>
                     </div>
                 </div>

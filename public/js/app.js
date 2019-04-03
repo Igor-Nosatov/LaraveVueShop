@@ -1948,14 +1948,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2683,24 +2675,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2732,7 +2706,7 @@ __webpack_require__.r(__webpack_exports__);
             if (_this.$route.params.nextUrl != null) {
               _this.$router.push(_this.$route.params.nextUrl);
             } else {
-              _this.$router.push(is_admin == 1 ? 'admin' : 'cart');
+              _this.$router.push(is_admin == 1 ? 'admin' : 'shop');
             }
           }
         });
@@ -2752,25 +2726,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -39778,143 +39733,53 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c(
-                          "div",
-                          {
-                            staticClass: "collapse navbar-collapse",
-                            attrs: { id: "navbarSupportedContent" }
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "navbar-nav ml-auto" },
-                              [
-                                !_vm.isLoggedIn
-                                  ? _c(
-                                      "router-link",
-                                      {
-                                        staticClass:
-                                          "nav-link text-uppercase text-dark",
-                                        attrs: { to: { name: "login" } }
-                                      },
-                                      [_vm._v("Login")]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                !_vm.isLoggedIn
-                                  ? _c(
-                                      "router-link",
-                                      {
-                                        staticClass:
-                                          "nav-link text-uppercase text-dark",
-                                        attrs: { to: { name: "register" } }
-                                      },
-                                      [_vm._v("Register")]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.isLoggedIn
-                                  ? _c(
-                                      "span",
-                                      [
-                                        _vm.user_type == 0
-                                          ? _c(
-                                              "router-link",
-                                              {
-                                                staticClass:
-                                                  "nav-link text-uppercase text-dark",
-                                                attrs: {
-                                                  to: { name: "userboard" }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  " Hi, " + _vm._s(_vm.name)
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        _vm.user_type == 1
-                                          ? _c(
-                                              "router-link",
-                                              {
-                                                staticClass:
-                                                  "nav-link text-uppercase text-dark",
-                                                attrs: { to: { name: "admin" } }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  " Hi, " + _vm._s(_vm.name)
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.isLoggedIn
-                                  ? _c(
-                                      "li",
-                                      {
-                                        staticClass: "nav-link text-uppercase",
-                                        on: { click: _vm.logout }
-                                      },
-                                      [_vm._v(" Logout")]
-                                    )
-                                  : _vm._e()
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
                           "li",
-                          { staticClass: "nav-item " },
+                          { staticClass: "nav-item  submenu dropdown" },
                           [
                             _c(
                               "router-link",
                               {
-                                staticClass: "text-uppercase text-dark",
+                                staticClass: "nav-link",
                                 attrs: { to: "/contact" }
                               },
                               [_vm._v("Contact")]
                             )
                           ],
                           1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          { staticClass: "nav-item  submenu dropdown" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/cart" }
+                              },
+                              [_c("span", { staticClass: "ti-bag" })]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          { staticClass: "nav-item  submenu dropdown" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/wishlist" }
+                              },
+                              [_c("span", { staticClass: " ti-heart" })]
+                            )
+                          ],
+                          1
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      { staticClass: "nav navbar-nav navbar-right" },
-                      [
-                        _c(
-                          "router-link",
-                          { staticClass: "nav-link", attrs: { to: "/cart" } },
-                          [_c("span", { staticClass: "ti-bag" })]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      { staticClass: "nav navbar-nav navbar-right" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/wishlist" }
-                          },
-                          [_c("span", { staticClass: " ti-heart" })]
-                        )
-                      ],
-                      1
                     )
                   ]
                 )
@@ -41323,53 +41188,65 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("section", { staticClass: "login_box_area section_gap" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(1),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-lg-6" }, [
-            _c("div", { staticClass: "login_form_inner" }, [
-              _c("h3", [_vm._v("Log in to enter")]),
-              _vm._v(" "),
-              _c("form", { staticClass: "row login_form" }, [
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-4 col-form-label text-md-right",
+                    attrs: { for: "email" }
+                  },
+                  [_vm._v("E-Mail Address")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
                   _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
+                        value: _vm.email,
+                        expression: "email"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "text",
-                      id: "name",
-                      name: "name",
-                      placeholder: "Username",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Username'",
+                      id: "email",
+                      type: "email",
                       required: "",
                       autofocus: ""
                     },
-                    domProps: { value: _vm.name },
+                    domProps: { value: _vm.email },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.name = $event.target.value
+                        _vm.email = $event.target.value
                       }
                     }
                   })
-                ]),
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-right",
+                    attrs: { for: "password" }
+                  },
+                  [_vm._v("Password")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+                _c("div", { staticClass: "col-md-6" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41380,15 +41257,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: {
-                      type: "password",
-                      id: "name",
-                      name: "password",
-                      placeholder: "Password",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Password'",
-                      required: ""
-                    },
+                    attrs: { id: "password", type: "password", required: "" },
                     domProps: { value: _vm.password },
                     on: {
                       input: function($event) {
@@ -41399,9 +41268,11 @@ var render = function() {
                       }
                     }
                   })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-0" }, [
+                _c("div", { staticClass: "col-md-8 offset-md-4" }, [
                   _c(
                     "button",
                     {
@@ -41424,72 +41295,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
-          },
-          [
-            _c("div", { staticClass: "col-first" }, [
-              _c("h1", [_vm._v("Login/Register")]),
-              _vm._v(" "),
-              _c("nav", { staticClass: "d-flex align-items-center" }, [
-                _c("a", { attrs: { href: "index.html" } }, [
-                  _vm._v("Home"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "category.html" } }, [
-                  _vm._v("Login/Register")
-                ])
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
-      _c("div", { staticClass: "login_box_img" }, [
-        _c("img", {
-          staticClass: "img-fluid",
-          attrs: { src: "img/login.jpg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "hover" }, [
-          _c("h4", [_vm._v("New to our website?")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "There are advances being made in science and technology everyday, and a good example of this is the"
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "primary-btn",
-              attrs: { href: "registration.html" }
-            },
-            [_vm._v("Create an Account")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41511,20 +41317,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("section", { staticClass: "login_box_area section_gap" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(1),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Register")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-lg-6" }, [
-            _c("div", { staticClass: "login_form_inner" }, [
-              _c("h3", [_vm._v("Register")]),
-              _vm._v(" "),
-              _c("form", { staticClass: "row login_form" }, [
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-right",
+                    attrs: { for: "name" }
+                  },
+                  [_vm._v("Name")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41536,12 +41347,8 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "text",
                       id: "name",
-                      name: "name",
-                      placeholder: "Username",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Username'",
+                      type: "text",
                       required: "",
                       autofocus: ""
                     },
@@ -41555,9 +41362,20 @@ var render = function() {
                       }
                     }
                   })
-                ]),
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-right",
+                    attrs: { for: "email" }
+                  },
+                  [_vm._v("E-Mail Address")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+                _c("div", { staticClass: "col-md-6" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41568,15 +41386,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "name",
-                      name: "email",
-                      placeholder: "Email",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Email'",
-                      required: ""
-                    },
+                    attrs: { id: "email", type: "email", required: "" },
                     domProps: { value: _vm.email },
                     on: {
                       input: function($event) {
@@ -41587,9 +41397,20 @@ var render = function() {
                       }
                     }
                   })
-                ]),
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-right",
+                    attrs: { for: "password" }
+                  },
+                  [_vm._v("Password")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+                _c("div", { staticClass: "col-md-6" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41600,15 +41421,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: {
-                      type: "password",
-                      id: "password",
-                      name: "password",
-                      placeholder: "Password",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Password'",
-                      required: ""
-                    },
+                    attrs: { id: "password", type: "password", required: "" },
                     domProps: { value: _vm.password },
                     on: {
                       input: function($event) {
@@ -41619,9 +41432,20 @@ var render = function() {
                       }
                     }
                   })
-                ]),
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-right",
+                    attrs: { for: "password-confirm" }
+                  },
+                  [_vm._v("Confirm Password")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+                _c("div", { staticClass: "col-md-6" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41633,12 +41457,8 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "password",
                       id: "password-confirm",
-                      name: "name",
-                      placeholder: "Password Confirm",
-                      onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Password Confirm'",
+                      type: "password",
                       required: ""
                     },
                     domProps: { value: _vm.password_confirmation },
@@ -41651,9 +41471,11 @@ var render = function() {
                       }
                     }
                   })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 form-group" }, [
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-0" }, [
+                _c("div", { staticClass: "col-md-6 offset-md-4" }, [
                   _c(
                     "button",
                     {
@@ -41663,7 +41485,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                      Register\n                "
+                        "\n                                    Register\n                                "
                       )
                     ]
                   )
@@ -41676,72 +41498,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
-          },
-          [
-            _c("div", { staticClass: "col-first" }, [
-              _c("h1", [_vm._v("Register")]),
-              _vm._v(" "),
-              _c("nav", { staticClass: "d-flex align-items-center" }, [
-                _c("a", { attrs: { href: "index.html" } }, [
-                  _vm._v("Home"),
-                  _c("span", { staticClass: "lnr lnr-arrow-right" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "category.html" } }, [
-                  _vm._v("Login/Register")
-                ])
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
-      _c("div", { staticClass: "login_box_img" }, [
-        _c("img", {
-          staticClass: "img-fluid",
-          attrs: { src: "img/login.jpg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "hover" }, [
-          _c("h4", [_vm._v("New to our website?")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "There are advances being made in science and technology everyday, and a good example of this is the"
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "primary-btn",
-              attrs: { href: "registration.html" }
-            },
-            [_vm._v("Create an Account")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59617,27 +59374,15 @@ var routes = [{
 }, {
   path: '/cart',
   name: 'cart',
-  component: _views_Cart__WEBPACK_IMPORTED_MODULE_7__["default"],
-  meta: {
-    requiresAuth: true,
-    is_user: true
-  }
+  component: _views_Cart__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   path: '/wishlist',
   name: 'wishlist',
-  component: _views_Wishlist__WEBPACK_IMPORTED_MODULE_8__["default"],
-  meta: {
-    requiresAuth: true,
-    is_user: true
-  }
+  component: _views_Wishlist__WEBPACK_IMPORTED_MODULE_8__["default"]
 }, {
   path: '/checkout',
   name: 'checkout',
-  component: _views_Checkout__WEBPACK_IMPORTED_MODULE_6__["default"],
-  meta: {
-    requiresAuth: true,
-    is_user: true
-  }
+  component: _views_Checkout__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   path: '/contact',
   name: 'contact',
@@ -59645,11 +59390,7 @@ var routes = [{
 }, {
   path: '/admin',
   name: 'admin',
-  component: _views_Admin__WEBPACK_IMPORTED_MODULE_10__["default"],
-  meta: {
-    requiresAuth: true,
-    is_admin: true
-  }
+  component: _views_Admin__WEBPACK_IMPORTED_MODULE_10__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 

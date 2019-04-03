@@ -22,7 +22,7 @@ class WishlistController extends Controller
 				'image' => $request->get('image'),
 				'price' => $request->get('price'),
 				'qty' => $request->get('qty'),
-				'user_id' => Auth::id(),
+				'user_id' => Auth::id()
 			]);
 
 			$wishlist->save();

@@ -16,7 +16,8 @@ class CommentController extends Controller
        'email' => $request->get('email'),
        'phone' => $request->get('phone'),
        'message' => $request->get('message'),
-       'product_id' => $request->get('product_id')
+       'product_id' => $request->get('product_id'),
+       'user_id' => Auth::id(),
      ]);
 
      $comment->save();
