@@ -2,19 +2,18 @@
 
     namespace App\Http\Controllers;
 
-    use Auth;
     use App\User;
     use Validator;
     use Illuminate\Http\Request;
 
     class UserController extends Controller
     {
-        public function index()
-        {
-            return response()->json(User::with(['order', 'cart'])->get());
-        }
+      public function index()
+       {
+           return response()->json(User::with(['cart'])->get());
+       }
 
-        public function login(Request $request)
+       public function login(Request $request)
         {
             $status = 401;
             $response = ['error' => 'Unauthorised'];
@@ -23,7 +22,7 @@
                 $status = 200;
                 $response = [
                     'user' => Auth::user(),
-                    'token' => Auth::user()->createToken('LaravelVueShop')->accessToken,
+                    'token' => Auth::user()->createToken('shop')->accessToken,
                 ];
             }
 
@@ -51,10 +50,17 @@
 
             return response()->json([
                 'user' => $user,
-                'token' => $user->createToken('LaravelVueShop')->accessToken,
+                'token' => $user->createToken('shop')->accessToken,
             ]);
         }
 
+        public function show(User $user)
+        {
+            return response()->json($user);
+        }
 
-
+        public function showOrders(User $user)
+        {
+            return response()->json($user->orders()->with(['product'])->get());
+        }
     }

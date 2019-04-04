@@ -9,6 +9,7 @@ import Cart from '../views/Cart';
 import Wishlist from '../views/Wishlist';
 import Contact from '../views/Contact';
 import Admin from '../views/Admin';
+import UserBoard from '../views/UserBoard';
 
 
 const routes = [{
@@ -64,18 +65,31 @@ const routes = [{
         component: Contact,
     },
     {
+        path: '/dashboard',
+        name: 'userboard',
+        component: UserBoard,
+        meta: {
+            requiresAuth: true,
+            is_user: true
+        }
+    },
+    {
+        path: '/admin/:page',
+        name: 'admin-pages',
+        component: Admin,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+    },
+    {
         path: '/admin',
         name: 'admin',
         component: Admin,
-
-    },
-    {
-        path: '/auth/:provide/callback',
-        component: {
-            template: '<div class="auth-component"></div>'
+        meta: {
+            requiresAuth: true,
+            is_admin: true
         }
     }
-
 ]
-
 export default routes

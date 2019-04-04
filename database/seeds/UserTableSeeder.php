@@ -7,12 +7,12 @@ class UserTableSeeder extends Seeder
 {
 
   public function run()
-      {
-        $user = new User;
-          $user->name = "Admin";
-          $user->email = "admin@admin.com";
-          $user->password = bcrypt('admin');
-          $user->is_admin = true;
-          $user->save();
-      }
+        {
+            $user = new User;
+            $user->name = "Admin";
+            $user->email = "admin@admin.com";
+            $user->password = bcrypt('laravueshop');
+            $user->is_admin = true;
+            $user->save();
+        }
 }

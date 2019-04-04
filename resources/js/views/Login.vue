@@ -1,99 +1,73 @@
 <template>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card-header">Login</div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" v-model="email" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" v-model="password" required>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" @click="handleSubmit">
-                                    Login
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <button @click="AuthProvider('github')">auth Github</button>
-                    <button @click="AuthProvider('facebook')">auth Facebook</button>
-                    <button @click="AuthProvider('google')">auth Google</button>
-                    <button @click="AuthProvider('twitter')">auth Twitter</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+         <div class="row justify-content-center">
+             <div class="col-md-8">
+                 <div class="card card-default">
+                     <div class="card-header">Login</div>
+                     <div class="card-body">
+                         <form>
+                             <div class="form-group row">
+                                 <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
+                                 <div class="col-md-6">
+                                     <input id="email" type="email" class="form-control" v-model="email" required autofocus>
+                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                 <div class="col-md-6">
+                                     <input id="password" type="password" class="form-control" v-model="password" required>
+                                 </div>
+                             </div>
+                             <div class="form-group row mb-0">
+                                 <div class="col-md-8 offset-md-4">
+                                     <button type="submit" class="btn btn-primary" @click="handleSubmit">
+                                         Login
+                                     </button>
+                                 </div>
+                             </div>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
 </template>
 
 
 <script>
-      export default {
-          data() {
-              return {
-                  email: "",
-                  password: ""
-              }
-          },
-          methods: {
-              handleSubmit(e) {
-                  e.preventDefault()
-                  if (this.password.length > 0) {
-                      let email = this.email
-                      let password = this.password
-
-                      axios.post('api/login', {email, password}).then(response => {
-                          let user = response.data.user
-                          let is_admin = user.is_admin
-
-                          localStorage.setItem('LaravelVueShop.user', JSON.stringify(user))
-                          localStorage.setItem('LaravelVueShop.jwt', response.data.token)
-
-                          if (localStorage.getItem('LaravelVueShop.jwt') != null) {
-                              this.$emit('loggedIn')
-                              if (this.$route.params.nextUrl != null) {
-                                  this.$router.push(this.$route.params.nextUrl)
-                              } else {
-                                  this.$router.push((is_admin == 1 ? 'admin' : 'shop'))
-                              }
-                          }
-                      });
-                  }
-              },
-              AuthProvider(provider) {
-                var bb = this
-              this.$auth.authenticate(provider).then(response =>{
-                this.SocialLogin(provider,response)
-
-                }).catch(err => {
-                    console.log({err:err})
-                })
-
+        export default {
+          props : ['nextUrl'],
+            data() {
+                return {
+                    email: "",
+                    password: ""
+                }
             },
-            SocialLogin(provider,response){
+            methods: {
+                handleSubmit(e) {
+                    e.preventDefault()
+                    if (this.password.length > 0) {
+                        let email = this.email
+                        let password = this.password
 
-                this.$http.post('/sociallogin/'+provider,response).then(response => {
+                        axios.post('api/login', {email, password}).then(response => {
+                            let user = response.data.user
+                            let is_admin = user.is_admin
 
-                    console.log(response.data)
+                            localStorage.setItem('shop.user', JSON.stringify(user))
+                            localStorage.setItem('shop.jwt', response.data.token)
 
-                }).catch(err => {
-
-                    console.log({err:err})
-                })
-
-
+                            if (localStorage.getItem('shop.jwt') != null) {
+                                this.$emit('loggedIn')
+                                if (this.$route.params.nextUrl != null) {
+                                    this.$router.push(this.$route.params.nextUrl)
+                                } else {
+                                    this.$router.push((is_admin == 1 ? 'admin' : 'dashboard'))
+                                }
+                            }
+                        });
+                    }
+                }
             }
-          }
-      }
-  </script>
+        }
+    </script>

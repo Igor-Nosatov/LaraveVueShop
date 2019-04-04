@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 
-
 Route::post('/login', 'UserController@login');
 Route::get('login/{provider}', 'SocialController@redirect');
 Route::get('login/{provider}/callback','SocialController@Callback');
@@ -28,13 +27,3 @@ Route::post('/order/add','OrderController@store');
 Route::get('/checkout','CheckoutController@index');
 Route::post('/checkout/add','CheckoutController@store');
 Route::post('/contact/add','ContactController@store');
-
-Route::post('sociallogin/{provider}', 'Auth\AuthController@SocialSignup');
-Route::post('auth/{provider}', 'AuthController@index')->where('vue', '.*');
-Route::post('auth/{provider}/callback', 'AuthController@index')->where('vue', '.*');
-
-
-
-  Route::group(['middleware' => 'auth:api'], function(){
-
-  });

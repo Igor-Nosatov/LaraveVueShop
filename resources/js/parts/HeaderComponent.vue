@@ -1,77 +1,60 @@
 <template>
-<div>
-    <header class="header_area sticky-header">
-        <div class="main_menu">
-            <nav class="navbar navbar-expand-lg navbar-light main_box">
-                <div class="container">
-                    <router-link to="/" class="nav-link"><img src="img/logo.png" alt=""></router-link>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active">
-                                <router-link to="/" class="nav-link">Home</router-link>
-                            </li>
-                            <li class="nav-item submenu dropdown">
-                                <router-link to="/shop" class="nav-link">Shop</router-link>
-                            </li>
-                            <li class="nav-item submenu dropdown">
-                                <router-link to="/cart" class="nav-link">Cart</router-link>
-                            </li>
-
-                            <li class="nav-item  submenu dropdown">
-                                <router-link to="/contact" class="nav-link">Contact</router-link>
-                            </li>
-
-                            <li class="nav-item  submenu dropdown">
-                                <router-link to="/cart" class="nav-link"><span class="ti-bag"></span></router-link>
-                            </li>
-
-                            <li class="nav-item  submenu dropdown">
-                                <router-link to="/wishlist" class="nav-link"><span class=" ti-heart"></span></router-link>
-                            </li>
-                        </ul>
-                    </div>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <router-link :to="{name: 'home'}" class="navbar-brand">Big Store</router-link>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <router-link :to="{ name: 'login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
+                        <router-link :to="{ name: 'register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
+                        <span v-if="isLoggedIn">
+                            <router-link :to="{ name: 'userboard' }" class="nav-link" v-if="user_type == 0"> Hi, {{name}}</router-link>
+                            <router-link :to="{ name: 'admin' }" class="nav-link" v-if="user_type == 1"> Hi, {{name}}</router-link>
+                        </span>
+                        <li class="nav-link" v-if="isLoggedIn" @click="logout"> Logout</li>
+                    </ul>
                 </div>
-            </nav>
-        </div>
-    </header>
-</div>
+            </div>
+        </nav>
+    </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            name: null,
-            user_type: 0,
-            isLoggedIn: localStorage.getItem('jwt') != null
-        }
-    },
-    mounted() {
-        this.setDefaults()
-    },
-    methods: {
-        setDefaults() {
-            if (this.isLoggedIn) {
-                let user = JSON.parse(localStorage.getItem('user'))
-                this.name = user.name
-                this.user_type = user.is_admin
+    export default {
+        data() {
+            return {
+                name: null,
+                user_type: 0,
+                isLoggedIn: localStorage.getItem('shop.jwt') != null
             }
         },
-        change() {
-            this.isLoggedIn = localStorage.getItem('jwt') != null
+        mounted() {
             this.setDefaults()
         },
-        logout() {
-            localStorage.removeItem('jwt')
-            localStorage.removeItem('user')
-            this.change()
-            this.$router.push('/')
+        methods : {
+            setDefaults() {
+                if (this.isLoggedIn) {
+                    let user = JSON.parse(localStorage.getItem('shop.user'))
+                    this.name = user.name
+                    this.user_type = user.is_admin
+                }
+            },
+            change() {
+                this.isLoggedIn = localStorage.getItem('shop.jwt') != null
+                this.setDefaults()
+            },
+            logout(){
+                localStorage.removeItem('shop.jwt')
+                localStorage.removeItem('shop.user')
+                this.change()
+                this.$router.push('/')
+            }
         }
     }
-}
-</script>
+    </script>
