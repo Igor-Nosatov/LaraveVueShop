@@ -144,8 +144,18 @@ export default {
             return this.cart.reduce((t, cr) => t + cr.price * cr.qty, 0)
         }
     },
+
     mounted() {
+        this.isLoggedIn = localStorage.getItem('jwt') != null
+    },
+
+    beforeMount() {
         this.fetchCart();
+        if (localStorage.getItem('jwt') != null) {
+            this.user = JSON.parse(localStorage.getItem('user'))
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwt')
+        }
     }
 }
 </script>

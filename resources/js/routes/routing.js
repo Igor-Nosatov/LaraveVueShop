@@ -46,17 +46,29 @@ const routes = [{
         path: '/cart',
         name: 'cart',
         component: Cart,
+        meta: {
+                requiresAuth: true,
+                is_user : true
+            }
     },
     {
         path: '/wishlist',
         name: 'wishlist',
         component: Wishlist,
+        meta: {
+                requiresAuth: true,
+                is_user : true
+            }
 
     },
     {
         path: '/checkout',
         name: 'checkout',
         component: Checkout,
+        meta: {
+                requiresAuth: true,
+                is_user : true
+            }
 
     },
     {

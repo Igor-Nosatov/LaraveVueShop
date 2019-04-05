@@ -30,35 +30,34 @@
                         <tbody>
                             <tr v-for="(wish, index) in wishlist">
 
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex">
-                                                <img :src="wish.image" :alt="wish.name" class="img-fluid">
-                                            </div>
-                                            <div class="media-body">
-                                                <p>{{wish.name}}</p>
-                                            </div>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img :src="wish.image" :alt="wish.name" class="img-fluid">
                                         </div>
-                                    </td>
-                                    <td>
-                                        <h5>${{wish.price}}</h5>
-                                    </td>
-                                    <td>
-                                        <div class="product_count">
-                                            <input type="number" min="1"  max="100" name="qty" id="sst" maxlength="12"  v-model="wish.qty" title="Quantity:" class="input-text qty">
+                                        <div class="media-body">
+                                            <p>{{wish.name}}</p>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="checkout_btn_inner d-flex align-items-center">
-                                            <a class="primary-btn" @click="addWishToOrder(wish)">Add to Order</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="checkout_btn_inner d-flex align-items-center">
-                                            <button type="submit" class="primary-btn" @click="deleteWish(wish.id, index)">Delete Wish</button>
-                                        </div>
-                                    </td>
-
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>${{wish.price}}</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <input type="number" min="1" max="100" name="qty" id="sst" maxlength="12" v-model="wish.qty" title="Quantity:" class="input-text qty">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <a class="primary-btn" @click="addWishToOrder(wish)">Add to Order</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <button type="submit" class="primary-btn" @click="deleteWish(wish.id, index)">Delete Wish</button>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -111,7 +110,15 @@ export default {
         }
     },
     mounted() {
+        this.isLoggedIn = localStorage.getItem('jwt') != null
+    },
+    beforeMount() {
         this.fetchWishListProduct();
+        if (localStorage.getItem('jwt') != null) {
+            this.user = JSON.parse(localStorage.getItem('user'))
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwt')
+        }
     }
 }
 </script>

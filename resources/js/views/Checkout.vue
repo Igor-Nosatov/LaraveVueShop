@@ -29,7 +29,7 @@
                                 <span class="placeholder" data-placeholder="Last name"></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="number" name="number"  v-model="checkout.phone">
+                                <input type="text" class="form-control" id="number" name="number" v-model="checkout.phone">
                                 <span class="placeholder" data-placeholder="Phone number"></span>
                             </div>
                             <div class="col-md-12 form-group">
@@ -40,14 +40,14 @@
                                 <span class="placeholder" data-placeholder="Email Address"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <select class="country_select"  v-model="checkout.country">
+                                <select class="country_select" v-model="checkout.country">
                                     <option value="1">Country</option>
                                     <option value="2">Country</option>
                                     <option value="4">Country</option>
                                 </select>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add1" name="add1"  v-model="checkout.adressone">
+                                <input type="text" class="form-control" id="add1" name="add1" v-model="checkout.adressone">
                                 <span class="placeholder" data-placeholder="Address line 01"></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
@@ -66,7 +66,7 @@
                                 </select>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP"  v-model="checkout.postcode">
+                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP" v-model="checkout.postcode">
                             </div>
 
                         </form>
@@ -79,7 +79,7 @@
                                 <li v-for="(od, index) in order"><a>{{od.name}} <span class="middle">x {{od.qty}} </span> <span class="last">${{od.price * od.qty}} </span></a></li>
                             </ul>
                             <ul class="list list_2">
-                              <li> ${{total}}</li>
+                                <li> ${{total}}</li>
                             </ul>
                             <div class="payment_item">
                                 <div class="radion_btn">
@@ -151,7 +151,7 @@ export default {
                 lastname: checkout.lastname,
                 company: checkout.company,
                 phone: checkout.phone,
-                email: checkout.  email,
+                email: checkout.email,
                 country: checkout.country,
                 adressone: checkout.adressone,
                 adresstwo: checkout.adresstwo,
@@ -172,7 +172,16 @@ export default {
         }
     },
     mounted() {
+        this.isLoggedIn = localStorage.getItem('shop.jwt') != null
+    },
+    beforeMount() {
         this.fetchOrder();
+
+        if (localStorage.getItem('shop.jwt') != null) {
+            this.user = JSON.parse(localStorage.getItem('shop.user'))
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('shop.jwt')
+        }
     }
 }
 </script>
