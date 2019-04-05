@@ -1772,6 +1772,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2511,29 +2532,26 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
 
       if (this.password.length > 0) {
+        var email = this.email;
+        var password = this.password;
         axios.post('api/login', {
-          email: this.email,
-          password: this.password
+          email: email,
+          password: password
         }).then(function (response) {
-          var is_admin = response.data.user.is_admin;
-          localStorage.setItem('user', JSON.stringify(response.data.user));
-          localStorage.setItem('jwt', response.data.token);
+          var user = response.data.user;
+          var is_admin = user.is_admin;
+          localStorage.setItem('shop.user', JSON.stringify(user));
+          localStorage.setItem('shop.jwt', response.data.token);
 
-          if (localStorage.getItem('jwt') != null) {
+          if (localStorage.getItem('shop.jwt') != null) {
             _this.$emit('loggedIn');
 
             if (_this.$route.params.nextUrl != null) {
               _this.$router.push(_this.$route.params.nextUrl);
             } else {
-              if (is_admin == 1) {
-                _this.$router.push('admin');
-              } else {
-                _this.$router.push('dashboard');
-              }
+              _this.$router.push(is_admin == 1 ? 'admin' : 'dashboard');
             }
           }
-        }).catch(function (error) {
-          console.error(error);
         });
       }
     }
@@ -2598,16 +2616,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['nextUrl'],
   data: function data() {
     return {
       name: "",
@@ -2622,36 +2632,35 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
 
-      if (this.password === this.password_confirmation && this.password.length > 6) {
-        axios.post('api/register', {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          c_password: this.password_confirmation
-        }).then(function (response) {
-          localStorage.setItem('user', response.data.success.name);
-          localStorage.setItem('user_id', response.data.success.id);
-          localStorage.setItem('jwt', response.data.success.token);
-
-          if (localStorage.getItem('jwt') !== null) {
-            _this.$router.go('/shop');
-          }
-        }).catch(function (error) {
-          console.log(error);
-        });
-      } else {
+      if (this.password !== this.password_confirmation || this.password.length <= 0) {
         this.password = "";
         this.password_confirmation = "";
         return alert('Passwords do not match');
       }
-    }
-  },
-  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-    if (localStorage.getItem('jwt')) {
-      return next('shop');
-    }
 
-    next();
+      var name = this.name;
+      var email = this.email;
+      var password = this.password;
+      var c_password = this.password_confirmation;
+      axios.post('api/register', {
+        name: name,
+        email: email,
+        password: password,
+        c_password: c_password
+      }).then(function (response) {
+        var data = response.data;
+        localStorage.setItem('shop.user', JSON.stringify(data.user));
+        localStorage.setItem('shop.jwt', data.token);
+
+        if (localStorage.getItem('shop.jwt') != null) {
+          _this.$emit('loggedIn');
+
+          var nextUrl = _this.$route.params.nextUrl;
+
+          _this.$router.push(nextUrl != null ? nextUrl : '/');
+        }
+      });
+    }
   }
 });
 
@@ -39290,7 +39299,110 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("header-component"),
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-expand-md navbar-light navbar-laravel" },
+        [
+          _c(
+            "div",
+            { staticClass: "container" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "navbar-brand",
+                  attrs: { to: { name: "home" } }
+                },
+                [_vm._v("Big Store")]
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse navbar-collapse",
+                  attrs: { id: "navbarSupportedContent" }
+                },
+                [
+                  _c("ul", { staticClass: "navbar-nav mr-auto" }),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "navbar-nav ml-auto" },
+                    [
+                      !_vm.isLoggedIn
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "nav-link",
+                              attrs: { to: { name: "login" } }
+                            },
+                            [_vm._v("Login")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.isLoggedIn
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "nav-link",
+                              attrs: { to: { name: "register" } }
+                            },
+                            [_vm._v("Register")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.isLoggedIn
+                        ? _c(
+                            "span",
+                            [
+                              _vm.user_type == 0
+                                ? _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { to: { name: "userboard" } }
+                                    },
+                                    [_vm._v(" Hi, " + _vm._s(_vm.name))]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.user_type == 1
+                                ? _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { to: { name: "admin" } }
+                                    },
+                                    [_vm._v(" Hi, " + _vm._s(_vm.name))]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.isLoggedIn
+                        ? _c(
+                            "li",
+                            {
+                              staticClass: "nav-link",
+                              on: { click: _vm.logout }
+                            },
+                            [_vm._v(" Logout")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("router-view", {
         key: _vm.$route.fullPath,
@@ -39302,7 +39414,28 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -39485,153 +39618,6 @@ var staticRenderFns = [
         ])
       ])
     ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/parts/HeaderComponent.vue?vue&type=template&id=29242f93&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/parts/HeaderComponent.vue?vue&type=template&id=29242f93& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-md navbar-light navbar-laravel" },
-      [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "navbar-brand", attrs: { to: { name: "home" } } },
-              [_vm._v("Big Store")]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbarSupportedContent" }
-              },
-              [
-                _c("ul", { staticClass: "navbar-nav mr-auto" }),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  { staticClass: "navbar-nav ml-auto" },
-                  [
-                    !_vm.isLoggedIn
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "login" } }
-                          },
-                          [_vm._v("Login")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    !_vm.isLoggedIn
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "register" } }
-                          },
-                          [_vm._v("Register")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.isLoggedIn
-                      ? _c(
-                          "span",
-                          [
-                            _vm.user_type == 0
-                              ? _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "nav-link",
-                                    attrs: { to: { name: "userboard" } }
-                                  },
-                                  [_vm._v(" Hi, " + _vm._s(_vm.name))]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _vm.user_type == 1
-                              ? _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "nav-link",
-                                    attrs: { to: { name: "admin" } }
-                                  },
-                                  [_vm._v(" Hi, " + _vm._s(_vm.name))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.isLoggedIn
-                      ? _c(
-                          "li",
-                          {
-                            staticClass: "nav-link",
-                            on: { click: _vm.logout }
-                          },
-                          [_vm._v(" Logout")]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ]
-            )
-          ],
-          1
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
   }
 ]
 render._withStripped = true
@@ -41096,7 +41082,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                                         Login\n                                     "
+                        "\n                                    Login\n                                "
                       )
                     ]
                   )
@@ -41138,7 +41124,7 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Register")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("form", { attrs: { method: "POST", action: "/register" } }, [
+            _c("form", [
               _c("div", { staticClass: "form-group row" }, [
                 _c(
                   "label",
@@ -60270,7 +60256,6 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTED_MODULE_2___default.a);
 
-Vue.component('header-component', __webpack_require__(/*! ./parts/HeaderComponent */ "./resources/js/parts/HeaderComponent.vue").default);
 Vue.component('footer-component', __webpack_require__(/*! ./parts/FooterComponent */ "./resources/js/parts/FooterComponent.vue").default);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -60430,59 +60415,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterComponent_vue_vue_type_template_id_842b7976___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterComponent_vue_vue_type_template_id_842b7976___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/parts/HeaderComponent.vue":
-/*!************************************************!*\
-  !*** ./resources/js/parts/HeaderComponent.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HeaderComponent_vue_vue_type_template_id_29242f93___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HeaderComponent.vue?vue&type=template&id=29242f93& */ "./resources/js/parts/HeaderComponent.vue?vue&type=template&id=29242f93&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _HeaderComponent_vue_vue_type_template_id_29242f93___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _HeaderComponent_vue_vue_type_template_id_29242f93___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/parts/HeaderComponent.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/parts/HeaderComponent.vue?vue&type=template&id=29242f93&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/parts/HeaderComponent.vue?vue&type=template&id=29242f93& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_template_id_29242f93___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./HeaderComponent.vue?vue&type=template&id=29242f93& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/parts/HeaderComponent.vue?vue&type=template&id=29242f93&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_template_id_29242f93___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_template_id_29242f93___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

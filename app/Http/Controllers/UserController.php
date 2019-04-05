@@ -2,62 +2,66 @@
 
     namespace App\Http\Controllers;
 
+    use Auth;
     use App\User;
+    use Validator;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Validator;
 
     class UserController extends Controller
     {
-      public function login(Request $request)
-    {
-        $cred = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-
-        if(Auth::attempt($cred)) {
-            $success['id'] = Auth::user()->id;
-            $success['name'] = Auth::user()->name;
-            $success['token'] = Auth::user()->createToken("shop")->accessToken;
-            return response()->json(['success' => $success]);
+      public function index()
+        {
+            return response()->json(User::with(['orders'])->get());
         }
 
-        return response()->json(['error' => 'Unauthorised. Check details and try again'], 401);
-    }
+        public function login(Request $request)
+        {
+            $status = 401;
+            $response = ['error' => 'Unauthorised'];
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function register(Request $request)
-    {
-        $validate = Validator::make($request->all(), [
-           'name' => 'required',
-           'email' => 'required|email',
-           'password' => 'required'
-        ]);
+            if (Auth::attempt($request->only(['email', 'password']))) {
+                $status = 200;
+                $response = [
+                    'user' => Auth::user(),
+                    'token' => Auth::user()->createToken('shop')->accessToken,
+                ];
+            }
 
-        if($validate->fails()) {
-            return response()->json(['error' => $validate->errors()], 401);
+            return response()->json($response, $status);
         }
 
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+        public function register(Request $request)
+        {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|max:50',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+                'c_password' => 'required|same:password',
+            ]);
 
-        $user = User::create($input);
-        $success['token'] = $user->createToken('shop')->accessToken;
-        $success['name'] = $user->name;
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()], 401);
+            }
 
-        return response()->json(['success' => $success]);
+            $data = $request->only(['name', 'email', 'password']);
+            $data['password'] = bcrypt($data['password']);
 
-    }
+            $user = User::create($data);
+            $user->is_admin = 0;
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getDetails()
-    {
-        return response()->json(['success' => Auth::user()]);
-    }
+            return response()->json([
+                'user' => $user,
+                'token' => $user->createToken('shop')->accessToken,
+            ]);
+        }
+
+        public function show(User $user)
+        {
+            return response()->json($user);
+        }
+
+        public function showOrders(User $user)
+        {
+            return response()->json($user->orders()->with(['product'])->get());
+        }
     }

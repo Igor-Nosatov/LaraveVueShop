@@ -8,11 +8,11 @@ class UserTableSeeder extends Seeder
 
   public function run()
         {
-            $user = new User;
-            $user->name = "Admin";
-            $user->email = "admin@admin.com";
-            $user->password = bcrypt('laravueshop');
-            $user->is_admin = true;
-            $user->save();
+          $user = new User;
+          $user->name = "Admin";
+          $user->email = "admin@devtest.com";
+          $user->password = bcrypt('secret');
+          $user->is_admin = true;
+          $user->save();
         }
 }
