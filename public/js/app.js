@@ -2609,7 +2609,7 @@ __webpack_require__.r(__webpack_exports__);
             if (_this.$route.params.nextUrl != null) {
               _this.$router.push(_this.$route.params.nextUrl);
             } else {
-              _this.$router.push(is_admin == 1 ? 'admin' : 'dashboard');
+              _this.$router.push(is_admin == 1 ? 'admin' : 'shop');
             }
           }
         });
