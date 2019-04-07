@@ -1,10 +1,10 @@
 <template>
-
+<div>
         <section class="banner-area organic-breadcrumb">
           <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
               <div class="col-first">
-                <h1>Login/Register</h1>
+                <h1>Register</h1>
                 <nav class="d-flex align-items-center">
                   <router-link :to="{ name: 'home' }" class="nav-link">Home<span class="lnr lnr-arrow-right"></span></router-link>
                   <router-link :to="{ name: 'register' }" class="nav-link">Register<span class="lnr lnr-arrow-right"></span></router-link>
@@ -30,7 +30,7 @@
               <div class="col-lg-6">
                 <div class="login_form_inner">
                   <h3>Log in to enter</h3>
-                  <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                  <form class="row login_form">
                     <div class="col-md-12 form-group">
                       <input id="name" type="text" class="form-control" v-model="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required autofocus>
                     </div>
@@ -38,13 +38,13 @@
                       <input id="email" type="email" class="form-control" v-model="email"  name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" required>
                     </div>
                     <div class="col-md-12 form-group">
-                      <input id="password" type="password" class="form-control" v-model="password" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
+                      <input id="password" type="password" class="form-control" v-model="password" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
                     </div>
                     <div class="col-md-12 form-group">
                       <input id="password-confirm" type="password" class="form-control" v-model="password_confirmation" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
                     </div>
                     <div class="col-md-12 form-group">
-                      <button type="submit" value="submit" class="primary-btn" @click="handleSubmit">Log In</button>
+                      <button type="submit" value="submit" class="primary-btn" @click="handleSubmit">Register</button>
                     </div>
                   </form>
                 </div>
@@ -52,6 +52,7 @@
             </div>
           </div>
         </section>
+        </div>
     </template>
 
     <script>

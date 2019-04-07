@@ -1,5 +1,5 @@
 <template>
-
+<div>
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -30,12 +30,12 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Log in to enter</h3>
-						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<form class="row login_form">
 							<div class="col-md-12 form-group">
-                <input id="email" type="email" class="form-control" v-model="email" 	id="name" name="name" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" required autofocus>
+                <input id="email" type="email" class="form-control" v-model="email" 	name="name" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" required autofocus>
 							</div>
 							<div class="col-md-12 form-group">
-                <input id="password" type="password" class="form-control" v-model="password" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
+                <input id="password" type="password" class="form-control" v-model="password"  name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="primary-btn" @click="handleSubmit">Log In</button>
@@ -46,6 +46,7 @@
 			</div>
 		</div>
 	</section>
+	</div>
   </template>
 
 

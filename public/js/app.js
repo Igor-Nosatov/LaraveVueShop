@@ -2562,6 +2562,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2613,6 +2629,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41122,25 +41148,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
+  return _c("div", [
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Login/Register")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "login" } }
+                    },
+                    [
+                      _vm._v("Login"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "login_box_area section_gap" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("form", [
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-sm-4 col-form-label text-md-right",
-                    attrs: { for: "email" }
-                  },
-                  [_vm._v("E-Mail Address")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "login_form_inner" }, [
+              _c("h3", [_vm._v("Log in to enter")]),
+              _vm._v(" "),
+              _c("form", { staticClass: "row login_form" }, [
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41154,6 +41221,10 @@ var render = function() {
                     attrs: {
                       id: "email",
                       type: "email",
+                      name: "name",
+                      placeholder: "Email",
+                      onfocus: "this.placeholder = ''",
+                      onblur: "this.placeholder = 'Email'",
                       required: "",
                       autofocus: ""
                     },
@@ -41167,20 +41238,9 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-4 col-form-label text-md-right",
-                    attrs: { for: "password" }
-                  },
-                  [_vm._v("Password")]
-                ),
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41191,7 +41251,15 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { id: "password", type: "password", required: "" },
+                    attrs: {
+                      id: "password",
+                      type: "password",
+                      name: "name",
+                      placeholder: "Password",
+                      onfocus: "this.placeholder = ''",
+                      onblur: "this.placeholder = 'Password'",
+                      required: ""
+                    },
                     domProps: { value: _vm.password },
                     on: {
                       input: function($event) {
@@ -41202,23 +41270,17 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-0" }, [
-                _c("div", { staticClass: "col-md-8 offset-md-4" }, [
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit" },
+                      staticClass: "primary-btn",
+                      attrs: { type: "submit", value: "submit" },
                       on: { click: _vm.handleSubmit }
                     },
-                    [
-                      _vm._v(
-                        "\n                                    Login\n                                "
-                      )
-                    ]
+                    [_vm._v("Log In")]
                   )
                 ])
               ])
@@ -41229,7 +41291,40 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "login_box_img" }, [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { src: "img/login.jpg", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "hover" }, [
+          _c("h4", [_vm._v("New to our website?")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "There are advances being made in science and technology everyday, and a good example of this is the"
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "primary-btn",
+              attrs: { href: "registration.html" }
+            },
+            [_vm._v("Create an Account")]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -41251,25 +41346,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Register")]),
+  return _c("div", [
+    _c("section", { staticClass: "banner-area organic-breadcrumb" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+          },
+          [
+            _c("div", { staticClass: "col-first" }, [
+              _c("h1", [_vm._v("Register")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _vm._v("Home"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "register" } }
+                    },
+                    [
+                      _vm._v("Register"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "login_box_area section_gap" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("form", [
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-4 col-form-label text-md-right",
-                    attrs: { for: "name" }
-                  },
-                  [_vm._v("Name")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "login_form_inner" }, [
+              _c("h3", [_vm._v("Log in to enter")]),
+              _vm._v(" "),
+              _c("form", { staticClass: "row login_form" }, [
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41283,6 +41419,9 @@ var render = function() {
                     attrs: {
                       id: "name",
                       type: "text",
+                      placeholder: "Username",
+                      onfocus: "this.placeholder = ''",
+                      onblur: "this.placeholder = 'Username'",
                       required: "",
                       autofocus: ""
                     },
@@ -41296,20 +41435,9 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-4 col-form-label text-md-right",
-                    attrs: { for: "email" }
-                  },
-                  [_vm._v("E-Mail Address")]
-                ),
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41320,7 +41448,15 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { id: "email", type: "email", required: "" },
+                    attrs: {
+                      id: "email",
+                      type: "email",
+                      name: "email",
+                      placeholder: "Email",
+                      onfocus: "this.placeholder = ''",
+                      onblur: "this.placeholder = 'Email'",
+                      required: ""
+                    },
                     domProps: { value: _vm.email },
                     on: {
                       input: function($event) {
@@ -41331,20 +41467,9 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-4 col-form-label text-md-right",
-                    attrs: { for: "password" }
-                  },
-                  [_vm._v("Password")]
-                ),
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41355,7 +41480,15 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { id: "password", type: "password", required: "" },
+                    attrs: {
+                      id: "password",
+                      type: "password",
+                      name: "name",
+                      placeholder: "Password",
+                      onfocus: "this.placeholder = ''",
+                      onblur: "this.placeholder = 'Password'",
+                      required: ""
+                    },
                     domProps: { value: _vm.password },
                     on: {
                       input: function($event) {
@@ -41366,20 +41499,9 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-4 col-form-label text-md-right",
-                    attrs: { for: "password-confirm" }
-                  },
-                  [_vm._v("Confirm Password")]
-                ),
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -41393,6 +41515,9 @@ var render = function() {
                     attrs: {
                       id: "password-confirm",
                       type: "password",
+                      placeholder: "Password",
+                      onfocus: "this.placeholder = ''",
+                      onblur: "this.placeholder = 'Password'",
                       required: ""
                     },
                     domProps: { value: _vm.password_confirmation },
@@ -41405,23 +41530,17 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-0" }, [
-                _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-12 form-group" }, [
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit" },
+                      staticClass: "primary-btn",
+                      attrs: { type: "submit", value: "submit" },
                       on: { click: _vm.handleSubmit }
                     },
-                    [
-                      _vm._v(
-                        "\n                                    Register\n                                "
-                      )
-                    ]
+                    [_vm._v("Register")]
                   )
                 ])
               ])
@@ -41432,7 +41551,40 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "login_box_img" }, [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { src: "img/login.jpg", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "hover" }, [
+          _c("h4", [_vm._v("New to our website?")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "There are advances being made in science and technology everyday, and a good example of this is the"
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "primary-btn",
+              attrs: { href: "registration.html" }
+            },
+            [_vm._v("Create an Account")]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
