@@ -41200,7 +41200,41 @@ var render = function() {
     _c("section", { staticClass: "login_box_area section_gap" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "login_box_img" }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "img/login.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "hover" },
+                [
+                  _c("h4", [_vm._v("New to our website?")]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "There are advances being made in science and technology everyday, and a good example of this is the"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "primary-btn",
+                      attrs: { to: { name: "register" } }
+                    },
+                    [
+                      _vm._v("Create an Account"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-lg-6" }, [
             _c("div", { staticClass: "login_form_inner" }, [
@@ -41291,40 +41325,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
-      _c("div", { staticClass: "login_box_img" }, [
-        _c("img", {
-          staticClass: "img-fluid",
-          attrs: { src: "img/login.jpg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "hover" }, [
-          _c("h4", [_vm._v("New to our website?")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "There are advances being made in science and technology everyday, and a good example of this is the"
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "primary-btn",
-              attrs: { href: "registration.html" }
-            },
-            [_vm._v("Create an Account")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41398,7 +41399,41 @@ var render = function() {
     _c("section", { staticClass: "login_box_area section_gap" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "login_box_img" }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "img/login.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "hover" },
+                [
+                  _c("h4", [_vm._v("New to our website?")]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "There are advances being made in science and technology everyday, and a good example of this is the"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "primary-btn",
+                      attrs: { to: { name: "login" } }
+                    },
+                    [
+                      _vm._v("Log In"),
+                      _c("span", { staticClass: "lnr lnr-arrow-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-lg-6" }, [
             _c("div", { staticClass: "login_form_inner" }, [
@@ -41515,9 +41550,9 @@ var render = function() {
                     attrs: {
                       id: "password-confirm",
                       type: "password",
-                      placeholder: "Password",
+                      placeholder: "Password confirm",
                       onfocus: "this.placeholder = ''",
-                      onblur: "this.placeholder = 'Password'",
+                      onblur: "this.placeholder = 'Password confirm'",
                       required: ""
                     },
                     domProps: { value: _vm.password_confirmation },
@@ -41551,40 +41586,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
-      _c("div", { staticClass: "login_box_img" }, [
-        _c("img", {
-          staticClass: "img-fluid",
-          attrs: { src: "img/login.jpg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "hover" }, [
-          _c("h4", [_vm._v("New to our website?")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "There are advances being made in science and technology everyday, and a good example of this is the"
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "primary-btn",
-              attrs: { href: "registration.html" }
-            },
-            [_vm._v("Create an Account")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

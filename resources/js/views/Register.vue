@@ -23,7 +23,7 @@
                   <div class="hover">
                     <h4>New to our website?</h4>
                     <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-                    <a class="primary-btn" href="registration.html">Create an Account</a>
+                    <router-link :to="{ name: 'login' }" class="primary-btn" >Log In<span class="lnr lnr-arrow-right"></span></router-link>
                   </div>
                 </div>
               </div>
@@ -41,7 +41,7 @@
                       <input id="password" type="password" class="form-control" v-model="password" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
                     </div>
                     <div class="col-md-12 form-group">
-                      <input id="password-confirm" type="password" class="form-control" v-model="password_confirmation" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required>
+                      <input id="password-confirm" type="password" class="form-control" v-model="password_confirmation" placeholder="Password confirm" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password confirm'" required>
                     </div>
                     <div class="col-md-12 form-group">
                       <button type="submit" value="submit" class="primary-btn" @click="handleSubmit">Register</button>
